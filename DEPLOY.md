@@ -3,6 +3,9 @@
 We'll use **Streamlit Community Cloud** — it's free, and it keeps the app **private** so only
 people you invite can see Grandpa's results.
 
+> 💵 **Is this really free?** Yes — 100% free, forever. GitHub is free, Streamlit Community
+> Cloud is free, and you never enter a credit card. There are no hidden costs.
+
 You only do **Part 1 and Part 2 once**. After that, daily updates are a single double-click (Part 3).
 
 ---
