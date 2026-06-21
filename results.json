@@ -1202,7 +1202,7 @@
                 "date": "19-06-2026 11:44",
                 "result": 14.5,
                 "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "Not Specified"
+                "normal_range": "0 - 12"
             }
         ]
     },
@@ -1215,7 +1215,7 @@
                 "date": "19-06-2026 11:44",
                 "result": 1.0,
                 "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "Not Specified"
+                "normal_range": "0 - 0.9"
             }
         ]
     },

@@ -1054,7 +1054,7 @@
         "family_guidance": {
             "meaning_high_simple": "Often points to allergic reactions, parasitic infections, or chronic infections (since it lumps these three cell types together).",
             "meaning_low_simple": "Usually not clinically significant on its own unless overall white cell counts are severely depressed.",
-            "affected_system": "Combined percentage of monocytes, eosinophils, and basophils. No reference range available for this specific format.",
+            "affected_system": "Combined percentage of monocytes, eosinophils, and basophils (the 'mixed' white cells). Normal is about 0-12%. Source: testing.com / healthmatters.io",
             "symptoms_to_watch": "This test is typically done when there are signs of infection or inflammation such as fever, chills, body aches, pain, or headache. Source: testing.com",
             "warning_signs_tonight": "",
             "critical_threshold": "A large rise or drop in one or more white-cell types usually prompts repeat testing; a result barely outside the normal range may or may not be significant. Source: testing.com",
@@ -1083,7 +1083,7 @@
         "family_guidance": {
             "meaning_high_simple": "Can occur during recovery from acute infections, allergic reactions, or certain autoimmune and chronic inflammatory conditions.",
             "meaning_low_simple": "Rarely significant on its own.",
-            "affected_system": "Combined count of monocytes, eosinophils, and basophils. No reference range available.",
+            "affected_system": "Combined count of monocytes, eosinophils, and basophils (the 'mixed' white cells). Normal is about up to 0.9 x10^9/L. Source: testing.com / healthmatters.io",
             "symptoms_to_watch": "This test is typically done when there are signs of infection or inflammation such as fever, chills, body aches, pain, or headache. Source: testing.com",
             "warning_signs_tonight": "",
             "critical_threshold": "A large rise or drop in one or more white-cell types usually prompts repeat testing; a result barely outside the normal range may or may not be significant. Source: testing.com",
