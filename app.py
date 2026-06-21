@@ -151,9 +151,10 @@ def load_data():
         trend = "—"
         if len(recs) >= 2:
             pv = parse_result(recs[-2]["result"])
-            pl, ph = parse_range(recs[-2]["normal_range"])
+            # Compare both readings against the SAME (latest) normal range so a
+            # change of lab/units in the range string can't flip the result.
             d0 = deviation(val, lo, hi)
-            d1 = deviation(pv, pl, ph)
+            d1 = deviation(pv, lo, hi)
             if d0 < d1 - 1e-6:
                 trend = "improving"
             elif d0 > d1 + 1e-6:
@@ -209,6 +210,7 @@ TREND_LABEL = {
 
 PAGES = {
     "📊 نظرة عامة":          "__overview__",
+    "📘 إرشادات عامة للعائلة": "__general__",
     "🩸 تحليل الدم":         "cbc",
     "🫀 وظائف الكلى":        "kidney",
     "🫁 وظائف الكبد":        "liver",
@@ -242,6 +244,78 @@ def safe_key(s):
 def val_str(t):
     return f"{t['val']:.2f}" if t["val"] is not None else str(t["latest"]["result"])
 
+def days_ago_text(t):
+    n = (datetime.now() - parse_date(t["latest"]["date"])).days
+    if n <= 0:  return "انفحص اليوم"
+    if n == 1:  return "قبل يوم واحد"
+    if n == 2:  return "قبل يومين"
+    if n <= 10: return f"قبل {n} أيام"
+    return f"قبل {n} يوم"
+
+def ratio_text(t):
+    """Ratio of result vs the normal range, per family's formula."""
+    val, lo, hi, status = t["val"], t["lo"], t["hi"], t["status"]
+    if val is None:
+        return None
+    if status == "high" and hi:
+        return f"أعلى من الطبيعي بنسبة {val / hi * 100:.0f}%"
+    if status == "low" and val and lo:
+        return f"أوطى من الطبيعي بنسبة {lo / val * 100:.0f}%"
+    if status == "normal":
+        return "ضمن المعدّل الطبيعي"
+    return None
+
+# How serious an abnormality in each test is (1=minor, 10=life-threatening).
+CLINICAL_WEIGHT = {
+    "CRP": 10, "PCT": 10, "D-dimer": 10, "Troponin I": 10,
+    "Na": 9, "K": 9, "S. Creatinine": 9, "Hb": 9, "Albumin": 9,
+    "Neutrophils (Absolute)": 9,
+    "S. Urea": 8, "S. Calcium": 8, "Ionized Ca": 8, "Platelets": 8, "WBC": 8,
+    "PCV": 7, "RBC": 7, "HbA1c": 7, "Total Bilirubin": 7,
+    "Cl": 6, "LDH": 6, "AST (GOT)": 6, "ALT (GPT)": 6, "ALP": 6,
+    "Neutrophils (Relative)": 6, "Lymphocytes (Absolute)": 6,
+    "Uric Acid": 5, "MPV": 5, "Lymphocytes (Relative)": 5,
+    "MCV": 4, "MCH": 4, "MCHC": 4, "RDW": 4, "Monocytes (Absolute)": 4,
+    "PDW": 3, "PCT (Plateletcrit)": 3, "Monocytes (Relative)": 3,
+    "MXD (Relative)": 3, "MXD (Absolute)": 3,
+}
+
+def risk_score(t):
+    """1-10 priority: how much the family should focus on this test now."""
+    base = CLINICAL_WEIGHT.get(t["short_name"], 5)
+    if t["status"] in ("normal", "unknown"):
+        return max(1, round(base * 0.2))          # in range = low priority
+    dev_factor = min(t["deviation"], 2) / 2        # 0..1 (capped at 200% outside)
+    score = base * (0.5 + 0.5 * dev_factor)
+    if t["trend"] == "worsening":
+        score += 1.5
+    elif t["trend"] == "improving":
+        score -= 1.5
+    return int(max(1, min(10, round(score))))
+
+def risk_color(r):
+    return "#c62828" if r >= 7 else "#f57c00" if r >= 4 else "#2e7d32"
+
+# Fields that are usually identical for every test → shown once on the general page,
+# and only shown on a test if that test has its own different (specific) version.
+GENERAL_FIELDS = [
+    "refusal_handling", "bedridden_risks", "immune_and_hygiene",
+    "communication_if_confused", "emotional_support",
+]
+
+def generic_values(tests):
+    """The most common (generic) text per general field across all tests."""
+    from collections import Counter
+    out = {}
+    for k in GENERAL_FIELDS:
+        c = Counter(
+            t["family_guidance"].get(k, "")
+            for t in tests if t["family_guidance"].get(k, "").strip()
+        )
+        if c:
+            out[k] = c.most_common(1)[0][0]
+    return out
+
 # ── Components ─────────────────────────────────────────────────────────────────
 
 def render_card(t):
@@ -250,11 +324,19 @@ def render_card(t):
     bg     = STATUS_BG[status]
     label  = STATUS_LABEL[status]
     trend  = TREND_LABEL.get(t["trend"], "")
+    ratio  = ratio_text(t)
+    risk   = risk_score(t)
+    rcolor = risk_color(risk)
+
+    ratio_html = (
+        f'<div style="font-size:0.82rem;font-weight:600;color:{color};margin-top:3px;">{ratio}</div>'
+        if ratio else ""
+    )
 
     st.markdown(f"""
 <div style="
     background:{bg};
-    border-left:5px solid {color};
+    border-right:6px solid {color};
     border-radius:10px;
     padding:14px 16px;
     margin-bottom:4px;
@@ -265,7 +347,11 @@ def render_card(t):
         {val_str(t)} <span style="font-size:0.85rem;font-weight:400;color:#555;">{t['unit']}</span>
     </div>
     <div style="font-size:0.84rem;font-weight:600;color:{color};margin-top:4px;">{label}</div>
-    <div style="font-size:0.78rem;color:#555;margin-top:2px;">{trend}</div>
+    <div style="font-size:0.8rem;color:#555;margin-top:3px;">🕒 {days_ago_text(t)}{('  ·  ' + trend) if trend else ''}</div>
+    {ratio_html}
+    <div style="font-size:0.82rem;font-weight:700;color:{rcolor};margin-top:5px;">
+        🎯 الأولوية والخطورة: {risk}/10
+    </div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -289,7 +375,7 @@ def render_overview(tests):
     normal   = [t for t in tests if t["status"] == "normal"]
     abnormal = sorted(
         [t for t in tests if t["status"] in ("high", "low")],
-        key=lambda t: -t["deviation"],
+        key=lambda t: (-risk_score(t), -t["deviation"]),
     )
     unknown  = [t for t in tests if t["status"] == "unknown"]
 
@@ -395,14 +481,6 @@ def render_history_table(t):
     st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
 
 
-def _show(label, text, box="info"):
-    """Render a guidance field only if it has content."""
-    if not text or not text.strip():
-        return
-    st.markdown(f"**{label}**")
-    getattr(st, box)(text)
-
-
 def render_detail(tests, short_name):
     t = next((x for x in tests if x["short_name"] == short_name), None)
     if t is None:
@@ -481,46 +559,67 @@ def render_detail(tests, short_name):
             "ماكو إجراء عاجل لهذا التحليل — بس استمرّوا بالمتابعة."
         )
 
-    # ── Expandable family guidance sections ──
-    has_watchfor = any(fg.get(k) for k in ("symptoms_to_watch", "warning_signs_tonight", "critical_threshold"))
-    has_diet     = any(fg.get(k) for k in ("foods_to_give", "foods_to_avoid", "hydration_guidance", "refusal_handling"))
-    has_safety   = any(fg.get(k) for k in ("bedridden_risks", "supplements_safety"))
-    has_hygiene  = bool(fg.get("immune_and_hygiene"))
-    has_comms    = any(fg.get(k) for k in ("communication_if_confused", "emotional_support"))
-    has_medical  = any(fg.get(k) for k in ("oncologist_questions", "treatment_impact", "palliative_care"))
+    # ── Family guidance: only test-SPECIFIC info here; generic stuff lives on the
+    #    "إرشادات عامة للعائلة" page so it isn't repeated on every test. ──
+    generic = generic_values(tests)
+
+    def has_field(k):
+        return bool(fg.get(k, "").strip())
+
+    def is_specific(k):
+        # a general field is only shown here if this test overrides the generic text
+        return has_field(k) and fg.get(k, "") != generic.get(k, "")
+
+    def show(label, k, box, general=False):
+        v = fg.get(k, "")
+        if not v or not v.strip():
+            return
+        if general and v == generic.get(k, ""):   # generic copy → skip (it's on general page)
+            return
+        st.markdown(f"**{label}**")
+        getattr(st, box)(v)
+
+    has_watchfor = any(has_field(k) for k in ("symptoms_to_watch", "warning_signs_tonight", "critical_threshold"))
+    has_diet     = any(has_field(k) for k in ("foods_to_give", "foods_to_avoid", "hydration_guidance")) or is_specific("refusal_handling")
+    has_safety   = has_field("supplements_safety") or is_specific("bedridden_risks")
+    has_hygiene  = is_specific("immune_and_hygiene")
+    has_comms    = is_specific("communication_if_confused") or is_specific("emotional_support")
+    has_medical  = any(has_field(k) for k in ("oncologist_questions", "treatment_impact", "palliative_care"))
 
     if has_watchfor:
         with st.expander("⚠️ شنو نراقب", expanded=(status in ("high", "low"))):
-            _show("أعراض نراقبها:", fg.get("symptoms_to_watch", ""), "warning")
-            _show("علامات خطر هاي الليلة:", fg.get("warning_signs_tonight", ""), "error")
-            _show("متى تتصل بالممرضة فوراً:", fg.get("critical_threshold", ""), "error")
+            show("أعراض نراقبها:", "symptoms_to_watch", "warning")
+            show("علامات خطر هاي الليلة:", "warning_signs_tonight", "error")
+            show("متى تتصل بالممرضة فوراً:", "critical_threshold", "error")
 
     if has_diet:
         with st.expander("🥗 الأكل والشرب", expanded=False):
-            _show("أكلات ممكن تساعد:", fg.get("foods_to_give", ""), "success")
-            _show("أكلات لازم نتجنّبها:", fg.get("foods_to_avoid", ""), "warning")
-            _show("إرشادات الترطيب (السوائل):", fg.get("hydration_guidance", ""), "info")
-            _show("إذا رفض ياكل أو يشرب:", fg.get("refusal_handling", ""), "info")
+            show("أكلات ممكن تساعد:", "foods_to_give", "success")
+            show("أكلات لازم نتجنّبها:", "foods_to_avoid", "warning")
+            show("إرشادات الترطيب (السوائل):", "hydration_guidance", "info")
+            show("إذا رفض ياكل أو يشرب:", "refusal_handling", "info", general=True)
 
     if has_safety:
         with st.expander("🛏️ سلامة المريض طريح الفراش", expanded=False):
-            _show("مخاطر كونه طريح الفراش تماماً:", fg.get("bedridden_risks", ""), "warning")
-            _show("سلامة الفيتامينات والمكمّلات:", fg.get("supplements_safety", ""), "info")
+            show("مخاطر خاصة بهذا التحليل:", "bedridden_risks", "warning", general=True)
+            show("سلامة الفيتامينات والمكمّلات:", "supplements_safety", "info")
 
     if has_hygiene:
-        with st.expander("🧼 المناعة وقواعد النظافة", expanded=False):
-            _show("قواعد النظافة والزيارة:", fg.get("immune_and_hygiene", ""), "warning")
+        with st.expander("🧼 المناعة وقواعد النظافة (خاص بهذا التحليل)", expanded=False):
+            show("قواعد النظافة والزيارة:", "immune_and_hygiene", "warning", general=True)
 
     if has_comms:
-        with st.expander("💬 التواصل والدعم النفسي", expanded=False):
-            _show("إذا صار مشوّش أو منزعج:", fg.get("communication_if_confused", ""), "info")
-            _show("الدعم النفسي:", fg.get("emotional_support", ""), "info")
+        with st.expander("💬 التواصل والدعم النفسي (خاص بهذا التحليل)", expanded=False):
+            show("إذا صار مشوّش أو منزعج:", "communication_if_confused", "info", general=True)
+            show("الدعم النفسي:", "emotional_support", "info", general=True)
 
     if has_medical:
         with st.expander("🩺 أسئلة للطبيب والعلاج", expanded=False):
-            _show("أسئلة مهمة تنطرح على طبيب الأورام:", fg.get("oncologist_questions", ""), "info")
-            _show("شلون يأثّر على العلاج:", fg.get("treatment_impact", ""), "warning")
-            _show("الرعاية التلطيفية والمريحة:", fg.get("palliative_care", ""), "info")
+            show("أسئلة مهمة تنطرح على طبيب الأورام:", "oncologist_questions", "info")
+            show("شلون يأثّر على العلاج:", "treatment_impact", "warning")
+            show("الرعاية التلطيفية والمريحة:", "palliative_care", "info")
+
+    st.info("📘 الإرشادات العامة (الأكل عند الرفض، النظافة، الدعم النفسي، التواصل، ومخاطر الفراش) موجودة بصفحة **«إرشادات عامة للعائلة»** — تنطبق على كل التحاليل.")
 
     st.divider()
     st.subheader("📅 كل النتائج المسجّلة")
@@ -535,6 +634,30 @@ def render_category_page(tests, cat_key):
         st.info("ماكو تحاليل مسجّلة بهذا القسم لحد الحين.")
         return
     render_card_grid(filtered)
+
+
+def render_general(tests):
+    st.title("📘 إرشادات عامة للعائلة")
+    st.caption("هذي الإرشادات تنطبق على كل التحاليل — مكتوبة مرة وحدة هنا حتى ما تتكرر بكل تحليل.")
+
+    st.error(
+        "🚨 **بحالة طوارئ بدهوك:** اتصلوا بالإسعاف على **١٢٢** — وانقلوه لمستشفى **آزادي التعليمي** "
+        "أو **مستشفى دهوك للأورام**. لا تنقلوه بسيارتكم إذا عنده ضيق نفس شديد أو نزيف أو فقدان وعي."
+    )
+
+    generic = generic_values(tests)
+    sections = [
+        ("🍽️ إذا رفض ياكل أو يشرب",              "refusal_handling",          "info"),
+        ("🛏️ مخاطر كونه طريح الفراش وشلون نحميه", "bedridden_risks",           "warning"),
+        ("🧼 المناعة وقواعد النظافة والزيارة",     "immune_and_hygiene",        "warning"),
+        ("💬 شلون نحچي وياه إذا صار مشوّش",        "communication_if_confused", "info"),
+        ("❤️ الدعم النفسي لجدّنا",                "emotional_support",         "info"),
+    ]
+    for title, k, box in sections:
+        v = generic.get(k, "")
+        if v:
+            st.subheader(title)
+            getattr(st, box)(v)
 
 
 # ── Main ───────────────────────────────────────────────────────────────────────
@@ -560,6 +683,8 @@ def main():
     page = PAGES[choice]
     if page == "__overview__":
         render_overview(tests)
+    elif page == "__general__":
+        render_general(tests)
     else:
         render_category_page(tests, page)
 
