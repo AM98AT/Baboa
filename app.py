@@ -6,7 +6,7 @@ from datetime import datetime
 import re
 
 st.set_page_config(
-    page_title="متابعة صحّة جدّنا",
+    page_title="متابعة الصحّة اليومية",
     page_icon="🏥",
     layout="centered",
     initial_sidebar_state="collapsed",
@@ -676,12 +676,12 @@ def render_detail(tests, short_name):
     if status == "high":
         meaning = fg.get("meaning_high_simple", "")
         if meaning:
-            st.subheader("⬆️ شنو يعني لمن يكون عالي عند جدّنا؟")
+            st.subheader("⬆️ شنو يعني لمن يكون عالي عنده؟")
             st.warning(meaning)
     elif status == "low":
         meaning = fg.get("meaning_low_simple", "")
         if meaning:
-            st.subheader("⬇️ شنو يعني لمن يكون واطي عند جدّنا؟")
+            st.subheader("⬇️ شنو يعني لمن يكون واطي عنده؟")
             st.info(meaning)
     else:
         st.success(
@@ -730,7 +730,7 @@ def render_detail(tests, short_name):
             show("إذا رفض ياكل أو يشرب:", "refusal_handling", "info", general=True)
 
     if has_safety:
-        with st.expander("🛏️ سلامة المريض طريح الفراش", expanded=False):
+        with st.expander("🛏️ السلامة وهو طريح الفراش", expanded=False):
             show("مخاطر خاصة بهذا التحليل:", "bedridden_risks", "warning", general=True)
             show("سلامة الفيتامينات والمكمّلات:", "supplements_safety", "info")
 
@@ -781,7 +781,7 @@ def render_general(tests):
         ("🛏️ مخاطر كونه طريح الفراش وشلون نحميه", "bedridden_risks",           "warning"),
         ("🧼 المناعة وقواعد النظافة والزيارة",     "immune_and_hygiene",        "warning"),
         ("💬 شلون نحچي وياه إذا صار مشوّش",        "communication_if_confused", "info"),
-        ("❤️ الدعم النفسي لجدّنا",                "emotional_support",         "info"),
+        ("❤️ الدعم النفسي",                       "emotional_support",         "info"),
     ]
     for title, k, box in sections:
         v = generic.get(k, "")
