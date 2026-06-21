@@ -286,15 +286,19 @@ def days_ago_text(t):
     if n <= 10: return f"قبل {n} أيام"
     return f"قبل {n} يوم"
 
+def _fmt_pct(p):
+    s = f"{p:.1f}"
+    return s[:-2] if s.endswith(".0") else s
+
 def ratio_text(t):
-    """Ratio of result vs the normal range, per family's formula."""
+    """How far the result is past the normal boundary, as a % of that boundary."""
     val, lo, hi, status = t["val"], t["lo"], t["hi"], t["status"]
     if val is None:
         return None
     if status == "high" and hi:
-        return f"أعلى من الطبيعي بنسبة {val / hi * 100:.0f}%"
-    if status == "low" and val and lo:
-        return f"أوطى من الطبيعي بنسبة {lo / val * 100:.0f}%"
+        return f"أعلى من الطبيعي بنسبة {_fmt_pct((val - hi) / hi * 100)}%"
+    if status == "low" and lo:
+        return f"أوطى من الطبيعي بنسبة {_fmt_pct((lo - val) / lo * 100)}%"
     if status == "normal":
         return "ضمن المعدّل الطبيعي"
     return None
