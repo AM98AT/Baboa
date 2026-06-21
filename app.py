@@ -562,12 +562,19 @@ def _chart_png(title, subtitle, unit, xs, ys, colors, lo, hi):
     fig.update_layout(
         title=dict(text=f"{title}<br><sub>{subtitle}</sub>", x=0.5, xanchor="center",
                    font=dict(size=22)),
-        yaxis_title=unit, height=520, width=900,
-        margin=dict(l=20, r=20, t=90, b=40),
+        yaxis_title=unit, height=540, width=900,
+        margin=dict(l=20, r=20, t=90, b=90),
         showlegend=False, plot_bgcolor="white", paper_bgcolor="white",
         font=dict(size=15),
     )
-    fig.update_xaxes(gridcolor="#eee", tickformat="%m-%d")
+    # One labelled tick per reading; show the DAY (date), not the time.
+    fig.update_xaxes(
+        tickmode="array",
+        tickvals=list(xs),
+        ticktext=[d.strftime("%d/%m/%Y") for d in xs],
+        tickangle=-45, ticks="outside", ticklen=6,
+        showgrid=True, gridcolor="#ddd", gridwidth=1,
+    )
     fig.update_yaxes(gridcolor="#eee")
     return fig.to_image(format="png", scale=2)
 
@@ -609,9 +616,12 @@ def render_chart(t):
         fig.add_trace(go.Scatter(x=list(xs), y=list(ys), mode="lines+markers",
                                  line=dict(color="#1565c0", width=2.5),
                                  marker=dict(size=11, color=list(colors))))
-        fig.update_layout(title=f"{t['full_name']} — {subtitle}", height=320,
-                          margin=dict(l=6, r=6, t=50, b=6), showlegend=False,
+        fig.update_layout(title=f"{t['full_name']} — {subtitle}", height=340,
+                          margin=dict(l=6, r=6, t=50, b=70), showlegend=False,
                           plot_bgcolor="white", paper_bgcolor="white")
+        fig.update_xaxes(tickmode="array", tickvals=list(xs),
+                         ticktext=[d.strftime("%d/%m/%Y") for d in xs],
+                         tickangle=-45, showgrid=True, gridcolor="#ddd")
         st.plotly_chart(fig, use_container_width=True, config={"staticPlot": True, "displayModeBar": False})
 
 
