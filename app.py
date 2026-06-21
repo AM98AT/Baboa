@@ -4,6 +4,7 @@ import pandas as pd
 import plotly.graph_objects as go
 from datetime import datetime, timedelta
 from urllib.parse import quote
+import math
 import re
 
 st.set_page_config(
@@ -539,6 +540,31 @@ def render_overview(tests):
         render_units(unknown)
 
 
+def _nice_ticks(vmin, vmax, target=6):
+    """Clean, evenly-spaced y-axis ticks with correct labels (no rounding duplicates,
+    and the top/bottom ticks always enclose the data)."""
+    if vmax <= vmin:
+        vmax = vmin + 1
+    raw = (vmax - vmin) / target
+    mag = 10 ** math.floor(math.log10(raw)) if raw > 0 else 1
+    step = 10 * mag
+    for m in (1, 2, 2.5, 5):
+        if raw <= m * mag:
+            step = m * mag
+            break
+    start = math.floor(vmin / step) * step
+    end = math.ceil(vmax / step) * step
+    # decimals needed to print the step value exactly (so 0.25 -> 2, 2.5 -> 1, 5 -> 0)
+    ss = f"{step:.10f}".rstrip("0").rstrip(".")
+    dec = len(ss.split(".")[1]) if "." in ss else 0
+    ticks, v = [], start
+    while v <= end + step * 0.5:
+        ticks.append(round(v, 10))
+        v += step
+    labels = [f"{tk:.{dec}f}" for tk in ticks]
+    return ticks, labels
+
+
 def _day_labels(days):
     """Day number on every tick; month (DD/MM) only on the first, the last, and on month changes."""
     out, prev, n = [], None, len(days)
@@ -590,17 +616,15 @@ def _chart_png(title, subtitle, unit, xs, ys, colors, lo, hi):
         tickangle=0, ticks="outside", ticklen=6,
         showgrid=True, gridcolor="#cfcfcf", gridwidth=1,
     )
-    # Y: spread numbered ticks across the actual values (+ normal band)
+    # Y: clean numbered ticks computed from the actual values (+ normal band)
     yvals = list(ys) + [b for b in (lo, hi) if b is not None]
     ymn, ymx = min(yvals), max(yvals)
     if ymx == ymn:
-        pad = abs(ymx) * 0.5 or 1
-        y0r, y1r = ymn - pad, ymx + pad
-    else:
-        pad = (ymx - ymn) * 0.12
-        y0r = 0 if (ymn >= 0 and ymn - pad < 0) else ymn - pad
-        y1r = ymx + pad
-    fig.update_yaxes(range=[y0r, y1r], nticks=7, gridcolor="#eee", zeroline=False)
+        d = abs(ymx) * 0.3 or 1
+        ymn, ymx = ymn - d, ymx + d
+    tickvals, ticktext = _nice_ticks(ymn, ymx)
+    fig.update_yaxes(tickvals=tickvals, ticktext=ticktext,
+                     range=[tickvals[0], tickvals[-1]], gridcolor="#eee", zeroline=False)
     return fig.to_image(format="png", scale=2)
 
 
@@ -653,7 +677,13 @@ def render_chart(t):
         fig.update_xaxes(tickmode="array", tickvals=_days, ticktext=_day_labels(_days),
                          range=[_d0 - timedelta(hours=12), _dN + timedelta(hours=12)],
                          tickangle=0, showgrid=True, gridcolor="#cfcfcf")
-        fig.update_yaxes(nticks=7, gridcolor="#eee")
+        _yv = list(ys) + [b for b in (lo, hi) if b is not None]
+        _ymn, _ymx = min(_yv), max(_yv)
+        if _ymx == _ymn:
+            _dd = abs(_ymx) * 0.3 or 1
+            _ymn, _ymx = _ymn - _dd, _ymx + _dd
+        _tv, _tt = _nice_ticks(_ymn, _ymx)
+        fig.update_yaxes(tickvals=_tv, ticktext=_tt, range=[_tv[0], _tv[-1]], gridcolor="#eee")
         st.plotly_chart(fig, use_container_width=True, config={"staticPlot": True, "displayModeBar": False})
 
 
