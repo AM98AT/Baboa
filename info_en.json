@@ -1,49 +1,12 @@
 [
     {
+        "id": 1,
         "short_name": "Hb",
         "full_name": "Hemoglobin",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Complete Blood Count (CBC)",
         "unit": "g/dl",
-        "records": [
-            {
-                "date": "13/06/2026 23:38",
-                "result": 11.4,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "13.0 - 17.0"
-            },
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 11.9,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "13 - 17"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 10.4,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "13 - 17"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 12.3,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "13 - 17"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 10.6,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "13 - 17"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 10.9,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "13 - 17"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "High hemoglobin can be a sign of underlying lung or heart problems, or come from dehydration, smoking, or living at high altitude. Signs can include headache, dizziness, vision trouble, slurred speech, and a reddened face. Source: testing.com",
             "meaning_low_simple": "Low hemoglobin means anemia — the blood is not carrying enough oxygen to the body's organs and muscles. For an 86-year-old bedridden cancer patient, this means his heart and brain are getting less oxygen than they need, making him feel extremely tired, weak, and breathless even while lying still. Source: cancer.gov (Anemia and Cancer Treatment — NCI)",
@@ -66,50 +29,13 @@
         }
     },
     {
+        "id": 2,
         "short_name": "PCV",
         "full_name": "Packed Cell Volume (Hematocrit)",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Complete Blood Count (CBC)",
         "unit": "%",
-        "records": [
-            {
-                "date": "13/06/2026 23:38",
-                "result": 30.4,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "40.0 - 50.0"
-            },
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 33.4,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "40 - 50"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 29.3,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "40 - 50"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 35.7,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "40 - 50"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 30.5,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "40 - 50"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 31.7,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "40 - 50"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "A high hematocrit means the blood has too many red blood cells or is too concentrated. Common causes include dehydration, lung disease, heart problems, certain kidney tumors, smoking, or rare blood disorders. Source: testing.com",
             "meaning_low_simple": "PCV (hematocrit) measures what percentage of blood is made of red blood cells. A low PCV means anemia — the same problem as low hemoglobin — and has the same effect: less oxygen reaching his organs, causing extreme fatigue and weakness. Source: cancer.gov (Anemia — NCI)",
@@ -132,50 +58,13 @@
         }
     },
     {
+        "id": 3,
         "short_name": "RBC",
         "full_name": "Red Blood Cell Count",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Complete Blood Count (CBC)",
         "unit": "10^12 /L",
-        "records": [
-            {
-                "date": "13/06/2026 23:38",
-                "result": 3.55,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "4.50 - 5.50"
-            },
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 3.76,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "4.5 - 5.5"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 3.14,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "4.5 - 5.5"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 3.95,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "4.5 - 5.5"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 3.3,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "4.5 - 5.5"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 3.33,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "4.5 - 5.5"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "A high RBC count means there are more red blood cells than normal. This can be caused by dehydration, smoking, low oxygen levels, certain cancers, or some medications. Source: testing.com",
             "meaning_low_simple": "Low red blood cell count means anemia — fewer cells available to carry oxygen through the body. For an elderly cancer patient, this means less energy, more fatigue, and greater mental confusion risk. Source: cancer.gov (Anemia — NCI)",
@@ -198,50 +87,13 @@
         }
     },
     {
+        "id": 4,
         "short_name": "MCV",
         "full_name": "Mean Corpuscular Volume",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Complete Blood Count (CBC)",
         "unit": "fL",
-        "records": [
-            {
-                "date": "13/06/2026 23:38",
-                "result": 85.6,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "80.0 - 100.0"
-            },
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 88.7,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "75 - 100"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 93.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "75 - 100"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 90.2,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "75 - 100"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 92.1,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "80 - 100"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 95.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "75 - 100"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "MCV is currently normal — no action needed.",
             "meaning_low_simple": "Low MCV means red blood cells are smaller than normal, often from iron deficiency. Source: testing.com (CBC Test)",
@@ -264,50 +116,13 @@
         }
     },
     {
+        "id": 5,
         "short_name": "MCH",
         "full_name": "Mean Corpuscular Hemoglobin",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Complete Blood Count (CBC)",
         "unit": "pg",
-        "records": [
-            {
-                "date": "13/06/2026 23:38",
-                "result": 32.1,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "27.0 - 32.0"
-            },
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 31.7,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "25 - 35"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 33.2,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "25 - 35"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 31.1,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "25 - 35"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 32.0,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "27 - 32"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 32.7,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "25 - 35"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "MCH is currently normal — no immediate action needed.",
             "meaning_low_simple": "Low MCH means each red blood cell carries less hemoglobin than normal — a sign of iron deficiency anemia. Source: testing.com (CBC Test)",
@@ -330,50 +145,13 @@
         }
     },
     {
+        "id": 6,
         "short_name": "MCHC",
         "full_name": "Mean Corpuscular Hemoglobin Concentration",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Complete Blood Count (CBC)",
         "unit": "g/dl",
-        "records": [
-            {
-                "date": "13/06/2026 23:38",
-                "result": 37.5,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "31.0 - 37.0"
-            },
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 35.8,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "31 - 38"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 35.6,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "31 - 38"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 34.4,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "31 - 38"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 34.8,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "31 - 37"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 34.4,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "31 - 38"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "Can be seen in conditions where red blood cells are fragile or abnormally shaped (like hereditary spherocytosis) or severe burns.",
             "meaning_low_simple": "Low MCHC means red blood cells have less hemoglobin concentration than normal — often seen in iron deficiency. Source: testing.com (CBC)",
@@ -396,50 +174,13 @@
         }
     },
     {
+        "id": 7,
         "short_name": "RDW",
         "full_name": "Red Cell Distribution Width",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Complete Blood Count (CBC)",
         "unit": "%",
-        "records": [
-            {
-                "date": "13/06/2026 23:38",
-                "result": 10.6,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "11.6 - 14.0"
-            },
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 11.5,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "11 - 16"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 12.3,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "11 - 16"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 12.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "11 - 16"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 13.5,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "11.6 - 14"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 13.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "11 - 16"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "Indicates a large variation in cell sizes (anisocytosis), commonly seen in mixed anemias or early nutritional deficiencies (iron, B12, folate).",
             "meaning_low_simple": "Generally not clinically significant; means red blood cells are very uniform in size.",
@@ -462,50 +203,13 @@
         }
     },
     {
+        "id": 8,
         "short_name": "Platelets",
         "full_name": "Platelet Count",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Complete Blood Count (CBC)",
         "unit": "10^9 /L",
-        "records": [
-            {
-                "date": "13/06/2026 23:38",
-                "result": 264,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "150 - 400"
-            },
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 309.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "150 - 400"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 281.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "150 - 400"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 310.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "150 - 400"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 314,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "150 - 450"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 348.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "150 - 400"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "High platelets can occur as a reaction to infection or inflammation — in his case likely related to his active infection. Currently in normal range.",
             "meaning_low_simple": "Low platelet count (thrombocytopenia) means the blood cannot clot properly, raising the risk of dangerous bleeding. The risk of bleeding goes up when platelets drop below 20,000. A platelet transfusion may be needed if they fall below 10,000. Source: cancer.org (Low Platelet Count — American Cancer Society)",
@@ -528,50 +232,13 @@
         }
     },
     {
+        "id": 9,
         "short_name": "WBC",
         "full_name": "White Blood Cell Count",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Complete Blood Count (CBC)",
         "unit": "10^9 /L",
-        "records": [
-            {
-                "date": "13/06/2026 23:38",
-                "result": 7.2,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "4.0 - 11.0"
-            },
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 20.4,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "3.5 - 11"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 12.8,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "3.5 - 11"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 12.5,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "3.5 - 11"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 7.1,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "4 - 11"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 7.9,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "3.5 - 11"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "A very high white blood cell count means the immune system is actively fighting a serious infection or major inflammation. His WBC was 20.4 (very high) and has now returned to 7.9 (normal) — this is a positive sign the infection is responding to treatment. Source: cancer.gov (Infection and Neutropenia — NCI)",
             "meaning_low_simple": "A very low white blood cell count (neutropenia) means the body cannot fight infections properly. Even a minor cut or a mild cold can become life-threatening. Source: cancer.gov (Infection and Neutropenia — NCI)",
@@ -594,50 +261,13 @@
         }
     },
     {
+        "id": 10,
         "short_name": "Neutrophils (Relative)",
         "full_name": "Neutrophils Percentage",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Differential White Cell Count",
         "unit": "%",
-        "records": [
-            {
-                "date": "13/06/2026 23:38",
-                "result": 74.2,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "Not Specified"
-            },
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 86.9,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "35 - 80"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 90.3,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "35 - 80"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 80.2,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "35 - 80"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 69.9,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "Not Specified"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 74.6,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "35 - 80"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "High neutrophil percentage means the body is fighting a bacterial infection. This is consistent with the high CRP and was much higher before — it is now trending toward normal. Source: cancer.gov (Infection — NCI)",
             "meaning_low_simple": "Very low neutrophil percentage means the primary defense against bacteria is severely weakened. Any fever becomes an emergency. Source: cancer.gov (Infection — NCI)",
@@ -660,50 +290,13 @@
         }
     },
     {
+        "id": 11,
         "short_name": "Neutrophils (Absolute)",
         "full_name": "Absolute Neutrophil Count (ANC)",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Differential White Cell Count",
         "unit": "10^9 /L",
-        "records": [
-            {
-                "date": "13/06/2026 23:38",
-                "result": 5.3,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "2.0 - 7.0"
-            },
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 17.8,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "2 - 7"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 11.7,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "2 - 7"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 10.1,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "2 - 7"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 5.0,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "2 - 7"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 5.9,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "2 - 7"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "High absolute neutrophil count reflects active infection. Now returning toward normal. Source: cancer.gov",
             "meaning_low_simple": "Absolute neutropenia (ANC below 1,000) = very high risk of life-threatening bacterial infection. Any fever = emergency. Source: cancer.gov (Infection — NCI)",
@@ -726,50 +319,13 @@
         }
     },
     {
+        "id": 12,
         "short_name": "Lymphocytes (Relative)",
         "full_name": "Lymphocytes Percentage",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Differential White Cell Count",
         "unit": "%",
-        "records": [
-            {
-                "date": "13/06/2026 23:38",
-                "result": 20.1,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "Not Specified"
-            },
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 7.6,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "20 - 50"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 6.7,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "20 - 50"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 16.1,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "20 - 50"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 15.6,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "Not Specified"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 19.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "20 - 50"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "Usually indicates an active viral infection (like the flu or mono) or chronic inflammation.",
             "meaning_low_simple": "Low lymphocyte percentage means the part of the immune system that fights viruses is weakened. Source: cancer.gov (Infection — NCI)",
@@ -792,50 +348,13 @@
         }
     },
     {
+        "id": 13,
         "short_name": "Lymphocytes (Absolute)",
         "full_name": "Absolute Lymphocyte Count",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Differential White Cell Count",
         "unit": "10^9 /L",
-        "records": [
-            {
-                "date": "13/06/2026 23:38",
-                "result": 1.4,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "1.0 - 3.5"
-            },
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 1.5,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "1 - 3.5"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 0.8,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "1 - 3.5"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 2.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "1 - 3.5"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 1.1,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "1 - 3.5"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 1.5,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "1 - 3.5"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "Lymphocytosis is commonly a response to viral infections, but can also indicate certain blood cancers in rare cases.",
             "meaning_low_simple": "Low absolute lymphocyte count weakens the body's ability to fight viruses and certain cancers. Source: cancer.gov (Infection — NCI)",
@@ -858,44 +377,13 @@
         }
     },
     {
+        "id": 14,
         "short_name": "Monocytes (Relative)",
         "full_name": "Monocytes Percentage",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Differential White Cell Count",
         "unit": "%",
-        "records": [
-            {
-                "date": "13/06/2026 23:38",
-                "result": 5.7,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "Not Specified"
-            },
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 5.5,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "Not Specified"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 3.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "Not Specified"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 3.7,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "Not Specified"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 6.4,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "Not Specified"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "Can point to chronic infections, autoimmune disorders, or recovery from an acute infection.",
             "meaning_low_simple": "Generally not clinically significant on its own, but can occur with overall low white blood cell counts.",
@@ -918,44 +406,13 @@
         }
     },
     {
+        "id": 15,
         "short_name": "Monocytes (Absolute)",
         "full_name": "Absolute Monocyte Count",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Differential White Cell Count",
         "unit": "10^9 /L",
-        "records": [
-            {
-                "date": "13/06/2026 23:38",
-                "result": 0.4,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "0.2 - 1.2"
-            },
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 1.1,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.2 - 1.2"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 0.3,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.2 - 1.2"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 0.4,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.2 - 1.2"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 0.5,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.2 - 1.2"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "High monocyte count may indicate the body is recovering from or actively fighting a chronic infection or inflammation. Currently normal. Source: testing.com (CBC)",
             "meaning_low_simple": "Rarely significant, but very low counts can be associated with bone marrow issues or certain therapies.",
@@ -978,50 +435,13 @@
         }
     },
     {
+        "id": 16,
         "short_name": "S. Urea",
         "full_name": "Serum Urea",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Kidney Function Test (RFT)",
         "unit": "mg/dL",
-        "records": [
-            {
-                "date": "14/06/2026 01:09",
-                "result": 31.0,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "17 - 49"
-            },
-            {
-                "date": "16-06-2026 10:42:46",
-                "result": 92.1,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "16.6 - 48.5"
-            },
-            {
-                "date": "17-06-2026 12:25:27",
-                "result": 84.6,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "16.6 - 48.5"
-            },
-            {
-                "date": "18-06-2026 11:39:00",
-                "result": 81.7,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "16.6 - 48.5"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 78.0,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "16.6 - 48.2"
-            },
-            {
-                "date": "20-06-2026 11:46:08",
-                "result": 74.6,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "16.6 - 48.5"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "High urea means the kidneys are not removing waste products from the blood efficiently. Urea is a waste product from protein breakdown. His level is about 1.5× the normal maximum and has been slowly improving over the past several days, which is a positive trend. Source: testing.com (Urea/BUN Test), cancer.gov",
             "meaning_low_simple": "A low urea (BUN) level can be a sign of malnutrition, not getting enough protein, or liver disease. Source: testing.com",
@@ -1044,50 +464,13 @@
         }
     },
     {
+        "id": 17,
         "short_name": "S. Creatinine",
         "full_name": "Serum Creatinine",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Kidney Function Test (RFT)",
         "unit": "mg/dL",
-        "records": [
-            {
-                "date": "14/06/2026 01:09",
-                "result": 1.5,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "0.7 - 1.3"
-            },
-            {
-                "date": "16-06-2026 10:42:46",
-                "result": 2.78,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.5 - 1.1"
-            },
-            {
-                "date": "17-06-2026 12:25:27",
-                "result": 2.38,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.5 - 1.1"
-            },
-            {
-                "date": "18-06-2026 11:39:00",
-                "result": 2.22,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.5 - 1.1"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 2.09,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "0.7 - 1.2"
-            },
-            {
-                "date": "20-06-2026 11:46:08",
-                "result": 2.2,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.5 - 1.1"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "High creatinine means the kidneys are under stress and are not filtering waste from the blood as well as they should. His creatinine is about twice the normal maximum. It has been slowly improving — which is a positive sign. Source: testing.com (Creatinine Test), cancer.gov",
             "meaning_low_simple": "A lower-than-expected creatinine may be a sign of malnutrition or loss of muscle mass. Source: testing.com",
@@ -1110,44 +493,13 @@
         }
     },
     {
+        "id": 18,
         "short_name": "S. Calcium",
         "full_name": "Serum Total Calcium",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Electrolytes and Minerals",
         "unit": "mg/dL",
-        "records": [
-            {
-                "date": "14/06/2026 01:09",
-                "result": 7.8,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "8.5 - 10.5"
-            },
-            {
-                "date": "16-06-2026 11:37",
-                "result": 9.4,
-                "lab_name": "Sardam Medical Laboratories",
-                "normal_range": "8.5 - 10.5"
-            },
-            {
-                "date": "17-06-2026 12:25:27",
-                "result": 8.33,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "8.5 - 10.5"
-            },
-            {
-                "date": "18-06-2026 11:39:00",
-                "result": 8.79,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "8.5 - 10.5"
-            },
-            {
-                "date": "20-06-2026 11:46:08",
-                "result": 8.21,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "8.5 - 10.5"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "High calcium (hypercalcemia) in cancer patients can be caused by the cancer itself. It can cause confusion, nausea, and kidney problems. Source: search results on hypercalcemia of malignancy",
             "meaning_low_simple": "Low calcium (hypocalcemia) means the blood does not have enough calcium for normal muscle and nerve function. His calcium is slightly below normal. In elderly patients, this can cause muscle cramps and increased confusion. Source: hypocalcemia in cancer patients research",
@@ -1170,50 +522,13 @@
         }
     },
     {
+        "id": 19,
         "short_name": "CRP",
         "full_name": "Serum C-Reactive Protein",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Inflammatory Markers",
         "unit": "mg/L",
-        "records": [
-            {
-                "date": "14/06/2026 01:09",
-                "result": 76.4,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "<= 6.0"
-            },
-            {
-                "date": "16-06-2026 10:42:46",
-                "result": 345.62,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.01 - 6"
-            },
-            {
-                "date": "17-06-2026 12:25:27",
-                "result": 257.15,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.01 - 6"
-            },
-            {
-                "date": "18-06-2026 11:39:00",
-                "result": 232.92,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.01 - 6"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 148.0,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "< 6"
-            },
-            {
-                "date": "20-06-2026 11:46:08",
-                "result": 130.47,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.01 - 6"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "CRP is a protein the liver makes when the body is fighting serious inflammation or infection. His CRP of 130 mg/L is more than 20 times the normal maximum (6 mg/L). This means there is a very active infection or major inflammation happening in his body. The positive news is it has been coming down from 345 — the treatment is working. Source: testing.com (C-Reactive Protein Test), cancer.gov (Infection — NCI)",
             "meaning_low_simple": "Low or normal CRP is ideal — it means no significant active inflammation or infection. Source: testing.com",
@@ -1236,32 +551,13 @@
         }
     },
     {
+        "id": 20,
         "short_name": "Na",
         "full_name": "Sodium",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Electrolytes",
         "unit": "mmol/L",
-        "records": [
-            {
-                "date": "14-06-2026 20:27:39",
-                "result": 129.0,
-                "lab_name": "Azadi Teaching Hospital",
-                "normal_range": "135 - 145"
-            },
-            {
-                "date": "16-06-2026 11:37",
-                "result": 126.9,
-                "lab_name": "Sardam Medical Laboratories",
-                "normal_range": "136 - 146"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 130.7,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "136 - 146"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "Hypernatremia can be caused by dehydration, losing too much water (e.g., sweating, diarrhea), or a high-sodium diet.",
             "meaning_low_simple": "Low sodium (hyponatremia) means there is not enough sodium in the blood. Sodium controls fluid balance between cells and the brain. His level of 130.7 is below the safe minimum (136). At his age, even mild low sodium can cause serious confusion, weakness, and fall risk. Source: search results on hyponatremia in elderly cancer patients",
@@ -1284,32 +580,13 @@
         }
     },
     {
+        "id": 21,
         "short_name": "K",
         "full_name": "Potassium",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Electrolytes",
         "unit": "mmol/L",
-        "records": [
-            {
-                "date": "14-06-2026 20:27:39",
-                "result": 3.53,
-                "lab_name": "Azadi Teaching Hospital",
-                "normal_range": "3.5 - 5.5"
-            },
-            {
-                "date": "16-06-2026 11:37",
-                "result": 4.13,
-                "lab_name": "Sardam Medical Laboratories",
-                "normal_range": "3.5 - 5.5"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 4.39,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "3.5 - 5"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "High potassium (hyperkalemia) can cause dangerous heart rhythm problems. Source: mskcc.org (Potassium Phosphate patient education)",
             "meaning_low_simple": "Low potassium (hypokalemia) can cause muscle weakness, fatigue, irregular heartbeat, and in severe cases, life-threatening heart rhythm problems. Source: search results on hypokalemia in cancer patients",
@@ -1332,44 +609,13 @@
         }
     },
     {
+        "id": 22,
         "short_name": "AST (GOT)",
         "full_name": "Aspartate Aminotransferase",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Liver Function Test (LFT)",
         "unit": "IU/L",
-        "records": [
-            {
-                "date": "14-06-2026 20:27:39",
-                "result": 42.8,
-                "lab_name": "Azadi Teaching Hospital",
-                "normal_range": "8 - 48"
-            },
-            {
-                "date": "17-06-2026 12:25:27",
-                "result": 34.9,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.01 - 40"
-            },
-            {
-                "date": "18-06-2026 11:39:00",
-                "result": 41.9,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.01 - 40"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 42.6,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "< 40"
-            },
-            {
-                "date": "20-06-2026 11:46:08",
-                "result": 44.1,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.01 - 40"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "AST is an enzyme released when liver, heart, or muscle cells are stressed or damaged. His AST is slightly above normal — this is a mild elevation. In cancer patients on treatment, mild AST elevations are common. Doctors usually do not worry unless levels are 2 to 3 times the upper limit. Source: cancer.org Cancer Survivors Network / cancer.gov",
             "meaning_low_simple": "Low AST is normal and healthy — no concern.",
@@ -1392,44 +638,13 @@
         }
     },
     {
+        "id": 23,
         "short_name": "ALT (GPT)",
         "full_name": "Alanine Aminotransferase",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Liver Function Test (LFT)",
         "unit": "IU/L",
-        "records": [
-            {
-                "date": "14-06-2026 20:27:39",
-                "result": 21.0,
-                "lab_name": "Azadi Teaching Hospital",
-                "normal_range": "7 - 50"
-            },
-            {
-                "date": "17-06-2026 12:25:27",
-                "result": 24.2,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.01 - 41"
-            },
-            {
-                "date": "18-06-2026 11:39:00",
-                "result": 26.5,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.01 - 41"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 29.0,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "< 41"
-            },
-            {
-                "date": "20-06-2026 11:46:08",
-                "result": 26.8,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.01 - 41"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "ALT is currently within normal range — no action needed.",
             "meaning_low_simple": "Low ALT is normal and healthy. Source: cancer.gov",
@@ -1452,44 +667,13 @@
         }
     },
     {
+        "id": 24,
         "short_name": "ALP",
         "full_name": "Alkaline Phosphatase",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Liver Function Test (LFT)",
         "unit": "IU/L",
-        "records": [
-            {
-                "date": "14-06-2026 20:27:39",
-                "result": 79.0,
-                "lab_name": "Azadi Teaching Hospital",
-                "normal_range": "40 - 129"
-            },
-            {
-                "date": "17-06-2026 12:25:27",
-                "result": 76.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "40 - 129"
-            },
-            {
-                "date": "18-06-2026 11:39:00",
-                "result": 96.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "40 - 129"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 88.7,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "40 - 129"
-            },
-            {
-                "date": "20-06-2026 11:46:08",
-                "result": 101.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "40 - 129"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "High ALP can indicate liver or bone problems in cancer patients. Currently within normal range. Source: cancer.gov",
             "meaning_low_simple": "Low ALP is generally not clinically significant. Source: testing.com",
@@ -1512,20 +696,13 @@
         }
     },
     {
+        "id": 25,
         "short_name": "Troponin I",
         "full_name": "Cardiac Troponin I",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Cardiac Biomarkers",
         "unit": "ng/mL",
-        "records": [
-            {
-                "date": "14-06-2026 20:27:42",
-                "result": "<0.100",
-                "lab_name": "Azadi Teaching Hospital",
-                "normal_range": "Up to 0.16"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "High troponin means heart muscle cells have been damaged — most commonly from a heart attack. His troponin was below 0.1 with a limit of 0.16 — this is reassuring, meaning no significant heart damage was detected. Source: testing.com (Troponin Test)",
             "meaning_low_simple": "Low or undetectable troponin is normal and reassuring — no significant heart muscle damage detected. Source: testing.com",
@@ -1548,44 +725,13 @@
         }
     },
     {
+        "id": 26,
         "short_name": "MPV",
         "full_name": "Mean Platelet Volume",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Complete Blood Count (CBC)",
         "unit": "fL",
-        "records": [
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 7.7,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "9 - 13"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 7.8,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "9 - 13"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 7.8,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "9 - 13"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 7.9,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "7.8 - 11"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 7.6,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "9 - 13"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "Can indicate that platelets are being produced rapidly and released into the bloodstream prematurely, often due to platelet destruction or bone marrow issues.",
             "meaning_low_simple": "Low MPV means platelets are smaller than normal. This can be a sign that platelet production in the bone marrow is reduced, possibly related to his cancer, medications, or overall illness. Source: testing.com (CBC Test)",
@@ -1608,26 +754,13 @@
         }
     },
     {
+        "id": 27,
         "short_name": "Uric Acid",
         "full_name": "Serum Uric Acid",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Metabolic Panel",
         "unit": "mg/dL",
-        "records": [
-            {
-                "date": "16-06-2026 10:42:46",
-                "result": 4.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "3.4 - 7"
-            },
-            {
-                "date": "20-06-2026 11:46:08",
-                "result": 4.7,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "3.4 - 7"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "High uric acid can cause gout (painful joint inflammation). Currently normal. Source: testing.com search results",
             "meaning_low_simple": "Low uric acid is uncommon and rarely a concern on its own; it can be linked to certain liver or kidney conditions, a low-purine diet, or some medications. Source: testing.com",
@@ -1650,44 +783,13 @@
         }
     },
     {
+        "id": 28,
         "short_name": "Albumin",
         "full_name": "Serum Albumin",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Protein Panel",
         "unit": "g/dL",
-        "records": [
-            {
-                "date": "16-06-2026 10:42:46",
-                "result": 3.16,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "3.5 - 5.2"
-            },
-            {
-                "date": "16-06-2026 11:37",
-                "result": 2.7,
-                "lab_name": "Sardam Medical Laboratories",
-                "normal_range": "3.5 - 5.5"
-            },
-            {
-                "date": "17-06-2026 12:25:27",
-                "result": 2.72,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "3.5 - 5.2"
-            },
-            {
-                "date": "18-06-2026 11:39:00",
-                "result": 2.91,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "3.5 - 5.2"
-            },
-            {
-                "date": "20-06-2026 11:46:08",
-                "result": 2.75,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "3.5 - 5.2"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "A high albumin level most often means dehydration — the body does not have enough fluid (for example from severe diarrhea). Source: testing.com",
             "meaning_low_simple": "Albumin is the main protein in the blood, made by the liver. Low albumin (hypoalbuminemia) means his body is not getting enough protein, OR the liver is producing less, OR chronic inflammation is suppressing it. His albumin of 2.75 is below the normal minimum of 3.5 g/dL. This slows healing, reduces immunity, and affects how medications work in his body. At his age and with his cancer, low albumin is a very serious nutritional concern. Source: cancer.gov (Nutrition — NCI), search results on albumin in elderly cancer patients",
@@ -1710,26 +812,13 @@
         }
     },
     {
+        "id": 29,
         "short_name": "Cl",
         "full_name": "Chloride",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Electrolytes",
         "unit": "mmol/L",
-        "records": [
-            {
-                "date": "16-06-2026 11:37",
-                "result": 102.8,
-                "lab_name": "Sardam Medical Laboratories",
-                "normal_range": "95 - 108"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 101.3,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "96 - 106"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "Hyperchloremia can be caused by severe dehydration, kidney disease, or metabolic acidosis.",
             "meaning_low_simple": "Low chloride can be caused by fluid loss or certain medications. Managed medically with fluids. Source: testing.com search results",
@@ -1752,20 +841,13 @@
         }
     },
     {
+        "id": 30,
         "short_name": "Ionized Ca",
         "full_name": "Ionized Calcium",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Electrolytes",
         "unit": "mg/dL",
-        "records": [
-            {
-                "date": "16-06-2026 11:37",
-                "result": 4.37,
-                "lab_name": "Sardam Medical Laboratories",
-                "normal_range": "4.5 - 5.6"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "A high calcium (hypercalcemia) means too much calcium in the blood; in cancer this can happen when the cancer spreads to the bones or produces a hormone that raises calcium. Source: testing.com",
             "meaning_low_simple": "Low ionized calcium is the active form of calcium that directly affects muscles and nerves. Even a slightly low level can cause muscle cramps, tingling, and increased confusion in elderly patients. Source: hypocalcemia research",
@@ -1788,26 +870,13 @@
         }
     },
     {
+        "id": 31,
         "short_name": "PCT",
         "full_name": "Procalcitonin",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Inflammatory Markers",
         "unit": "ng/mL",
-        "records": [
-            {
-                "date": "16-06-2026 11:37",
-                "result": 17.84,
-                "lab_name": "Sardam Medical Laboratories",
-                "normal_range": "Normal: 0.0-0.5, Mild: 0.5-2.0, Moderate: 2.0-10.0, Severe: >10"
-            },
-            {
-                "date": "20-06-2026 13:04:00",
-                "result": 2.37,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "Normal < 0.046, High Risk Septicemia > 2.0"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "Procalcitonin rises sharply when the body has a serious bacterial infection or sepsis (infection in the bloodstream). His level was critically high (17.84) and has now dropped to 2.37 — this means the antibiotics are working and the infection is less severe than it was. Levels above 2.0 still indicate high risk of sepsis. Source: testing.com (Procalcitonin Test)",
             "meaning_low_simple": "Normal procalcitonin means no significant bacterial infection is present. Source: testing.com",
@@ -1830,32 +899,13 @@
         }
     },
     {
+        "id": 32,
         "short_name": "D-dimer",
         "full_name": "D-Dimer",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Coagulation / Vascular Markers",
         "unit": "ng/mL",
-        "records": [
-            {
-                "date": "17-06-2026 14:00:52",
-                "result": 6734.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "1 - 500"
-            },
-            {
-                "date": "18-06-2026 11:39:00",
-                "result": 4453.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "1 - 500"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 4156.0,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "< 500"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "D-Dimer is a protein fragment released when blood clots break down. His D-Dimer of 4,156 ng/mL is more than 8 times the normal maximum (500 ng/mL). This extremely high level means there is significant blood clotting activity in his body. Cancer itself raises D-Dimer, and being bedridden adds further risk for dangerous clots in the legs (DVT) or lungs (pulmonary embolism). Source: testing.com (D-Dimer Test), cancer.net (Clotting Problems — ASCO)",
             "meaning_low_simple": "Normal or low D-Dimer means no significant clot formation is occurring. Source: testing.com",
@@ -1878,20 +928,13 @@
         }
     },
     {
+        "id": 33,
         "short_name": "HbA1c",
         "full_name": "Hemoglobin A1c",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Endocrine / Metabolic Panel",
         "unit": "%",
-        "records": [
-            {
-                "date": "18-06-2026 11:39:00",
-                "result": 6.7,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "Non diabetic < 5.8, 5.8-6.4 Prediabetes, Diabetes >= 6.5, Good control < 6.5"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "HbA1c of 6.7% measures the average blood sugar over the past 2–3 months. A result of 6.7% is in the diabetes range (normal is below 5.8%). Cancer treatment can raise blood sugar levels, and high blood sugar slows healing and increases infection risk. Source: mskcc.org (Diabetes Management Guide)",
             "meaning_low_simple": "A result under 5.7% is considered normal, meaning blood sugar has been well controlled. Source: testing.com",
@@ -1914,20 +957,13 @@
         }
     },
     {
+        "id": 34,
         "short_name": "Total Bilirubin",
         "full_name": "Serum Total Bilirubin",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Liver Function Test (LFT)",
         "unit": "mg/dL",
-        "records": [
-            {
-                "date": "19-06-2026 11:44",
-                "result": 1.2,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "0.2 - 1.2"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "High bilirubin causes jaundice (yellowing of skin and eyes) and can indicate liver problems or bile duct blockage. Currently at the upper limit of normal — monitor closely. Source: cancer.gov",
             "meaning_low_simple": "Low bilirubin is normal and healthy. Source: cancer.gov",
@@ -1950,20 +986,13 @@
         }
     },
     {
+        "id": 35,
         "short_name": "PDW",
         "full_name": "Platelet Distribution Width",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Complete Blood Count (CBC)",
         "unit": "%",
-        "records": [
-            {
-                "date": "19-06-2026 11:44",
-                "result": 9.0,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "9 - 17"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "Can indicate abnormal platelet activation or destruction, often seen in vascular diseases, inflammatory conditions, or certain cancers.",
             "meaning_low_simple": "Generally indicates uniform platelet size, which is typically normal and not clinically significant.",
@@ -1986,20 +1015,13 @@
         }
     },
     {
+        "id": 36,
         "short_name": "PCT (Plateletcrit)",
         "full_name": "Plateletcrit",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Complete Blood Count (CBC)",
         "unit": "%",
-        "records": [
-            {
-                "date": "19-06-2026 11:44",
-                "result": 0.3,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "0.2 - 0.36"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "Often accompanies a high platelet count and can indicate reactive thrombocytosis, inflammation, or bone marrow disorders.",
             "meaning_low_simple": "Can indicate a low platelet count or unusually small platelets, potentially linked to bone marrow suppression or increased platelet destruction.",
@@ -2022,20 +1044,13 @@
         }
     },
     {
+        "id": 37,
         "short_name": "MXD (Relative)",
         "full_name": "Mixed Cells Percentage",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Differential White Cell Count",
         "unit": "%",
-        "records": [
-            {
-                "date": "19-06-2026 11:44",
-                "result": 14.5,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "Not Specified"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "Often points to allergic reactions, parasitic infections, or chronic infections (since it lumps these three cell types together).",
             "meaning_low_simple": "Usually not clinically significant on its own unless overall white cell counts are severely depressed.",
@@ -2058,20 +1073,13 @@
         }
     },
     {
+        "id": 38,
         "short_name": "MXD (Absolute)",
         "full_name": "Absolute Mixed Cells Count",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Differential White Cell Count",
         "unit": "10^9/L",
-        "records": [
-            {
-                "date": "19-06-2026 11:44",
-                "result": 1.0,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "Not Specified"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "Can occur during recovery from acute infections, allergic reactions, or certain autoimmune and chronic inflammatory conditions.",
             "meaning_low_simple": "Rarely significant on its own.",
@@ -2094,20 +1102,13 @@
         }
     },
     {
+        "id": 39,
         "short_name": "LDH",
         "full_name": "Lactate Dehydrogenase",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Enzyme / Tissue Damage Marker",
         "unit": "U/L",
-        "records": [
-            {
-                "date": "20-06-2026 11:46:08",
-                "result": 248.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "120 - 300"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "High LDH means cells somewhere in the body are being damaged or destroyed — it is a general marker of tissue damage. In cancer patients, it can reflect tumor activity, infection, or treatment side effects. Currently within normal range — no immediate concern. Source: testing.com search results",
             "meaning_low_simple": "Low LDH is normal. Source: testing.com",

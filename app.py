@@ -112,12 +112,18 @@ def deviation(val, lo, hi):
 
 @st.cache_data(ttl=30)
 def load_data():
-    with open("data.json", encoding="utf-8") as f:
-        raw = json.load(f)
+    # Two linked files, joined by `id`:
+    #   results.json -> daily readings (edited every day)
+    #   info.json    -> test names + Arabic guidance (stable)
+    with open("results.json", encoding="utf-8") as f:
+        results = json.load(f)
+    with open("info.json", encoding="utf-8") as f:
+        info_by_id = {t["id"]: t for t in json.load(f)}
 
     processed = []
-    for t in raw:
-        recs = sorted(t["records"], key=lambda r: parse_date(r["date"]))
+    for r in results:
+        info = info_by_id.get(r["id"], {})
+        recs = sorted(r["records"], key=lambda x: parse_date(x["date"]))
         if not recs:
             continue
 
@@ -141,13 +147,13 @@ def load_data():
                 trend = "stable"
 
         processed.append({
-            "short_name":       t["short_name"],
-            "full_name":        t["full_name"],
-            "family_guidance":  t.get("family_guidance", {}),
-            "category":         t["category"],
-            "sub_category":     t["sub_category"],
-            "sub_sub_category": t["sub_sub_category"],
-            "unit":             t["unit"],
+            "short_name":       info.get("short_name", r.get("test", "")),
+            "full_name":        info.get("full_name", r.get("test", "")),
+            "family_guidance":  info.get("family_guidance", {}),
+            "category":         info.get("category", ""),
+            "sub_category":     info.get("sub_category", ""),
+            "sub_sub_category": info.get("sub_sub_category", ""),
+            "unit":             info.get("unit", r.get("unit", "")),
             "records":          recs,
             "latest":           latest,
             "val":              val,

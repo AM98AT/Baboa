@@ -1,0 +1,1235 @@
+[
+    {
+        "id": 1,
+        "test": "Hb",
+        "unit": "g/dl",
+        "records": [
+            {
+                "date": "13/06/2026 23:38",
+                "result": 11.4,
+                "lab_name": "VIN MEDICAL LAB",
+                "normal_range": "13.0 - 17.0"
+            },
+            {
+                "date": "16-06-2026 09:59:13",
+                "result": 11.9,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "13 - 17"
+            },
+            {
+                "date": "17-06-2026 10:34:08",
+                "result": 10.4,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "13 - 17"
+            },
+            {
+                "date": "18-06-2026 10:16:00",
+                "result": 12.3,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "13 - 17"
+            },
+            {
+                "date": "19-06-2026 11:44",
+                "result": 10.6,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "13 - 17"
+            },
+            {
+                "date": "20-06-2026 10:59:00",
+                "result": 10.9,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "13 - 17"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "test": "PCV",
+        "unit": "%",
+        "records": [
+            {
+                "date": "13/06/2026 23:38",
+                "result": 30.4,
+                "lab_name": "VIN MEDICAL LAB",
+                "normal_range": "40.0 - 50.0"
+            },
+            {
+                "date": "16-06-2026 09:59:13",
+                "result": 33.4,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "40 - 50"
+            },
+            {
+                "date": "17-06-2026 10:34:08",
+                "result": 29.3,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "40 - 50"
+            },
+            {
+                "date": "18-06-2026 10:16:00",
+                "result": 35.7,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "40 - 50"
+            },
+            {
+                "date": "19-06-2026 11:44",
+                "result": 30.5,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "40 - 50"
+            },
+            {
+                "date": "20-06-2026 10:59:00",
+                "result": 31.7,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "40 - 50"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "test": "RBC",
+        "unit": "10^12 /L",
+        "records": [
+            {
+                "date": "13/06/2026 23:38",
+                "result": 3.55,
+                "lab_name": "VIN MEDICAL LAB",
+                "normal_range": "4.50 - 5.50"
+            },
+            {
+                "date": "16-06-2026 09:59:13",
+                "result": 3.76,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "4.5 - 5.5"
+            },
+            {
+                "date": "17-06-2026 10:34:08",
+                "result": 3.14,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "4.5 - 5.5"
+            },
+            {
+                "date": "18-06-2026 10:16:00",
+                "result": 3.95,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "4.5 - 5.5"
+            },
+            {
+                "date": "19-06-2026 11:44",
+                "result": 3.3,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "4.5 - 5.5"
+            },
+            {
+                "date": "20-06-2026 10:59:00",
+                "result": 3.33,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "4.5 - 5.5"
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "test": "MCV",
+        "unit": "fL",
+        "records": [
+            {
+                "date": "13/06/2026 23:38",
+                "result": 85.6,
+                "lab_name": "VIN MEDICAL LAB",
+                "normal_range": "80.0 - 100.0"
+            },
+            {
+                "date": "16-06-2026 09:59:13",
+                "result": 88.7,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "75 - 100"
+            },
+            {
+                "date": "17-06-2026 10:34:08",
+                "result": 93.0,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "75 - 100"
+            },
+            {
+                "date": "18-06-2026 10:16:00",
+                "result": 90.2,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "75 - 100"
+            },
+            {
+                "date": "19-06-2026 11:44",
+                "result": 92.1,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "80 - 100"
+            },
+            {
+                "date": "20-06-2026 10:59:00",
+                "result": 95.0,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "75 - 100"
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "test": "MCH",
+        "unit": "pg",
+        "records": [
+            {
+                "date": "13/06/2026 23:38",
+                "result": 32.1,
+                "lab_name": "VIN MEDICAL LAB",
+                "normal_range": "27.0 - 32.0"
+            },
+            {
+                "date": "16-06-2026 09:59:13",
+                "result": 31.7,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "25 - 35"
+            },
+            {
+                "date": "17-06-2026 10:34:08",
+                "result": 33.2,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "25 - 35"
+            },
+            {
+                "date": "18-06-2026 10:16:00",
+                "result": 31.1,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "25 - 35"
+            },
+            {
+                "date": "19-06-2026 11:44",
+                "result": 32.0,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "27 - 32"
+            },
+            {
+                "date": "20-06-2026 10:59:00",
+                "result": 32.7,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "25 - 35"
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "test": "MCHC",
+        "unit": "g/dl",
+        "records": [
+            {
+                "date": "13/06/2026 23:38",
+                "result": 37.5,
+                "lab_name": "VIN MEDICAL LAB",
+                "normal_range": "31.0 - 37.0"
+            },
+            {
+                "date": "16-06-2026 09:59:13",
+                "result": 35.8,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "31 - 38"
+            },
+            {
+                "date": "17-06-2026 10:34:08",
+                "result": 35.6,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "31 - 38"
+            },
+            {
+                "date": "18-06-2026 10:16:00",
+                "result": 34.4,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "31 - 38"
+            },
+            {
+                "date": "19-06-2026 11:44",
+                "result": 34.8,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "31 - 37"
+            },
+            {
+                "date": "20-06-2026 10:59:00",
+                "result": 34.4,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "31 - 38"
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "test": "RDW",
+        "unit": "%",
+        "records": [
+            {
+                "date": "13/06/2026 23:38",
+                "result": 10.6,
+                "lab_name": "VIN MEDICAL LAB",
+                "normal_range": "11.6 - 14.0"
+            },
+            {
+                "date": "16-06-2026 09:59:13",
+                "result": 11.5,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "11 - 16"
+            },
+            {
+                "date": "17-06-2026 10:34:08",
+                "result": 12.3,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "11 - 16"
+            },
+            {
+                "date": "18-06-2026 10:16:00",
+                "result": 12.0,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "11 - 16"
+            },
+            {
+                "date": "19-06-2026 11:44",
+                "result": 13.5,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "11.6 - 14"
+            },
+            {
+                "date": "20-06-2026 10:59:00",
+                "result": 13.0,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "11 - 16"
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "test": "Platelets",
+        "unit": "10^9 /L",
+        "records": [
+            {
+                "date": "13/06/2026 23:38",
+                "result": 264,
+                "lab_name": "VIN MEDICAL LAB",
+                "normal_range": "150 - 400"
+            },
+            {
+                "date": "16-06-2026 09:59:13",
+                "result": 309.0,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "150 - 400"
+            },
+            {
+                "date": "17-06-2026 10:34:08",
+                "result": 281.0,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "150 - 400"
+            },
+            {
+                "date": "18-06-2026 10:16:00",
+                "result": 310.0,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "150 - 400"
+            },
+            {
+                "date": "19-06-2026 11:44",
+                "result": 314,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "150 - 450"
+            },
+            {
+                "date": "20-06-2026 10:59:00",
+                "result": 348.0,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "150 - 400"
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "test": "WBC",
+        "unit": "10^9 /L",
+        "records": [
+            {
+                "date": "13/06/2026 23:38",
+                "result": 7.2,
+                "lab_name": "VIN MEDICAL LAB",
+                "normal_range": "4.0 - 11.0"
+            },
+            {
+                "date": "16-06-2026 09:59:13",
+                "result": 20.4,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "3.5 - 11"
+            },
+            {
+                "date": "17-06-2026 10:34:08",
+                "result": 12.8,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "3.5 - 11"
+            },
+            {
+                "date": "18-06-2026 10:16:00",
+                "result": 12.5,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "3.5 - 11"
+            },
+            {
+                "date": "19-06-2026 11:44",
+                "result": 7.1,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "4 - 11"
+            },
+            {
+                "date": "20-06-2026 10:59:00",
+                "result": 7.9,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "3.5 - 11"
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "test": "Neutrophils (Relative)",
+        "unit": "%",
+        "records": [
+            {
+                "date": "13/06/2026 23:38",
+                "result": 74.2,
+                "lab_name": "VIN MEDICAL LAB",
+                "normal_range": "Not Specified"
+            },
+            {
+                "date": "16-06-2026 09:59:13",
+                "result": 86.9,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "35 - 80"
+            },
+            {
+                "date": "17-06-2026 10:34:08",
+                "result": 90.3,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "35 - 80"
+            },
+            {
+                "date": "18-06-2026 10:16:00",
+                "result": 80.2,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "35 - 80"
+            },
+            {
+                "date": "19-06-2026 11:44",
+                "result": 69.9,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "Not Specified"
+            },
+            {
+                "date": "20-06-2026 10:59:00",
+                "result": 74.6,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "35 - 80"
+            }
+        ]
+    },
+    {
+        "id": 11,
+        "test": "Neutrophils (Absolute)",
+        "unit": "10^9 /L",
+        "records": [
+            {
+                "date": "13/06/2026 23:38",
+                "result": 5.3,
+                "lab_name": "VIN MEDICAL LAB",
+                "normal_range": "2.0 - 7.0"
+            },
+            {
+                "date": "16-06-2026 09:59:13",
+                "result": 17.8,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "2 - 7"
+            },
+            {
+                "date": "17-06-2026 10:34:08",
+                "result": 11.7,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "2 - 7"
+            },
+            {
+                "date": "18-06-2026 10:16:00",
+                "result": 10.1,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "2 - 7"
+            },
+            {
+                "date": "19-06-2026 11:44",
+                "result": 5.0,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "2 - 7"
+            },
+            {
+                "date": "20-06-2026 10:59:00",
+                "result": 5.9,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "2 - 7"
+            }
+        ]
+    },
+    {
+        "id": 12,
+        "test": "Lymphocytes (Relative)",
+        "unit": "%",
+        "records": [
+            {
+                "date": "13/06/2026 23:38",
+                "result": 20.1,
+                "lab_name": "VIN MEDICAL LAB",
+                "normal_range": "Not Specified"
+            },
+            {
+                "date": "16-06-2026 09:59:13",
+                "result": 7.6,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "20 - 50"
+            },
+            {
+                "date": "17-06-2026 10:34:08",
+                "result": 6.7,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "20 - 50"
+            },
+            {
+                "date": "18-06-2026 10:16:00",
+                "result": 16.1,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "20 - 50"
+            },
+            {
+                "date": "19-06-2026 11:44",
+                "result": 15.6,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "Not Specified"
+            },
+            {
+                "date": "20-06-2026 10:59:00",
+                "result": 19.0,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "20 - 50"
+            }
+        ]
+    },
+    {
+        "id": 13,
+        "test": "Lymphocytes (Absolute)",
+        "unit": "10^9 /L",
+        "records": [
+            {
+                "date": "13/06/2026 23:38",
+                "result": 1.4,
+                "lab_name": "VIN MEDICAL LAB",
+                "normal_range": "1.0 - 3.5"
+            },
+            {
+                "date": "16-06-2026 09:59:13",
+                "result": 1.5,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "1 - 3.5"
+            },
+            {
+                "date": "17-06-2026 10:34:08",
+                "result": 0.8,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "1 - 3.5"
+            },
+            {
+                "date": "18-06-2026 10:16:00",
+                "result": 2.0,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "1 - 3.5"
+            },
+            {
+                "date": "19-06-2026 11:44",
+                "result": 1.1,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "1 - 3.5"
+            },
+            {
+                "date": "20-06-2026 10:59:00",
+                "result": 1.5,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "1 - 3.5"
+            }
+        ]
+    },
+    {
+        "id": 14,
+        "test": "Monocytes (Relative)",
+        "unit": "%",
+        "records": [
+            {
+                "date": "13/06/2026 23:38",
+                "result": 5.7,
+                "lab_name": "VIN MEDICAL LAB",
+                "normal_range": "Not Specified"
+            },
+            {
+                "date": "16-06-2026 09:59:13",
+                "result": 5.5,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "Not Specified"
+            },
+            {
+                "date": "17-06-2026 10:34:08",
+                "result": 3.0,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "Not Specified"
+            },
+            {
+                "date": "18-06-2026 10:16:00",
+                "result": 3.7,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "Not Specified"
+            },
+            {
+                "date": "20-06-2026 10:59:00",
+                "result": 6.4,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "Not Specified"
+            }
+        ]
+    },
+    {
+        "id": 15,
+        "test": "Monocytes (Absolute)",
+        "unit": "10^9 /L",
+        "records": [
+            {
+                "date": "13/06/2026 23:38",
+                "result": 0.4,
+                "lab_name": "VIN MEDICAL LAB",
+                "normal_range": "0.2 - 1.2"
+            },
+            {
+                "date": "16-06-2026 09:59:13",
+                "result": 1.1,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "0.2 - 1.2"
+            },
+            {
+                "date": "17-06-2026 10:34:08",
+                "result": 0.3,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "0.2 - 1.2"
+            },
+            {
+                "date": "18-06-2026 10:16:00",
+                "result": 0.4,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "0.2 - 1.2"
+            },
+            {
+                "date": "20-06-2026 10:59:00",
+                "result": 0.5,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "0.2 - 1.2"
+            }
+        ]
+    },
+    {
+        "id": 16,
+        "test": "S. Urea",
+        "unit": "mg/dL",
+        "records": [
+            {
+                "date": "14/06/2026 01:09",
+                "result": 31.0,
+                "lab_name": "VIN MEDICAL LAB",
+                "normal_range": "17 - 49"
+            },
+            {
+                "date": "16-06-2026 10:42:46",
+                "result": 92.1,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "16.6 - 48.5"
+            },
+            {
+                "date": "17-06-2026 12:25:27",
+                "result": 84.6,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "16.6 - 48.5"
+            },
+            {
+                "date": "18-06-2026 11:39:00",
+                "result": 81.7,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "16.6 - 48.5"
+            },
+            {
+                "date": "19-06-2026 11:44",
+                "result": 78.0,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "16.6 - 48.2"
+            },
+            {
+                "date": "20-06-2026 11:46:08",
+                "result": 74.6,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "16.6 - 48.5"
+            }
+        ]
+    },
+    {
+        "id": 17,
+        "test": "S. Creatinine",
+        "unit": "mg/dL",
+        "records": [
+            {
+                "date": "14/06/2026 01:09",
+                "result": 1.5,
+                "lab_name": "VIN MEDICAL LAB",
+                "normal_range": "0.7 - 1.3"
+            },
+            {
+                "date": "16-06-2026 10:42:46",
+                "result": 2.78,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "0.5 - 1.1"
+            },
+            {
+                "date": "17-06-2026 12:25:27",
+                "result": 2.38,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "0.5 - 1.1"
+            },
+            {
+                "date": "18-06-2026 11:39:00",
+                "result": 2.22,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "0.5 - 1.1"
+            },
+            {
+                "date": "19-06-2026 11:44",
+                "result": 2.09,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "0.7 - 1.2"
+            },
+            {
+                "date": "20-06-2026 11:46:08",
+                "result": 2.2,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "0.5 - 1.1"
+            }
+        ]
+    },
+    {
+        "id": 18,
+        "test": "S. Calcium",
+        "unit": "mg/dL",
+        "records": [
+            {
+                "date": "14/06/2026 01:09",
+                "result": 7.8,
+                "lab_name": "VIN MEDICAL LAB",
+                "normal_range": "8.5 - 10.5"
+            },
+            {
+                "date": "16-06-2026 11:37",
+                "result": 9.4,
+                "lab_name": "Sardam Medical Laboratories",
+                "normal_range": "8.5 - 10.5"
+            },
+            {
+                "date": "17-06-2026 12:25:27",
+                "result": 8.33,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "8.5 - 10.5"
+            },
+            {
+                "date": "18-06-2026 11:39:00",
+                "result": 8.79,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "8.5 - 10.5"
+            },
+            {
+                "date": "20-06-2026 11:46:08",
+                "result": 8.21,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "8.5 - 10.5"
+            }
+        ]
+    },
+    {
+        "id": 19,
+        "test": "CRP",
+        "unit": "mg/L",
+        "records": [
+            {
+                "date": "14/06/2026 01:09",
+                "result": 76.4,
+                "lab_name": "VIN MEDICAL LAB",
+                "normal_range": "<= 6.0"
+            },
+            {
+                "date": "16-06-2026 10:42:46",
+                "result": 345.62,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "0.01 - 6"
+            },
+            {
+                "date": "17-06-2026 12:25:27",
+                "result": 257.15,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "0.01 - 6"
+            },
+            {
+                "date": "18-06-2026 11:39:00",
+                "result": 232.92,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "0.01 - 6"
+            },
+            {
+                "date": "19-06-2026 11:44",
+                "result": 148.0,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "< 6"
+            },
+            {
+                "date": "20-06-2026 11:46:08",
+                "result": 130.47,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "0.01 - 6"
+            }
+        ]
+    },
+    {
+        "id": 20,
+        "test": "Na",
+        "unit": "mmol/L",
+        "records": [
+            {
+                "date": "14-06-2026 20:27:39",
+                "result": 129.0,
+                "lab_name": "Azadi Teaching Hospital",
+                "normal_range": "135 - 145"
+            },
+            {
+                "date": "16-06-2026 11:37",
+                "result": 126.9,
+                "lab_name": "Sardam Medical Laboratories",
+                "normal_range": "136 - 146"
+            },
+            {
+                "date": "19-06-2026 11:44",
+                "result": 130.7,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "136 - 146"
+            }
+        ]
+    },
+    {
+        "id": 21,
+        "test": "K",
+        "unit": "mmol/L",
+        "records": [
+            {
+                "date": "14-06-2026 20:27:39",
+                "result": 3.53,
+                "lab_name": "Azadi Teaching Hospital",
+                "normal_range": "3.5 - 5.5"
+            },
+            {
+                "date": "16-06-2026 11:37",
+                "result": 4.13,
+                "lab_name": "Sardam Medical Laboratories",
+                "normal_range": "3.5 - 5.5"
+            },
+            {
+                "date": "19-06-2026 11:44",
+                "result": 4.39,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "3.5 - 5"
+            }
+        ]
+    },
+    {
+        "id": 22,
+        "test": "AST (GOT)",
+        "unit": "IU/L",
+        "records": [
+            {
+                "date": "14-06-2026 20:27:39",
+                "result": 42.8,
+                "lab_name": "Azadi Teaching Hospital",
+                "normal_range": "8 - 48"
+            },
+            {
+                "date": "17-06-2026 12:25:27",
+                "result": 34.9,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "0.01 - 40"
+            },
+            {
+                "date": "18-06-2026 11:39:00",
+                "result": 41.9,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "0.01 - 40"
+            },
+            {
+                "date": "19-06-2026 11:44",
+                "result": 42.6,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "< 40"
+            },
+            {
+                "date": "20-06-2026 11:46:08",
+                "result": 44.1,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "0.01 - 40"
+            }
+        ]
+    },
+    {
+        "id": 23,
+        "test": "ALT (GPT)",
+        "unit": "IU/L",
+        "records": [
+            {
+                "date": "14-06-2026 20:27:39",
+                "result": 21.0,
+                "lab_name": "Azadi Teaching Hospital",
+                "normal_range": "7 - 50"
+            },
+            {
+                "date": "17-06-2026 12:25:27",
+                "result": 24.2,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "0.01 - 41"
+            },
+            {
+                "date": "18-06-2026 11:39:00",
+                "result": 26.5,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "0.01 - 41"
+            },
+            {
+                "date": "19-06-2026 11:44",
+                "result": 29.0,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "< 41"
+            },
+            {
+                "date": "20-06-2026 11:46:08",
+                "result": 26.8,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "0.01 - 41"
+            }
+        ]
+    },
+    {
+        "id": 24,
+        "test": "ALP",
+        "unit": "IU/L",
+        "records": [
+            {
+                "date": "14-06-2026 20:27:39",
+                "result": 79.0,
+                "lab_name": "Azadi Teaching Hospital",
+                "normal_range": "40 - 129"
+            },
+            {
+                "date": "17-06-2026 12:25:27",
+                "result": 76.0,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "40 - 129"
+            },
+            {
+                "date": "18-06-2026 11:39:00",
+                "result": 96.0,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "40 - 129"
+            },
+            {
+                "date": "19-06-2026 11:44",
+                "result": 88.7,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "40 - 129"
+            },
+            {
+                "date": "20-06-2026 11:46:08",
+                "result": 101.0,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "40 - 129"
+            }
+        ]
+    },
+    {
+        "id": 25,
+        "test": "Troponin I",
+        "unit": "ng/mL",
+        "records": [
+            {
+                "date": "14-06-2026 20:27:42",
+                "result": "<0.100",
+                "lab_name": "Azadi Teaching Hospital",
+                "normal_range": "Up to 0.16"
+            }
+        ]
+    },
+    {
+        "id": 26,
+        "test": "MPV",
+        "unit": "fL",
+        "records": [
+            {
+                "date": "16-06-2026 09:59:13",
+                "result": 7.7,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "9 - 13"
+            },
+            {
+                "date": "17-06-2026 10:34:08",
+                "result": 7.8,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "9 - 13"
+            },
+            {
+                "date": "18-06-2026 10:16:00",
+                "result": 7.8,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "9 - 13"
+            },
+            {
+                "date": "19-06-2026 11:44",
+                "result": 7.9,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "7.8 - 11"
+            },
+            {
+                "date": "20-06-2026 10:59:00",
+                "result": 7.6,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "9 - 13"
+            }
+        ]
+    },
+    {
+        "id": 27,
+        "test": "Uric Acid",
+        "unit": "mg/dL",
+        "records": [
+            {
+                "date": "16-06-2026 10:42:46",
+                "result": 4.0,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "3.4 - 7"
+            },
+            {
+                "date": "20-06-2026 11:46:08",
+                "result": 4.7,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "3.4 - 7"
+            }
+        ]
+    },
+    {
+        "id": 28,
+        "test": "Albumin",
+        "unit": "g/dL",
+        "records": [
+            {
+                "date": "16-06-2026 10:42:46",
+                "result": 3.16,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "3.5 - 5.2"
+            },
+            {
+                "date": "16-06-2026 11:37",
+                "result": 2.7,
+                "lab_name": "Sardam Medical Laboratories",
+                "normal_range": "3.5 - 5.5"
+            },
+            {
+                "date": "17-06-2026 12:25:27",
+                "result": 2.72,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "3.5 - 5.2"
+            },
+            {
+                "date": "18-06-2026 11:39:00",
+                "result": 2.91,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "3.5 - 5.2"
+            },
+            {
+                "date": "20-06-2026 11:46:08",
+                "result": 2.75,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "3.5 - 5.2"
+            }
+        ]
+    },
+    {
+        "id": 29,
+        "test": "Cl",
+        "unit": "mmol/L",
+        "records": [
+            {
+                "date": "16-06-2026 11:37",
+                "result": 102.8,
+                "lab_name": "Sardam Medical Laboratories",
+                "normal_range": "95 - 108"
+            },
+            {
+                "date": "19-06-2026 11:44",
+                "result": 101.3,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "96 - 106"
+            }
+        ]
+    },
+    {
+        "id": 30,
+        "test": "Ionized Ca",
+        "unit": "mg/dL",
+        "records": [
+            {
+                "date": "16-06-2026 11:37",
+                "result": 4.37,
+                "lab_name": "Sardam Medical Laboratories",
+                "normal_range": "4.5 - 5.6"
+            }
+        ]
+    },
+    {
+        "id": 31,
+        "test": "PCT",
+        "unit": "ng/mL",
+        "records": [
+            {
+                "date": "16-06-2026 11:37",
+                "result": 17.84,
+                "lab_name": "Sardam Medical Laboratories",
+                "normal_range": "Normal: 0.0-0.5, Mild: 0.5-2.0, Moderate: 2.0-10.0, Severe: >10"
+            },
+            {
+                "date": "20-06-2026 13:04:00",
+                "result": 2.37,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "Normal < 0.046, High Risk Septicemia > 2.0"
+            }
+        ]
+    },
+    {
+        "id": 32,
+        "test": "D-dimer",
+        "unit": "ng/mL",
+        "records": [
+            {
+                "date": "17-06-2026 14:00:52",
+                "result": 6734.0,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "1 - 500"
+            },
+            {
+                "date": "18-06-2026 11:39:00",
+                "result": 4453.0,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "1 - 500"
+            },
+            {
+                "date": "19-06-2026 11:44",
+                "result": 4156.0,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "< 500"
+            }
+        ]
+    },
+    {
+        "id": 33,
+        "test": "HbA1c",
+        "unit": "%",
+        "records": [
+            {
+                "date": "18-06-2026 11:39:00",
+                "result": 6.7,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "Non diabetic < 5.8, 5.8-6.4 Prediabetes, Diabetes >= 6.5, Good control < 6.5"
+            }
+        ]
+    },
+    {
+        "id": 34,
+        "test": "Total Bilirubin",
+        "unit": "mg/dL",
+        "records": [
+            {
+                "date": "19-06-2026 11:44",
+                "result": 1.2,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "0.2 - 1.2"
+            }
+        ]
+    },
+    {
+        "id": 35,
+        "test": "PDW",
+        "unit": "%",
+        "records": [
+            {
+                "date": "19-06-2026 11:44",
+                "result": 9.0,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "9 - 17"
+            }
+        ]
+    },
+    {
+        "id": 36,
+        "test": "PCT (Plateletcrit)",
+        "unit": "%",
+        "records": [
+            {
+                "date": "19-06-2026 11:44",
+                "result": 0.3,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "0.2 - 0.36"
+            }
+        ]
+    },
+    {
+        "id": 37,
+        "test": "MXD (Relative)",
+        "unit": "%",
+        "records": [
+            {
+                "date": "19-06-2026 11:44",
+                "result": 14.5,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "Not Specified"
+            }
+        ]
+    },
+    {
+        "id": 38,
+        "test": "MXD (Absolute)",
+        "unit": "10^9/L",
+        "records": [
+            {
+                "date": "19-06-2026 11:44",
+                "result": 1.0,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "Not Specified"
+            }
+        ]
+    },
+    {
+        "id": 39,
+        "test": "LDH",
+        "unit": "U/L",
+        "records": [
+            {
+                "date": "20-06-2026 11:46:08",
+                "result": 248.0,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "120 - 300"
+            }
+        ]
+    }
+]

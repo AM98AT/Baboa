@@ -1,49 +1,12 @@
 [
     {
+        "id": 1,
         "short_name": "Hb",
         "full_name": "الهيموغلوبين (خضاب الدم)",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Complete Blood Count (CBC)",
         "unit": "g/dl",
-        "records": [
-            {
-                "date": "13/06/2026 23:38",
-                "result": 11.4,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "13.0 - 17.0"
-            },
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 11.9,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "13 - 17"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 10.4,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "13 - 17"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 12.3,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "13 - 17"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 10.6,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "13 - 17"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 10.9,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "13 - 17"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "الهيموغلوبين العالي يمكن يكون علامة مشاكل بالرئة أو القلب، أو يجي من الجفاف أو التدخين أو العيش بمرتفعات عالية. العلامات ممكن تشمل صداع، دوخة، مشاكل نظر، تلعثم بالكلام، ووجه محمرّ. المصدر: testing.com",
             "meaning_low_simple": "الهيموغلوبين الواطي يعني فقر دم — الدم ما يحمل أوكسجين كافي لأعضاء الجسم وعضلاته. لمريض عمره ٨٦ طريح الفراش وعنده سرطان، هذا يعني قلبه ودماغه ياخذون أوكسجين أقل من اللي يحتاجونه، وهذا يخلّيه يحسّ تعب شديد وضعف وضيق نفس حتى وهو نايم ساكت. المصدر: cancer.gov",
@@ -66,50 +29,13 @@
         }
     },
     {
+        "id": 2,
         "short_name": "PCV",
         "full_name": "نسبة حجم خلايا الدم الحمر (الهيماتوكريت)",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Complete Blood Count (CBC)",
         "unit": "%",
-        "records": [
-            {
-                "date": "13/06/2026 23:38",
-                "result": 30.4,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "40.0 - 50.0"
-            },
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 33.4,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "40 - 50"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 29.3,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "40 - 50"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 35.7,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "40 - 50"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 30.5,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "40 - 50"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 31.7,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "40 - 50"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "الهيماتوكريت العالي يعني الدم بي خلايا حمر زيادة أو مركّز هواية. الأسباب الشائعة تشمل الجفاف، أمراض الرئة، مشاكل القلب، بعض أورام الكلى، التدخين، أو اضطرابات دم نادرة. المصدر: testing.com",
             "meaning_low_simple": "الهيماتوكريت (PCV) يقيس شكَد نسبة الدم اللي تتكوّن من خلايا حمر. الهيماتوكريت الواطي يعني فقر دم — نفس مشكلة الهيموغلوبين الواطي — ونفس التأثير: أوكسجين أقل يوصل لأعضائه، يسبّب تعب شديد وضعف. المصدر: cancer.gov",
@@ -132,50 +58,13 @@
         }
     },
     {
+        "id": 3,
         "short_name": "RBC",
         "full_name": "عدد خلايا الدم الحمر",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Complete Blood Count (CBC)",
         "unit": "10^12 /L",
-        "records": [
-            {
-                "date": "13/06/2026 23:38",
-                "result": 3.55,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "4.50 - 5.50"
-            },
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 3.76,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "4.5 - 5.5"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 3.14,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "4.5 - 5.5"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 3.95,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "4.5 - 5.5"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 3.3,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "4.5 - 5.5"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 3.33,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "4.5 - 5.5"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "عدد خلايا الدم الحمر العالي يعني أكو خلايا حمر أكثر من الطبيعي. هذا يكدر يصير بسبب الجفاف، التدخين، نقص الأوكسجين، بعض أنواع السرطان، أو بعض الأدوية. المصدر: testing.com",
             "meaning_low_simple": "عدد خلايا الدم الحمر الواطي يعني فقر دم — خلايا أقل حتى تحمل الأوكسجين بالجسم. لمريض سرطان كبير بالعمر، هذا يعني طاقة أقل، تعب أكثر، وخطر تشويش ذهني أكبر. المصدر: cancer.gov",
@@ -198,50 +87,13 @@
         }
     },
     {
+        "id": 4,
         "short_name": "MCV",
         "full_name": "متوسّط حجم الكرية الحمرا",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Complete Blood Count (CBC)",
         "unit": "fL",
-        "records": [
-            {
-                "date": "13/06/2026 23:38",
-                "result": 85.6,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "80.0 - 100.0"
-            },
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 88.7,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "75 - 100"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 93.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "75 - 100"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 90.2,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "75 - 100"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 92.1,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "80 - 100"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 95.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "75 - 100"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "الـMCV هسّه طبيعي — ماكو داعي لأي إجراء.",
             "meaning_low_simple": "الـMCV الواطي يعني خلايا الدم الحمر أصغر من الطبيعي، غالباً بسبب نقص الحديد. المصدر: testing.com",
@@ -264,50 +116,13 @@
         }
     },
     {
+        "id": 5,
         "short_name": "MCH",
         "full_name": "متوسّط هيموغلوبين الكرية الحمرا",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Complete Blood Count (CBC)",
         "unit": "pg",
-        "records": [
-            {
-                "date": "13/06/2026 23:38",
-                "result": 32.1,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "27.0 - 32.0"
-            },
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 31.7,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "25 - 35"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 33.2,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "25 - 35"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 31.1,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "25 - 35"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 32.0,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "27 - 32"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 32.7,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "25 - 35"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "الـMCH هسّه طبيعي — ماكو داعي لإجراء فوري.",
             "meaning_low_simple": "الـMCH الواطي يعني كل خلية دم حمرا تحمل هيموغلوبين أقل من الطبيعي — علامة فقر دم بسبب نقص الحديد. المصدر: testing.com",
@@ -330,50 +145,13 @@
         }
     },
     {
+        "id": 6,
         "short_name": "MCHC",
         "full_name": "متوسّط تركيز هيموغلوبين الكرية الحمرا",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Complete Blood Count (CBC)",
         "unit": "g/dl",
-        "records": [
-            {
-                "date": "13/06/2026 23:38",
-                "result": 37.5,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "31.0 - 37.0"
-            },
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 35.8,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "31 - 38"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 35.6,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "31 - 38"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 34.4,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "31 - 38"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 34.8,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "31 - 37"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 34.4,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "31 - 38"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "ممكن ينشاف بحالات تكون بيها خلايا الدم الحمر هشّة أو شكلها غير طبيعي (مثل التحلّل الكروي الوراثي) أو حروق شديدة.",
             "meaning_low_simple": "الـMCHC الواطي يعني خلايا الدم الحمر عندها تركيز هيموغلوبين أقل من الطبيعي — غالباً ينشاف بنقص الحديد. المصدر: testing.com",
@@ -396,50 +174,13 @@
         }
     },
     {
+        "id": 7,
         "short_name": "RDW",
         "full_name": "مدى توزّع حجم خلايا الدم الحمر",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Complete Blood Count (CBC)",
         "unit": "%",
-        "records": [
-            {
-                "date": "13/06/2026 23:38",
-                "result": 10.6,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "11.6 - 14.0"
-            },
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 11.5,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "11 - 16"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 12.3,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "11 - 16"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 12.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "11 - 16"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 13.5,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "11.6 - 14"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 13.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "11 - 16"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "يدلّ على تفاوت كبير بأحجام خلايا الدم الحمر، غالباً ينشاف بأنواع فقر الدم المختلطة أو نقص غذائي مبكّر (حديد، B12، فولات).",
             "meaning_low_simple": "عادةً مو مهم سريرياً؛ يعني خلايا الدم الحمر متساوية بالحجم.",
@@ -462,50 +203,13 @@
         }
     },
     {
+        "id": 8,
         "short_name": "Platelets",
         "full_name": "عدد الصفيحات الدموية",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Complete Blood Count (CBC)",
         "unit": "10^9 /L",
-        "records": [
-            {
-                "date": "13/06/2026 23:38",
-                "result": 264,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "150 - 400"
-            },
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 309.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "150 - 400"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 281.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "150 - 400"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 310.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "150 - 400"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 314,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "150 - 450"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 348.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "150 - 400"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "الصفيحات العالية ممكن تصير كرد فعل على عدوى أو التهاب — بحالته غالباً لها علاقة بالعدوى النشطة. هسّه ضمن المعدّل الطبيعي.",
             "meaning_low_simple": "عدد الصفيحات الواطي يعني الدم ما يكدر يتخثّر عدل، وهذا يزيد خطر نزيف خطير. خطر النزيف يزيد لمن تنزل الصفيحات تحت ٢٠٬٠٠٠. يمكن يحتاج نقل صفيحات إذا نزلن تحت ١٠٬٠٠٠. المصدر: cancer.org",
@@ -528,50 +232,13 @@
         }
     },
     {
+        "id": 9,
         "short_name": "WBC",
         "full_name": "عدد خلايا الدم البيض",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Complete Blood Count (CBC)",
         "unit": "10^9 /L",
-        "records": [
-            {
-                "date": "13/06/2026 23:38",
-                "result": 7.2,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "4.0 - 11.0"
-            },
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 20.4,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "3.5 - 11"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 12.8,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "3.5 - 11"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 12.5,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "3.5 - 11"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 7.1,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "4 - 11"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 7.9,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "3.5 - 11"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "عدد خلايا الدم البيض العالي جداً يعني جهاز المناعة يحارب عدوى خطيرة أو التهاب كبير بشكل نشط. كانت قيمته ٢٠٫٤ (عالية جداً) وهسّه رجعت ٧٫٩ (طبيعية) — وهاي علامة إيجابية إن العدوى تستجيب للعلاج. المصدر: cancer.gov",
             "meaning_low_simple": "عدد خلايا الدم البيض الواطي جداً (قلّة العدلات) يعني الجسم ما يكدر يحارب العدوى عدل. حتى جرح بسيط أو زكام خفيف يكدر يصير مهدِّد للحياة. المصدر: cancer.gov",
@@ -594,50 +261,13 @@
         }
     },
     {
+        "id": 10,
         "short_name": "Neutrophils (Relative)",
         "full_name": "العدلات (نسبة مئوية)",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Differential White Cell Count",
         "unit": "%",
-        "records": [
-            {
-                "date": "13/06/2026 23:38",
-                "result": 74.2,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "Not Specified"
-            },
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 86.9,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "35 - 80"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 90.3,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "35 - 80"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 80.2,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "35 - 80"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 69.9,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "Not Specified"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 74.6,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "35 - 80"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "نسبة العدلات العالية تعني الجسم يحارب عدوى بكتيرية. هذا يتماشى وية الـCRP العالي وكان أعلى بكثير من قبل — هسّه يتّجه نحو الطبيعي. المصدر: cancer.gov",
             "meaning_low_simple": "نسبة العدلات الواطية جداً تعني الدفاع الأساسي ضد البكتيريا ضعيف هواية. أي حرارة تصير حالة طارئة. المصدر: cancer.gov",
@@ -660,50 +290,13 @@
         }
     },
     {
+        "id": 11,
         "short_name": "Neutrophils (Absolute)",
         "full_name": "العدلات (العدد المطلق)",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Differential White Cell Count",
         "unit": "10^9 /L",
-        "records": [
-            {
-                "date": "13/06/2026 23:38",
-                "result": 5.3,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "2.0 - 7.0"
-            },
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 17.8,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "2 - 7"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 11.7,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "2 - 7"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 10.1,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "2 - 7"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 5.0,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "2 - 7"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 5.9,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "2 - 7"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "العدد المطلق العالي للعدلات يعكس عدوى نشطة. هسّه يرجع نحو الطبيعي. المصدر: cancer.gov",
             "meaning_low_simple": "قلّة العدلات المطلقة (العدد تحت ١٠٠٠) = خطر عالي جداً لعدوى بكتيرية مهدِّدة للحياة. أي حرارة = حالة طارئة. المصدر: cancer.gov",
@@ -726,50 +319,13 @@
         }
     },
     {
+        "id": 12,
         "short_name": "Lymphocytes (Relative)",
         "full_name": "اللمفاويات (نسبة مئوية)",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Differential White Cell Count",
         "unit": "%",
-        "records": [
-            {
-                "date": "13/06/2026 23:38",
-                "result": 20.1,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "Not Specified"
-            },
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 7.6,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "20 - 50"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 6.7,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "20 - 50"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 16.1,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "20 - 50"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 15.6,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "Not Specified"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 19.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "20 - 50"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "عادةً يدلّ على عدوى فايروسية نشطة (مثل الإنفلونزا أو أبو كعب) أو التهاب مزمن.",
             "meaning_low_simple": "نسبة اللمفاويات الواطية تعني الجزء من المناعة اللي يحارب الفايروسات ضعيف. المصدر: cancer.gov",
@@ -792,50 +348,13 @@
         }
     },
     {
+        "id": 13,
         "short_name": "Lymphocytes (Absolute)",
         "full_name": "اللمفاويات (العدد المطلق)",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Differential White Cell Count",
         "unit": "10^9 /L",
-        "records": [
-            {
-                "date": "13/06/2026 23:38",
-                "result": 1.4,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "1.0 - 3.5"
-            },
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 1.5,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "1 - 3.5"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 0.8,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "1 - 3.5"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 2.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "1 - 3.5"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 1.1,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "1 - 3.5"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 1.5,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "1 - 3.5"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "ارتفاع اللمفاويات غالباً استجابة لعدوى فايروسية، بس بحالات نادرة ممكن يدلّ على بعض سرطانات الدم.",
             "meaning_low_simple": "العدد المطلق الواطي للمفاويات يضعّف قدرة الجسم على محاربة الفايروسات وبعض أنواع السرطان. المصدر: cancer.gov",
@@ -858,44 +377,13 @@
         }
     },
     {
+        "id": 14,
         "short_name": "Monocytes (Relative)",
         "full_name": "الوحيدات (نسبة مئوية)",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Differential White Cell Count",
         "unit": "%",
-        "records": [
-            {
-                "date": "13/06/2026 23:38",
-                "result": 5.7,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "Not Specified"
-            },
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 5.5,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "Not Specified"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 3.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "Not Specified"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 3.7,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "Not Specified"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 6.4,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "Not Specified"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "ممكن يدلّ على عدوى مزمنة، أمراض مناعة ذاتية، أو تعافي من عدوى حادّة.",
             "meaning_low_simple": "عادةً مو مهم سريرياً لحاله، بس ممكن يصير وية انخفاض عام بخلايا الدم البيض.",
@@ -918,44 +406,13 @@
         }
     },
     {
+        "id": 15,
         "short_name": "Monocytes (Absolute)",
         "full_name": "الوحيدات (العدد المطلق)",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Differential White Cell Count",
         "unit": "10^9 /L",
-        "records": [
-            {
-                "date": "13/06/2026 23:38",
-                "result": 0.4,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "0.2 - 1.2"
-            },
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 1.1,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.2 - 1.2"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 0.3,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.2 - 1.2"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 0.4,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.2 - 1.2"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 0.5,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.2 - 1.2"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "العدد العالي للوحيدات ممكن يدلّ إن الجسم يتعافى أو يحارب عدوى مزمنة أو التهاب. هسّه طبيعي. المصدر: testing.com",
             "meaning_low_simple": "نادراً يكون مهم، بس الأعداد الواطية جداً ممكن لها علاقة بمشاكل نخاع العظم أو بعض العلاجات.",
@@ -978,50 +435,13 @@
         }
     },
     {
+        "id": 16,
         "short_name": "S. Urea",
         "full_name": "يوريا الدم",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Kidney Function Test (RFT)",
         "unit": "mg/dL",
-        "records": [
-            {
-                "date": "14/06/2026 01:09",
-                "result": 31.0,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "17 - 49"
-            },
-            {
-                "date": "16-06-2026 10:42:46",
-                "result": 92.1,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "16.6 - 48.5"
-            },
-            {
-                "date": "17-06-2026 12:25:27",
-                "result": 84.6,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "16.6 - 48.5"
-            },
-            {
-                "date": "18-06-2026 11:39:00",
-                "result": 81.7,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "16.6 - 48.5"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 78.0,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "16.6 - 48.2"
-            },
-            {
-                "date": "20-06-2026 11:46:08",
-                "result": 74.6,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "16.6 - 48.5"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "اليوريا العالية تعني الكلى ما تشيل الفضلات من الدم بكفاءة. اليوريا فضلات تطلع من تكسّر البروتين. مستواه تقريباً ١٫٥ مرّة فوق الحد الطبيعي وهو يتحسّن بالتدريج آخر چم يوم، وهذا اتجاه إيجابي. المصدر: testing.com و cancer.gov",
             "meaning_low_simple": "اليوريا الواطية يمكن تكون علامة سوء تغذية أو قلّة بروتين بالأكل أو مرض بالكبد. المصدر: testing.com",
@@ -1044,50 +464,13 @@
         }
     },
     {
+        "id": 17,
         "short_name": "S. Creatinine",
         "full_name": "الكرياتينين",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Kidney Function Test (RFT)",
         "unit": "mg/dL",
-        "records": [
-            {
-                "date": "14/06/2026 01:09",
-                "result": 1.5,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "0.7 - 1.3"
-            },
-            {
-                "date": "16-06-2026 10:42:46",
-                "result": 2.78,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.5 - 1.1"
-            },
-            {
-                "date": "17-06-2026 12:25:27",
-                "result": 2.38,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.5 - 1.1"
-            },
-            {
-                "date": "18-06-2026 11:39:00",
-                "result": 2.22,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.5 - 1.1"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 2.09,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "0.7 - 1.2"
-            },
-            {
-                "date": "20-06-2026 11:46:08",
-                "result": 2.2,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.5 - 1.1"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "الكرياتينين العالي يعني الكلى متعبة وما تصفّي الفضلات من الدم مثل ما لازم. كرياتينينه تقريباً ضعف الحد الطبيعي. هو يتحسّن بالتدريج — وهاي علامة زينة. المصدر: testing.com و cancer.gov",
             "meaning_low_simple": "الكرياتينين أوطى من المتوقّع يمكن يكون علامة سوء تغذية أو نقص بالكتلة العضلية. المصدر: testing.com",
@@ -1110,44 +493,13 @@
         }
     },
     {
+        "id": 18,
         "short_name": "S. Calcium",
         "full_name": "الكالسيوم",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Electrolytes and Minerals",
         "unit": "mg/dL",
-        "records": [
-            {
-                "date": "14/06/2026 01:09",
-                "result": 7.8,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "8.5 - 10.5"
-            },
-            {
-                "date": "16-06-2026 11:37",
-                "result": 9.4,
-                "lab_name": "Sardam Medical Laboratories",
-                "normal_range": "8.5 - 10.5"
-            },
-            {
-                "date": "17-06-2026 12:25:27",
-                "result": 8.33,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "8.5 - 10.5"
-            },
-            {
-                "date": "18-06-2026 11:39:00",
-                "result": 8.79,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "8.5 - 10.5"
-            },
-            {
-                "date": "20-06-2026 11:46:08",
-                "result": 8.21,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "8.5 - 10.5"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "الكالسيوم العالي (فرط الكالسيوم) عند مرضى السرطان ممكن يكون بسبب السرطان نفسه. يكدر يسبّب تشويش وغثيان ومشاكل بالكلى. المصدر: بحث",
             "meaning_low_simple": "الكالسيوم الواطي (نقص الكالسيوم) يعني الدم ماعنده كالسيوم كافي لعمل العضلات والأعصاب الطبيعي. كالسيومه شوية تحت الطبيعي. عند كبار السن، هذا يكدر يسبّب تشنّج عضلات وزيادة تشويش. المصدر: بحث",
@@ -1170,50 +522,13 @@
         }
     },
     {
+        "id": 19,
         "short_name": "CRP",
         "full_name": "بروتين سي التفاعلي (CRP) — مؤشّر الالتهاب",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Inflammatory Markers",
         "unit": "mg/L",
-        "records": [
-            {
-                "date": "14/06/2026 01:09",
-                "result": 76.4,
-                "lab_name": "VIN MEDICAL LAB",
-                "normal_range": "<= 6.0"
-            },
-            {
-                "date": "16-06-2026 10:42:46",
-                "result": 345.62,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.01 - 6"
-            },
-            {
-                "date": "17-06-2026 12:25:27",
-                "result": 257.15,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.01 - 6"
-            },
-            {
-                "date": "18-06-2026 11:39:00",
-                "result": 232.92,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.01 - 6"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 148.0,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "< 6"
-            },
-            {
-                "date": "20-06-2026 11:46:08",
-                "result": 130.47,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.01 - 6"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "بروتين سي التفاعلي (CRP) بروتين يصنعه الكبد لمن الجسم يحارب التهاب أو عدوى قوية. قيمته ١٣٠ ملغم/لتر، يعني أكثر من ٢٠ مرّة فوق الحد الطبيعي (٦). هذا يعني أكو عدوى نشطة أو التهاب كبير بجسمه. الخبر الزين إنها نازلة من ٣٤٥ — يعني العلاج يشتغل. المصدر: testing.com و cancer.gov",
             "meaning_low_simple": "لمن يكون CRP واطي أو طبيعي هذا أحسن شي — يعني ماكو التهاب أو عدوى نشطة مهمة. المصدر: testing.com",
@@ -1236,32 +551,13 @@
         }
     },
     {
+        "id": 20,
         "short_name": "Na",
         "full_name": "الصوديوم",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Electrolytes",
         "unit": "mmol/L",
-        "records": [
-            {
-                "date": "14-06-2026 20:27:39",
-                "result": 129.0,
-                "lab_name": "Azadi Teaching Hospital",
-                "normal_range": "135 - 145"
-            },
-            {
-                "date": "16-06-2026 11:37",
-                "result": 126.9,
-                "lab_name": "Sardam Medical Laboratories",
-                "normal_range": "136 - 146"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 130.7,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "136 - 146"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "الصوديوم العالي يكدر يصير بسبب الجفاف، أو فقدان ماي زيادة (مثلاً تعرّق، إسهال)، أو أكل عالي بالملح.",
             "meaning_low_simple": "الصوديوم الواطي (نقص صوديوم الدم) يعني ماكو صوديوم كافي بالدم. الصوديوم يسيطر على توازن السوائل بين الخلايا والدماغ. مستواه ١٣٠٫٧ أوطى من الحد الآمن (١٣٦). بعمره، حتى النقص البسيط بالصوديوم يكدر يسبّب تشويش قوي وضعف وخطر سقوط. المصدر: نتائج بحث عن كبار السن",
@@ -1284,32 +580,13 @@
         }
     },
     {
+        "id": 21,
         "short_name": "K",
         "full_name": "البوتاسيوم",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Electrolytes",
         "unit": "mmol/L",
-        "records": [
-            {
-                "date": "14-06-2026 20:27:39",
-                "result": 3.53,
-                "lab_name": "Azadi Teaching Hospital",
-                "normal_range": "3.5 - 5.5"
-            },
-            {
-                "date": "16-06-2026 11:37",
-                "result": 4.13,
-                "lab_name": "Sardam Medical Laboratories",
-                "normal_range": "3.5 - 5.5"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 4.39,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "3.5 - 5"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "البوتاسيوم العالي (فرط البوتاسيوم) يكدر يسبّب مشاكل خطيرة بنظم القلب. المصدر: mskcc.org",
             "meaning_low_simple": "البوتاسيوم الواطي (نقص البوتاسيوم) يكدر يسبّب ضعف عضلات، تعب، نظم قلب غير منتظم، وبالحالات الشديدة مشاكل نظم قلب مهدِّدة للحياة. المصدر: بحث",
@@ -1332,44 +609,13 @@
         }
     },
     {
+        "id": 22,
         "short_name": "AST (GOT)",
         "full_name": "إنزيم الكبد AST",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Liver Function Test (LFT)",
         "unit": "IU/L",
-        "records": [
-            {
-                "date": "14-06-2026 20:27:39",
-                "result": 42.8,
-                "lab_name": "Azadi Teaching Hospital",
-                "normal_range": "8 - 48"
-            },
-            {
-                "date": "17-06-2026 12:25:27",
-                "result": 34.9,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.01 - 40"
-            },
-            {
-                "date": "18-06-2026 11:39:00",
-                "result": 41.9,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.01 - 40"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 42.6,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "< 40"
-            },
-            {
-                "date": "20-06-2026 11:46:08",
-                "result": 44.1,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.01 - 40"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "AST إنزيم ينطلق لمن خلايا الكبد أو القلب أو العضلات تتعرّض لإجهاد أو ضرر. AST عنده شوية فوق الطبيعي — ارتفاع بسيط. عند مرضى السرطان اللي ياخذون علاج، الارتفاعات البسيطة بالـAST شائعة. الأطباء عادةً ما يقلقون إلا إذا صار ٢ لـ٣ مرّات فوق الحد الأعلى. المصدر: cancer.org / cancer.gov",
             "meaning_low_simple": "الـAST الواطي طبيعي وصحّي — ماكو قلق.",
@@ -1392,44 +638,13 @@
         }
     },
     {
+        "id": 23,
         "short_name": "ALT (GPT)",
         "full_name": "إنزيم الكبد ALT",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Liver Function Test (LFT)",
         "unit": "IU/L",
-        "records": [
-            {
-                "date": "14-06-2026 20:27:39",
-                "result": 21.0,
-                "lab_name": "Azadi Teaching Hospital",
-                "normal_range": "7 - 50"
-            },
-            {
-                "date": "17-06-2026 12:25:27",
-                "result": 24.2,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.01 - 41"
-            },
-            {
-                "date": "18-06-2026 11:39:00",
-                "result": 26.5,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.01 - 41"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 29.0,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "< 41"
-            },
-            {
-                "date": "20-06-2026 11:46:08",
-                "result": 26.8,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "0.01 - 41"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "الـALT هسّه ضمن المعدّل الطبيعي — ماكو داعي لإجراء.",
             "meaning_low_simple": "الـALT الواطي طبيعي وصحّي. المصدر: cancer.gov",
@@ -1452,44 +667,13 @@
         }
     },
     {
+        "id": 24,
         "short_name": "ALP",
         "full_name": "الفوسفاتيز القلوي (ALP)",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Liver Function Test (LFT)",
         "unit": "IU/L",
-        "records": [
-            {
-                "date": "14-06-2026 20:27:39",
-                "result": 79.0,
-                "lab_name": "Azadi Teaching Hospital",
-                "normal_range": "40 - 129"
-            },
-            {
-                "date": "17-06-2026 12:25:27",
-                "result": 76.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "40 - 129"
-            },
-            {
-                "date": "18-06-2026 11:39:00",
-                "result": 96.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "40 - 129"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 88.7,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "40 - 129"
-            },
-            {
-                "date": "20-06-2026 11:46:08",
-                "result": 101.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "40 - 129"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "الـALP العالي ممكن يدلّ على مشاكل بالكبد أو العظام عند مرضى السرطان. هسّه ضمن المعدّل الطبيعي. المصدر: cancer.gov",
             "meaning_low_simple": "الـALP الواطي عادةً مو مهم سريرياً. المصدر: testing.com",
@@ -1512,20 +696,13 @@
         }
     },
     {
+        "id": 25,
         "short_name": "Troponin I",
         "full_name": "التروبونين (Troponin I) — مؤشّر القلب",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Cardiac Biomarkers",
         "unit": "ng/mL",
-        "records": [
-            {
-                "date": "14-06-2026 20:27:42",
-                "result": "<0.100",
-                "lab_name": "Azadi Teaching Hospital",
-                "normal_range": "Up to 0.16"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "التروبونين العالي يعني خلايا عضلة القلب تضرّرت — غالباً من جلطة قلبية. تروبونينه كان تحت ٠٫١ والحد ٠٫١٦ — هذا مطمئن، يعني ماكو ضرر مهم بالقلب. المصدر: testing.com",
             "meaning_low_simple": "التروبونين الواطي أو غير القابل للكشف طبيعي ومطمئن — ماكو ضرر مهم بعضلة القلب. المصدر: testing.com",
@@ -1548,44 +725,13 @@
         }
     },
     {
+        "id": 26,
         "short_name": "MPV",
         "full_name": "متوسّط حجم الصفيحة الدموية",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Complete Blood Count (CBC)",
         "unit": "fL",
-        "records": [
-            {
-                "date": "16-06-2026 09:59:13",
-                "result": 7.7,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "9 - 13"
-            },
-            {
-                "date": "17-06-2026 10:34:08",
-                "result": 7.8,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "9 - 13"
-            },
-            {
-                "date": "18-06-2026 10:16:00",
-                "result": 7.8,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "9 - 13"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 7.9,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "7.8 - 11"
-            },
-            {
-                "date": "20-06-2026 10:59:00",
-                "result": 7.6,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "9 - 13"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "ممكن يدلّ إن الصفيحات تتصنّع بسرعة وتنطلق للدم قبل أوانها، غالباً بسبب تكسّر الصفيحات أو مشاكل نخاع العظم.",
             "meaning_low_simple": "الـMPV الواطي يعني الصفيحات أصغر من الطبيعي. هذا ممكن يكون علامة إن إنتاج الصفيحات بنخاع العظم قلّ، يمكن له علاقة بسرطانه أو أدويته أو مرضه العام. المصدر: testing.com",
@@ -1608,26 +754,13 @@
         }
     },
     {
+        "id": 27,
         "short_name": "Uric Acid",
         "full_name": "حمض اليوريك",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Metabolic Panel",
         "unit": "mg/dL",
-        "records": [
-            {
-                "date": "16-06-2026 10:42:46",
-                "result": 4.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "3.4 - 7"
-            },
-            {
-                "date": "20-06-2026 11:46:08",
-                "result": 4.7,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "3.4 - 7"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "حمض اليوريك العالي يكدر يسبّب النقرس (التهاب مفاصل مؤلم). هسّه طبيعي. المصدر: testing.com",
             "meaning_low_simple": "حمض اليوريك الواطي مو شائع ونادراً يكون مقلق لحاله؛ ممكن له علاقة ببعض حالات الكبد أو الكلى، أو حمية قليلة البيورين، أو بعض الأدوية. المصدر: testing.com",
@@ -1650,44 +783,13 @@
         }
     },
     {
+        "id": 28,
         "short_name": "Albumin",
         "full_name": "الألبومين (بروتين الدم)",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Protein Panel",
         "unit": "g/dL",
-        "records": [
-            {
-                "date": "16-06-2026 10:42:46",
-                "result": 3.16,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "3.5 - 5.2"
-            },
-            {
-                "date": "16-06-2026 11:37",
-                "result": 2.7,
-                "lab_name": "Sardam Medical Laboratories",
-                "normal_range": "3.5 - 5.5"
-            },
-            {
-                "date": "17-06-2026 12:25:27",
-                "result": 2.72,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "3.5 - 5.2"
-            },
-            {
-                "date": "18-06-2026 11:39:00",
-                "result": 2.91,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "3.5 - 5.2"
-            },
-            {
-                "date": "20-06-2026 11:46:08",
-                "result": 2.75,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "3.5 - 5.2"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "الألبومين العالي غالباً يعني جفاف — الجسم ماعنده سوائل كافية (مثلاً من إسهال شديد). المصدر: testing.com",
             "meaning_low_simple": "الألبومين البروتين الرئيسي بالدم، يصنعه الكبد. الألبومين الواطي يعني جسمه ما ياخذ بروتين كافي، أو الكبد يصنع أقل، أو الالتهاب المزمن يكبته. ألبومينه ٢٫٧٥ أوطى من الحد الأدنى الطبيعي (٣٫٥). هذا يبطّئ الشفاء ويقلّل المناعة ويأثّر على شلون تشتغل الأدوية بجسمه. بعمره ووية سرطانه، الألبومين الواطي مشكلة تغذية خطيرة جداً. المصدر: cancer.gov و بحث",
@@ -1710,26 +812,13 @@
         }
     },
     {
+        "id": 29,
         "short_name": "Cl",
         "full_name": "الكلورايد",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Electrolytes",
         "unit": "mmol/L",
-        "records": [
-            {
-                "date": "16-06-2026 11:37",
-                "result": 102.8,
-                "lab_name": "Sardam Medical Laboratories",
-                "normal_range": "95 - 108"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 101.3,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "96 - 106"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "الكلورايد العالي يكدر يصير بسبب جفاف شديد، مرض كلى، أو حُماض أيضي.",
             "meaning_low_simple": "الكلورايد الواطي يكدر يصير بسبب فقدان سوائل أو بعض الأدوية. ينعالج طبياً بالسوائل. المصدر: testing.com",
@@ -1752,20 +841,13 @@
         }
     },
     {
+        "id": 30,
         "short_name": "Ionized Ca",
         "full_name": "الكالسيوم المتأيّن",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Electrolytes",
         "unit": "mg/dL",
-        "records": [
-            {
-                "date": "16-06-2026 11:37",
-                "result": 4.37,
-                "lab_name": "Sardam Medical Laboratories",
-                "normal_range": "4.5 - 5.6"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "الكالسيوم العالي (فرط الكالسيوم) يعني كالسيوم زايد بالدم؛ بالسرطان هذا يصير لمن السرطان ينتشر للعظام أو يصنع هرمون يرفع الكالسيوم. المصدر: testing.com",
             "meaning_low_simple": "الكالسيوم المتأيّن الواطي هو الشكل النشط من الكالسيوم اللي يأثّر مباشرة على العضلات والأعصاب. حتى المستوى الواطي شوية يكدر يسبّب شدّ عضلات وتنميل وزيادة تشويش عند كبار السن. المصدر: بحث",
@@ -1788,26 +870,13 @@
         }
     },
     {
+        "id": 31,
         "short_name": "PCT",
         "full_name": "البروكالسيتونين (PCT) — مؤشّر العدوى",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Inflammatory Markers",
         "unit": "ng/mL",
-        "records": [
-            {
-                "date": "16-06-2026 11:37",
-                "result": 17.84,
-                "lab_name": "Sardam Medical Laboratories",
-                "normal_range": "Normal: 0.0-0.5, Mild: 0.5-2.0, Moderate: 2.0-10.0, Severe: >10"
-            },
-            {
-                "date": "20-06-2026 13:04:00",
-                "result": 2.37,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "Normal < 0.046, High Risk Septicemia > 2.0"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "البروكالسيتونين يصعد بقوة لمن يكون أكو عدوى بكتيرية خطيرة أو تسمّم دم (عدوى بالمجرى الدموي). قيمته كانت عالية جداً (١٧٫٨٤) وهسّه نزلت لـ٢٫٣٧ — يعني المضادات الحيوية تشتغل والعدوى أخفّ من قبل. القيم فوق ٢٫٠ بعدها تدلّ على خطر عالي لتسمّم الدم. المصدر: testing.com",
             "meaning_low_simple": "لمن يكون البروكالسيتونين طبيعي يعني ماكو عدوى بكتيرية مهمة. المصدر: testing.com",
@@ -1830,32 +899,13 @@
         }
     },
     {
+        "id": 32,
         "short_name": "D-dimer",
         "full_name": "دي-دايمر (D-dimer) — مؤشّر الجلطات",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Coagulation / Vascular Markers",
         "unit": "ng/mL",
-        "records": [
-            {
-                "date": "17-06-2026 14:00:52",
-                "result": 6734.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "1 - 500"
-            },
-            {
-                "date": "18-06-2026 11:39:00",
-                "result": 4453.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "1 - 500"
-            },
-            {
-                "date": "19-06-2026 11:44",
-                "result": 4156.0,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "< 500"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "دي-دايمر جزء بروتيني ينطلق لمن تتفكّك الجلطات بالدم. قيمته ٤٬١٥٦ يعني أكثر من ٨ مرّات فوق الحد الطبيعي (٥٠٠). هذا الارتفاع الكبير جداً يعني أكو نشاط تخثّر (جلطات) مهم بجسمه. السرطان نفسه يرفع الدي-دايمر، وكونه طريح الفراش يزيد خطر الجلطات الخطيرة بالساق (DVT) أو الرئة. المصدر: testing.com و cancer.net",
             "meaning_low_simple": "دي-دايمر طبيعي أو واطي يعني ماكو تكوّن جلطات مهم. المصدر: testing.com",
@@ -1878,20 +928,13 @@
         }
     },
     {
+        "id": 33,
         "short_name": "HbA1c",
         "full_name": "السكّر التراكمي (HbA1c)",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Endocrine / Metabolic Panel",
         "unit": "%",
-        "records": [
-            {
-                "date": "18-06-2026 11:39:00",
-                "result": 6.7,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "Non diabetic < 5.8, 5.8-6.4 Prediabetes, Diabetes >= 6.5, Good control < 6.5"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "السكّر التراكمي (HbA1c) ٦٫٧٪ يقيس معدّل السكّر بالدم خلال آخر ٢–٣ شهور. نتيجة ٦٫٧٪ بمدى السكري (الطبيعي تحت ٥٫٨٪). علاج السرطان يكدر يرفع السكّر، والسكّر العالي يبطّئ الشفاء ويزيد خطر العدوى. المصدر: mskcc.org",
             "meaning_low_simple": "النتيجة تحت ٥٫٧٪ تُعتبر طبيعية، يعني السكّر بالدم مسيطر عليه زين. المصدر: testing.com",
@@ -1914,20 +957,13 @@
         }
     },
     {
+        "id": 34,
         "short_name": "Total Bilirubin",
         "full_name": "البيليروبين الكلّي (الصُّفار)",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Liver Function Test (LFT)",
         "unit": "mg/dL",
-        "records": [
-            {
-                "date": "19-06-2026 11:44",
-                "result": 1.2,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "0.2 - 1.2"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "البيليروبين العالي يسبّب اليرقان (اصفرار الجلد والعيون) وممكن يدلّ على مشاكل بالكبد أو انسداد القناة الصفراوية. هسّه عند الحد الأعلى للطبيعي — راقبه عن قرب. المصدر: cancer.gov",
             "meaning_low_simple": "البيليروبين الواطي طبيعي وصحّي. المصدر: cancer.gov",
@@ -1950,20 +986,13 @@
         }
     },
     {
+        "id": 35,
         "short_name": "PDW",
         "full_name": "مدى توزّع حجم الصفيحات",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Complete Blood Count (CBC)",
         "unit": "%",
-        "records": [
-            {
-                "date": "19-06-2026 11:44",
-                "result": 9.0,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "9 - 17"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "ممكن يدلّ على تنشيط أو تكسّر غير طبيعي للصفيحات، غالباً ينشاف بأمراض الأوعية الدموية أو حالات التهابية أو بعض أنواع السرطان.",
             "meaning_low_simple": "عادةً يدلّ على حجم صفيحات متساوي، وهذا طبيعي ومو مهم سريرياً.",
@@ -1986,20 +1015,13 @@
         }
     },
     {
+        "id": 36,
         "short_name": "PCT (Plateletcrit)",
         "full_name": "نسبة حجم الصفيحات (Plateletcrit)",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Complete Blood Count (CBC)",
         "unit": "%",
-        "records": [
-            {
-                "date": "19-06-2026 11:44",
-                "result": 0.3,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "0.2 - 0.36"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "غالباً يرافق عدد صفيحات عالي وممكن يدلّ على ارتفاع صفيحات تفاعلي أو التهاب أو اضطرابات نخاع العظم.",
             "meaning_low_simple": "ممكن يدلّ على عدد صفيحات واطي أو صفيحات صغيرة بشكل غير عادي، يمكن له علاقة بكبت نخاع العظم أو زيادة تكسّر الصفيحات.",
@@ -2022,20 +1044,13 @@
         }
     },
     {
+        "id": 37,
         "short_name": "MXD (Relative)",
         "full_name": "الخلايا المختلطة MXD (نسبة مئوية)",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Differential White Cell Count",
         "unit": "%",
-        "records": [
-            {
-                "date": "19-06-2026 11:44",
-                "result": 14.5,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "Not Specified"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "غالباً يدلّ على ردود فعل تحسّسية أو عدوى طفيلية أو عدوى مزمنة (لأنه يجمع ثلاث أنواع خلايا سوا).",
             "meaning_low_simple": "عادةً مو مهم سريرياً لحاله إلا إذا كانت أعداد خلايا الدم البيض الكلّية واطية هواية.",
@@ -2058,20 +1073,13 @@
         }
     },
     {
+        "id": 38,
         "short_name": "MXD (Absolute)",
         "full_name": "الخلايا المختلطة MXD (العدد المطلق)",
         "category": "Blood Test",
         "sub_category": "Hematology",
         "sub_sub_category": "Differential White Cell Count",
         "unit": "10^9/L",
-        "records": [
-            {
-                "date": "19-06-2026 11:44",
-                "result": 1.0,
-                "lab_name": "AmrLab Medical Laboratories",
-                "normal_range": "Not Specified"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "ممكن يصير خلال التعافي من عدوى حادّة أو ردود فعل تحسّسية أو بعض حالات المناعة الذاتية والالتهاب المزمن.",
             "meaning_low_simple": "نادراً يكون مهم لحاله.",
@@ -2094,20 +1102,13 @@
         }
     },
     {
+        "id": 39,
         "short_name": "LDH",
         "full_name": "نازعة هيدروجين اللاكتات (LDH)",
         "category": "Blood Test",
         "sub_category": "Biochemistry",
         "sub_sub_category": "Enzyme / Tissue Damage Marker",
         "unit": "U/L",
-        "records": [
-            {
-                "date": "20-06-2026 11:46:08",
-                "result": 248.0,
-                "lab_name": "Omed Oncology Teaching Hospital",
-                "normal_range": "120 - 300"
-            }
-        ],
         "family_guidance": {
             "meaning_high_simple": "الـLDH العالي يعني أكو خلايا بمكان ما بالجسم تتضرّر أو تتدمّر — مؤشّر عام على ضرر الأنسجة. عند مرضى السرطان، ممكن يعكس نشاط الورم أو عدوى أو أعراض جانبية للعلاج. هسّه ضمن المعدّل الطبيعي — ماكو قلق فوري. المصدر: testing.com",
             "meaning_low_simple": "الـLDH الواطي طبيعي. المصدر: testing.com",

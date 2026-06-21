@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 """
 Re-runnable Arabic builder.
-Source of truth = data_en.json (English, never edited by hand).
-Output = data.json (what the website shows), regenerated every run.
+Source of truth = info_en.json (English test info + guidance, never edited by hand).
+Output = info.json (Arabic info the website shows), regenerated every run.
+The daily data lives separately in results.json and is not touched here.
 As TR grows, more of the site becomes Arabic. Untranslated strings stay English.
 """
 import json
@@ -588,8 +589,10 @@ TR = {
 }
 
 # ── Build ─────────────────────────────────────────────────────────────────────
+# Source of truth = info_en.json (English info + guidance, never edited by hand).
+# Output = info.json (Arabic info the website shows). results.json is NOT touched here.
 def main():
-    with open("data_en.json", encoding="utf-8") as f:
+    with open("info_en.json", encoding="utf-8") as f:
         data = json.load(f)
 
     # which strings are actually shared (appear >1)?
@@ -619,7 +622,7 @@ def main():
                 fg[k] = ar
                 done += 1
 
-    with open("data.json", "w", encoding="utf-8") as f:
+    with open("info.json", "w", encoding="utf-8") as f:
         json.dump(data, f, indent=4, ensure_ascii=False)
 
     print(f"Translated {done}/{total} guidance fields  ({100*done//total}%).")
