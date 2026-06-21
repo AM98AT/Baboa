@@ -6,15 +6,19 @@ from datetime import datetime
 import re
 
 st.set_page_config(
-    page_title="Grandpa's Health Tracker",
+    page_title="متابعة صحّة جدّنا",
     page_icon="🏥",
     layout="centered",
     initial_sidebar_state="collapsed",
 )
 
-# ── Mobile-first styling ─────────────────────────────────────────────────────────
+# ── Mobile-first + Arabic right-to-left styling ──────────────────────────────────
 st.markdown("""
 <style>
+/* whole app right-to-left, Arabic-friendly fonts */
+html, body, .stApp, .block-container, [data-testid="stMarkdownContainer"] {
+    direction: rtl; text-align: right;
+    font-family: "Segoe UI", Tahoma, "Noto Naskh Arabic", "Arial", sans-serif; }
 /* tighter padding + readable width on phones */
 .block-container { padding-top: 1rem; padding-bottom: 3rem;
     padding-left: 0.8rem; padding-right: 0.8rem; max-width: 640px; }
@@ -22,14 +26,16 @@ st.markdown("""
 html, body, [class*="css"] { font-size: 17px; }
 /* full-width, tall, rounded buttons = easy to tap */
 .stButton > button { width: 100%; padding: 0.65rem 0.8rem;
-    font-size: 1.02rem; border-radius: 12px; font-weight: 600; }
-/* hide the tiny sidebar hamburger leftovers / menu clutter */
+    font-size: 1.05rem; border-radius: 12px; font-weight: 600; }
+/* hide menu/footer clutter */
 #MainMenu, footer { visibility: hidden; }
-/* make expander headers larger and easier to tap */
-.streamlit-expanderHeader, details summary { font-size: 1.02rem !important; }
-/* metric numbers a touch smaller so 3 fit on a phone row */
+/* expander headers larger and easier to tap */
+.streamlit-expanderHeader, details summary { font-size: 1.05rem !important; }
+/* metric numbers sized so 3 fit on a phone row */
 [data-testid="stMetricValue"] { font-size: 1.5rem; }
 [data-testid="stMetricLabel"] { font-size: 0.8rem; }
+/* keep the chart itself left-to-right so numbers/dates read correctly */
+[data-testid="stPlotlyChart"] { direction: ltr; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -168,27 +174,27 @@ STATUS_BG = {
     "unknown": "#f5f5f5",
 }
 STATUS_LABEL = {
-    "normal":  "✅ Normal",
-    "low":     "⬇️ Below Normal",
-    "high":    "⬆️ Above Normal",
-    "unknown": "❓ No Range",
+    "normal":  "✅ طبيعي",
+    "low":     "⬇️ أوطى من الطبيعي",
+    "high":    "⬆️ أعلى من الطبيعي",
+    "unknown": "❓ بدون معدّل",
 }
 TREND_LABEL = {
-    "improving": "📈 Improving",
-    "worsening": "📉 Getting worse",
-    "stable":    "➡️ Stable",
+    "improving": "📈 يتحسّن",
+    "worsening": "📉 يسوء",
+    "stable":    "➡️ مستقر",
     "—":         "",
 }
 
 PAGES = {
-    "📊 Overview":         "__overview__",
-    "🩸 Blood Count":      "cbc",
-    "🫀 Kidney Function":  "kidney",
-    "🫁 Liver Function":   "liver",
-    "🔥 Inflammation":     "inflam",
-    "⚡ Electrolytes":     "electro",
-    "❤️ Heart & Clotting": "cardiac",
-    "🧪 Other Tests":      "other",
+    "📊 نظرة عامة":          "__overview__",
+    "🩸 تحليل الدم":         "cbc",
+    "🫀 وظائف الكلى":        "kidney",
+    "🫁 وظائف الكبد":        "liver",
+    "🔥 الالتهاب":           "inflam",
+    "⚡ الأملاح (الكهارل)":  "electro",
+    "❤️ القلب والتخثّر":     "cardiac",
+    "🧪 تحاليل ثانية":       "other",
 }
 
 def cat_filter(cat_key, t):
@@ -242,7 +248,7 @@ def render_card(t):
 </div>
 """, unsafe_allow_html=True)
 
-    if st.button("📋 See Details", key=f"card_{safe_key(t['short_name'])}"):
+    if st.button("📋 شوف التفاصيل", key=f"card_{safe_key(t['short_name'])}"):
         st.session_state["selected_test"] = t["short_name"]
         st.rerun()
 
@@ -256,8 +262,8 @@ def render_card_grid(tests):
 
 
 def render_overview(tests):
-    st.title("🏥 Health Dashboard")
-    st.caption(f"Data last loaded: {datetime.now().strftime('%d %b %Y, %H:%M')}")
+    st.title("🏥 لوحة متابعة الصحّة")
+    st.caption(f"آخر تحديث للبيانات: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
 
     normal   = [t for t in tests if t["status"] == "normal"]
     abnormal = sorted(
@@ -267,23 +273,23 @@ def render_overview(tests):
     unknown  = [t for t in tests if t["status"] == "unknown"]
 
     c1, c2, c3 = st.columns(3)
-    c1.metric("✅ Normal", len(normal))
-    c2.metric("⚠️ Needs Attention", len(abnormal))
-    c3.metric("❓ No Reference Range", len(unknown))
+    c1.metric("✅ طبيعي", len(normal))
+    c2.metric("⚠️ ينتبهله", len(abnormal))
+    c3.metric("❓ بدون معدّل", len(unknown))
 
     if abnormal:
         st.divider()
-        st.subheader("⚠️ Tests That Need Attention  (most abnormal first)")
+        st.subheader("⚠️ تحاليل تحتاج انتباه (الأهم بالأول)")
         render_card_grid(abnormal)
 
     if normal:
         st.divider()
-        st.subheader("✅ Normal Tests")
+        st.subheader("✅ تحاليل طبيعية")
         render_card_grid(normal)
 
     if unknown:
         st.divider()
-        st.subheader("❓ Tests Without a Reference Range")
+        st.subheader("❓ تحاليل بدون معدّل مرجعي")
         render_card_grid(unknown)
 
 
@@ -294,7 +300,7 @@ def render_chart(t):
     pairs = [(d, v) for d, v in zip(dates, vals) if v is not None]
 
     if not pairs:
-        st.info("No numeric data to chart.")
+        st.info("ماكو بيانات رقمية حتى نرسمها.")
         return
 
     xs, ys = zip(*pairs)
@@ -307,7 +313,7 @@ def render_chart(t):
         fig.add_hrect(
             y0=lo, y1=hi,
             fillcolor="rgba(46,125,50,0.10)", line_width=0,
-            annotation_text="Normal range",
+            annotation_text="المعدّل الطبيعي",
             annotation_position="top right",
             annotation=dict(font_size=11, font_color="#2e7d32"),
         )
@@ -316,7 +322,7 @@ def render_chart(t):
         fig.add_hrect(
             y0=y_floor, y1=hi,
             fillcolor="rgba(46,125,50,0.10)", line_width=0,
-            annotation_text="Normal range",
+            annotation_text="المعدّل الطبيعي",
             annotation_position="top right",
             annotation=dict(font_size=11, font_color="#2e7d32"),
         )
@@ -338,7 +344,7 @@ def render_chart(t):
     ))
 
     fig.update_layout(
-        title=f"{t['short_name']} over time",
+        title=f"{t['short_name']} عبر الزمن",
         yaxis_title=t["unit"],
         height=300,
         margin=dict(l=6, r=6, t=40, b=6),
@@ -359,11 +365,11 @@ def render_history_table(t):
         lo, hi = parse_range(r["normal_range"])
         s = classify(v, lo, hi)
         rows.append({
-            "Date":         parse_date(r["date"]).strftime("%d %b %Y, %H:%M"),
-            "Result":       f"{v:.2f} {t['unit']}" if v is not None else str(r["result"]),
-            "Normal Range": r["normal_range"],
-            "Status":       STATUS_LABEL[s],
-            "Lab":          r["lab_name"],
+            "التاريخ":        parse_date(r["date"]).strftime("%Y-%m-%d %H:%M"),
+            "النتيجة":        f"{v:.2f} {t['unit']}" if v is not None else str(r["result"]),
+            "المعدّل الطبيعي": r["normal_range"],
+            "الحالة":         STATUS_LABEL[s],
+            "المختبر":        r["lab_name"],
         })
     st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
 
@@ -379,10 +385,10 @@ def _show(label, text, box="info"):
 def render_detail(tests, short_name):
     t = next((x for x in tests if x["short_name"] == short_name), None)
     if t is None:
-        st.error("Test not found.")
+        st.error("التحليل مو موجود.")
         return
 
-    if st.button("← Back"):
+    if st.button("→ رجوع"):
         st.session_state["selected_test"] = None
         st.rerun()
 
@@ -392,7 +398,7 @@ def render_detail(tests, short_name):
     fg     = t.get("family_guidance", {})
 
     st.title(t["full_name"])
-    st.caption(f"Short code: **{t['short_name']}**  ·  {t['sub_sub_category']}")
+    st.caption(f"الرمز: **{t['short_name']}**  ·  {t['sub_sub_category']}")
 
     # Big result card (full width, stacks on phone)
     st.markdown(f"""
@@ -404,7 +410,7 @@ def render_detail(tests, short_name):
     text-align:center;
     margin-bottom:14px;
 ">
-    <div style="font-size:0.9rem;color:#666;margin-bottom:4px;">Latest result</div>
+    <div style="font-size:0.9rem;color:#666;margin-bottom:4px;">آخر نتيجة</div>
     <div style="font-size:2.8rem;font-weight:700;color:{color};line-height:1.1;">{val_str(t)}</div>
     <div style="font-size:1.05rem;color:#777;margin-bottom:6px;">{t['unit']}</div>
     <div style="font-size:1.15rem;font-weight:600;color:{color};">{label}</div>
@@ -416,16 +422,16 @@ def render_detail(tests, short_name):
         if lo is not None and hi is not None:
             rng = f"{lo} – {hi} {t['unit']}"
         elif hi is not None:
-            rng = f"Less than {hi} {t['unit']}"
+            rng = f"أوطى من {hi} {t['unit']}"
         else:
-            rng = f"More than {lo} {t['unit']}"
-        st.info(f"**Normal Range:** {rng}")
+            rng = f"أعلى من {lo} {t['unit']}"
+        st.info(f"**المعدّل الطبيعي:** {rng}")
 
     if t["trend"] != "—":
-        st.markdown(f"**Trend:** {TREND_LABEL[t['trend']]}")
+        st.markdown(f"**الاتجاه:** {TREND_LABEL[t['trend']]}")
 
     last_dt = parse_date(t["latest"]["date"])
-    st.caption(f"Recorded: {last_dt.strftime('%d %b %Y at %H:%M')}  ·  Lab: {t['latest']['lab_name']}")
+    st.caption(f"وقت التسجيل: {last_dt.strftime('%Y-%m-%d %H:%M')}  ·  المختبر: {t['latest']['lab_name']}")
 
     render_chart(t)
 
@@ -434,24 +440,24 @@ def render_detail(tests, short_name):
     # ── What does this measure / affect? ──
     affected = fg.get("affected_system", "")
     if affected:
-        st.subheader("📖 What this test measures & affects")
+        st.subheader("📖 شنو يقيس هذا التحليل وعلى شنو يأثّر")
         st.write(affected)
 
     # ── Simple meaning based on direction ──
     if status == "high":
         meaning = fg.get("meaning_high_simple", "")
         if meaning:
-            st.subheader("⬆️ What does HIGH mean for grandfather?")
+            st.subheader("⬆️ شنو يعني لمن يكون عالي عند جدّنا؟")
             st.warning(meaning)
     elif status == "low":
         meaning = fg.get("meaning_low_simple", "")
         if meaning:
-            st.subheader("⬇️ What does LOW mean for grandfather?")
+            st.subheader("⬇️ شنو يعني لمن يكون واطي عند جدّنا؟")
             st.info(meaning)
     else:
         st.success(
-            "✅ This value is within the normal range. "
-            "No immediate action is needed for this test — keep monitoring."
+            "✅ هاي القيمة ضمن المعدّل الطبيعي. "
+            "ماكو إجراء عاجل لهذا التحليل — بس استمرّوا بالمتابعة."
         )
 
     # ── Expandable family guidance sections ──
@@ -463,40 +469,40 @@ def render_detail(tests, short_name):
     has_medical  = any(fg.get(k) for k in ("oncologist_questions", "treatment_impact", "palliative_care"))
 
     if has_watchfor:
-        with st.expander("⚠️ What to Watch For", expanded=(status in ("high", "low"))):
-            _show("Symptoms to watch for:", fg.get("symptoms_to_watch", ""), "warning")
-            _show("Warning signs tonight:", fg.get("warning_signs_tonight", ""), "error")
-            _show("When to call the nurse immediately:", fg.get("critical_threshold", ""), "error")
+        with st.expander("⚠️ شنو نراقب", expanded=(status in ("high", "low"))):
+            _show("أعراض نراقبها:", fg.get("symptoms_to_watch", ""), "warning")
+            _show("علامات خطر هاي الليلة:", fg.get("warning_signs_tonight", ""), "error")
+            _show("متى تتصل بالممرضة فوراً:", fg.get("critical_threshold", ""), "error")
 
     if has_diet:
-        with st.expander("🥗 Diet, Food & Hydration", expanded=False):
-            _show("Foods that can help:", fg.get("foods_to_give", ""), "success")
-            _show("Foods to strictly avoid:", fg.get("foods_to_avoid", ""), "warning")
-            _show("Hydration guidance:", fg.get("hydration_guidance", ""), "info")
-            _show("If he refuses to eat or drink:", fg.get("refusal_handling", ""), "info")
+        with st.expander("🥗 الأكل والشرب", expanded=False):
+            _show("أكلات ممكن تساعد:", fg.get("foods_to_give", ""), "success")
+            _show("أكلات لازم نتجنّبها:", fg.get("foods_to_avoid", ""), "warning")
+            _show("إرشادات الترطيب (السوائل):", fg.get("hydration_guidance", ""), "info")
+            _show("إذا رفض ياكل أو يشرب:", fg.get("refusal_handling", ""), "info")
 
     if has_safety:
-        with st.expander("🛏️ Bedridden Safety", expanded=False):
-            _show("Risks from being completely bedridden:", fg.get("bedridden_risks", ""), "warning")
-            _show("Vitamins & supplements safety:", fg.get("supplements_safety", ""), "info")
+        with st.expander("🛏️ سلامة المريض طريح الفراش", expanded=False):
+            _show("مخاطر كونه طريح الفراش تماماً:", fg.get("bedridden_risks", ""), "warning")
+            _show("سلامة الفيتامينات والمكمّلات:", fg.get("supplements_safety", ""), "info")
 
     if has_hygiene:
-        with st.expander("🧼 Immune System & Hygiene Rules", expanded=False):
-            _show("Hygiene & visitor rules:", fg.get("immune_and_hygiene", ""), "warning")
+        with st.expander("🧼 المناعة وقواعد النظافة", expanded=False):
+            _show("قواعد النظافة والزيارة:", fg.get("immune_and_hygiene", ""), "warning")
 
     if has_comms:
-        with st.expander("💬 Communication & Emotional Support", expanded=False):
-            _show("If he is confused or agitated:", fg.get("communication_if_confused", ""), "info")
-            _show("Emotional support:", fg.get("emotional_support", ""), "info")
+        with st.expander("💬 التواصل والدعم النفسي", expanded=False):
+            _show("إذا صار مشوّش أو منزعج:", fg.get("communication_if_confused", ""), "info")
+            _show("الدعم النفسي:", fg.get("emotional_support", ""), "info")
 
     if has_medical:
-        with st.expander("🩺 Questions for the Doctor & Treatment", expanded=False):
-            _show("Important questions to ask the oncologist:", fg.get("oncologist_questions", ""), "info")
-            _show("How this affects treatment:", fg.get("treatment_impact", ""), "warning")
-            _show("Palliative & comfort care:", fg.get("palliative_care", ""), "info")
+        with st.expander("🩺 أسئلة للطبيب والعلاج", expanded=False):
+            _show("أسئلة مهمة تنطرح على طبيب الأورام:", fg.get("oncologist_questions", ""), "info")
+            _show("شلون يأثّر على العلاج:", fg.get("treatment_impact", ""), "warning")
+            _show("الرعاية التلطيفية والمريحة:", fg.get("palliative_care", ""), "info")
 
     st.divider()
-    st.subheader("📅 All Recorded Values")
+    st.subheader("📅 كل النتائج المسجّلة")
     render_history_table(t)
 
 
@@ -505,7 +511,7 @@ def render_category_page(tests, cat_key):
     st.title(page_name)
     filtered = [t for t in tests if cat_filter(cat_key, t)]
     if not filtered:
-        st.info("No tests recorded in this category yet.")
+        st.info("ماكو تحاليل مسجّلة بهذا القسم لحد الحين.")
         return
     render_card_grid(filtered)
 
@@ -525,8 +531,8 @@ def main():
 
     # ── Top navigation (phone-friendly: native dropdown, no hidden sidebar) ──
     labels = list(PAGES.keys())
-    choice = st.selectbox("📋 Choose what to view", labels, key="nav_choice")
-    if st.button("🔄 Reload latest results"):
+    choice = st.selectbox("📋 اختار شتريد تشوف", labels, key="nav_choice")
+    if st.button("🔄 حمّل آخر النتائج"):
         st.cache_data.clear()
         st.rerun()
 
