@@ -362,22 +362,140 @@ def render_card(t):
     st.markdown("<div style='margin-bottom:10px'></div>", unsafe_allow_html=True)
 
 
-def render_card_grid(tests):
-    # single column = readable on a phone (no tiny side-by-side cards)
+# ── Pairing of (Relative %) + (Absolute) tests into one unit ────────────────────
+
+PAIR_SUFFIXES = (" (Relative)", " (Absolute)")
+
+def _base(short):
+    for suf in PAIR_SUFFIXES:
+        if short.endswith(suf):
+            return short[: -len(suf)]
+    return None
+
+def build_units(tests):
+    """Group Relative+Absolute siblings into one unit; everything else stays single."""
+    by_short = {t["short_name"]: t for t in tests}
+    used, units = set(), []
     for t in tests:
-        render_card(t)
+        sn = t["short_name"]
+        if sn in used:
+            continue
+        base = _base(sn)
+        if base:
+            rel = by_short.get(base + " (Relative)")
+            ab  = by_short.get(base + " (Absolute)")
+            if rel and ab:
+                used.add(rel["short_name"]); used.add(ab["short_name"])
+                units.append({"kind": "pair", "rel": rel, "abs": ab})
+                continue
+        used.add(sn)
+        units.append({"kind": "single", "test": t})
+    return units
+
+def unit_status(u):
+    if u["kind"] == "single":
+        return u["test"]["status"]
+    a, r = u["abs"]["status"], u["rel"]["status"]
+    return a if a != "unknown" else r
+
+def unit_risk(u):
+    if u["kind"] == "single":
+        return risk_score(u["test"])
+    return max(risk_score(u["abs"]), risk_score(u["rel"]))
+
+def unit_dev(u):
+    if u["kind"] == "single":
+        return u["test"]["deviation"]
+    return max(u["abs"]["deviation"], u["rel"]["deviation"])
+
+def partner_of(tests, t):
+    base = _base(t["short_name"])
+    if not base:
+        return None
+    other = base + (" (Absolute)" if t["short_name"].endswith("(Relative)") else " (Relative)")
+    return next((x for x in tests if x["short_name"] == other), None)
+
+
+def render_pair_card(u):
+    rel, ab = u["rel"], u["abs"]
+    status = ab["status"] if ab["status"] != "unknown" else rel["status"]
+    color  = STATUS_COLOR[status]
+    bg     = STATUS_BG[status]
+    label  = STATUS_LABEL[status]
+    risk   = max(risk_score(ab), risk_score(rel))
+    rcolor = risk_color(risk)
+    trend  = TREND_LABEL.get(ab["trend"], "")
+    base_name = ab["full_name"].replace(" (العدد المطلق)", "").strip()
+    ratio  = ratio_text(ab)
+    ratio_html = (
+        f'<div style="font-size:0.82rem;font-weight:600;color:{color};margin-top:3px;">{ratio}</div>'
+        if ratio else ""
+    )
+
+    st.markdown(f"""
+<div style="
+    background:{bg};
+    border-right:6px solid {color};
+    border-radius:10px;
+    padding:14px 16px;
+    margin-bottom:4px;
+">
+    <div style="font-weight:700;font-size:1rem;color:#222;">{base_name}</div>
+    <div style="font-size:0.72rem;color:#777;margin-bottom:8px;">يجمع: النسبة المئوية + العدد المطلق</div>
+    <div style="display:flex;gap:18px;flex-wrap:wrap;">
+        <div>
+            <div style="font-size:0.72rem;color:#666;">النسبة المئوية</div>
+            <div style="font-size:1.4rem;font-weight:700;color:{STATUS_COLOR[rel['status']]};">
+                {val_str(rel)} <span style="font-size:0.75rem;font-weight:400;color:#666;">%</span>
+            </div>
+        </div>
+        <div>
+            <div style="font-size:0.72rem;color:#666;">العدد المطلق</div>
+            <div style="font-size:1.4rem;font-weight:700;color:{STATUS_COLOR[ab['status']]};">
+                {val_str(ab)} <span style="font-size:0.75rem;font-weight:400;color:#666;">{ab['unit']}</span>
+            </div>
+        </div>
+    </div>
+    <div style="font-size:0.84rem;font-weight:600;color:{color};margin-top:6px;">{label}</div>
+    <div style="font-size:0.8rem;color:#555;margin-top:3px;">🕒 {days_ago_text(ab)}{('  ·  ' + trend) if trend else ''}</div>
+    {ratio_html}
+    <div style="font-size:0.82rem;font-weight:700;color:{rcolor};margin-top:5px;">
+        🎯 الأولوية والخطورة: {risk}/10
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
+    if st.button("📋 شوف التفاصيل", key=f"pair_{safe_key(ab['short_name'])}"):
+        st.session_state["selected_test"] = ab["short_name"]
+        st.rerun()
+
+    st.markdown("<div style='margin-bottom:10px'></div>", unsafe_allow_html=True)
+
+
+def render_units(units):
+    for u in units:
+        if u["kind"] == "single":
+            render_card(u["test"])
+        else:
+            render_pair_card(u)
+
+
+def render_card_grid(tests):
+    # single column = readable on a phone; pairs (Relative+Absolute) shown together
+    render_units(build_units(tests))
 
 
 def render_overview(tests):
     st.title("🏥 لوحة متابعة الصحّة")
     st.caption(f"آخر تحديث للبيانات: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
 
-    normal   = [t for t in tests if t["status"] == "normal"]
+    units    = build_units(tests)
+    normal   = [u for u in units if unit_status(u) == "normal"]
     abnormal = sorted(
-        [t for t in tests if t["status"] in ("high", "low")],
-        key=lambda t: (-risk_score(t), -t["deviation"]),
+        [u for u in units if unit_status(u) in ("high", "low")],
+        key=lambda u: (-unit_risk(u), -unit_dev(u)),
     )
-    unknown  = [t for t in tests if t["status"] == "unknown"]
+    unknown  = [u for u in units if unit_status(u) == "unknown"]
 
     c1, c2, c3 = st.columns(3)
     c1.metric("✅ طبيعي", len(normal))
@@ -387,17 +505,17 @@ def render_overview(tests):
     if abnormal:
         st.divider()
         st.subheader("⚠️ تحاليل تحتاج انتباه (الأهم بالأول)")
-        render_card_grid(abnormal)
+        render_units(abnormal)
 
     if normal:
         st.divider()
         st.subheader("✅ تحاليل طبيعية")
-        render_card_grid(normal)
+        render_units(normal)
 
     if unknown:
         st.divider()
         st.subheader("❓ تحاليل بدون معدّل مرجعي")
-        render_card_grid(unknown)
+        render_units(unknown)
 
 
 def render_chart(t):
@@ -531,6 +649,18 @@ def render_detail(tests, short_name):
 
     last_dt = parse_date(t["latest"]["date"])
     st.caption(f"وقت التسجيل: {last_dt.strftime('%Y-%m-%d %H:%M')}  ·  المختبر: {t['latest']['lab_name']}")
+
+    # If this test has a Relative/Absolute partner, show its latest value too.
+    partner = partner_of(tests, t)
+    if partner:
+        kind = "النسبة المئوية" if partner["short_name"].endswith("(Relative)") else "العدد المطلق"
+        pcolor = STATUS_COLOR[partner["status"]]
+        st.markdown(
+            f"<div style='margin-bottom:8px'>القياس الآخر لنفس التحليل — "
+            f"<b>{kind}:</b> <span style='color:{pcolor};font-weight:700'>"
+            f"{val_str(partner)} {partner['unit']}</span> ({STATUS_LABEL[partner['status']]})</div>",
+            unsafe_allow_html=True,
+        )
 
     render_chart(t)
 
