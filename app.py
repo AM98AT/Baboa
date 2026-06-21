@@ -3,6 +3,7 @@ import json
 import pandas as pd
 import plotly.graph_objects as go
 from datetime import datetime
+from urllib.parse import quote
 import re
 
 st.set_page_config(
@@ -36,6 +37,19 @@ html, body, [class*="css"] { font-size: 17px; }
 [data-testid="stMetricLabel"] { font-size: 0.8rem; }
 /* keep the chart itself left-to-right so numbers/dates read correctly */
 [data-testid="stPlotlyChart"] { direction: ltr; }
+/* link styled as a full-width "See details" button */
+a.seebtn { display:block; width:100%; box-sizing:border-box; text-align:center;
+    background:#1565c0; color:#fff !important; text-decoration:none;
+    padding:0.6rem 0.8rem; border-radius:12px; font-weight:700; font-size:1.02rem;
+    margin:2px 0 12px 0; }
+/* sticky back bar that scrolls with you */
+a.backbtn { position:sticky; top:0; z-index:1000; display:block; width:100%;
+    box-sizing:border-box; text-align:center; background:#37474f; color:#fff !important;
+    text-decoration:none; padding:0.7rem; border-radius:0 0 12px 12px; font-weight:700;
+    font-size:1.08rem; margin-bottom:12px; box-shadow:0 2px 6px rgba(0,0,0,0.2); }
+/* navigation chips */
+a.navchip { display:inline-block; margin:3px; padding:7px 12px; border-radius:18px;
+    text-decoration:none; font-weight:600; font-size:0.95rem; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -241,6 +255,14 @@ def cat_filter(cat_key, t):
 def safe_key(s):
     return re.sub(r"[^a-zA-Z0-9_]", "_", s)
 
+def cur_page():
+    return st.query_params.get("page", "__overview__")
+
+def detail_link(short_name):
+    """Real URL link to a test's detail page (so the phone back button works)."""
+    href = f"?page={quote(cur_page())}&test={quote(short_name)}"
+    return f'<a class="seebtn" href="{href}" target="_self">📋 شوف التفاصيل</a>'
+
 def val_str(t):
     return f"{t['val']:.2f}" if t["val"] is not None else str(t["latest"]["result"])
 
@@ -355,11 +377,7 @@ def render_card(t):
 </div>
 """, unsafe_allow_html=True)
 
-    if st.button("📋 شوف التفاصيل", key=f"card_{safe_key(t['short_name'])}"):
-        st.session_state["selected_test"] = t["short_name"]
-        st.rerun()
-
-    st.markdown("<div style='margin-bottom:10px'></div>", unsafe_allow_html=True)
+    st.markdown(detail_link(t["short_name"]), unsafe_allow_html=True)
 
 
 # ── Pairing of (Relative %) + (Absolute) tests into one unit ────────────────────
@@ -465,11 +483,7 @@ def render_pair_card(u):
 </div>
 """, unsafe_allow_html=True)
 
-    if st.button("📋 شوف التفاصيل", key=f"pair_{safe_key(ab['short_name'])}"):
-        st.session_state["selected_test"] = ab["short_name"]
-        st.rerun()
-
-    st.markdown("<div style='margin-bottom:10px'></div>", unsafe_allow_html=True)
+    st.markdown(detail_link(ab["short_name"]), unsafe_allow_html=True)
 
 
 def render_units(units):
@@ -518,69 +532,80 @@ def render_overview(tests):
         render_units(unknown)
 
 
+@st.cache_data(show_spinner=False, ttl=60)
+def _chart_png(title, subtitle, unit, xs, ys, colors, lo, hi):
+    """Render the trend as a static PNG image (non-interactive, downloadable)."""
+    fig = go.Figure()
+    if lo is not None and hi is not None:
+        fig.add_hrect(y0=lo, y1=hi, fillcolor="rgba(46,125,50,0.10)", line_width=0)
+    elif hi is not None:
+        fig.add_hrect(y0=min(ys) * 0.85, y1=hi, fillcolor="rgba(46,125,50,0.10)", line_width=0)
+    if lo is not None:
+        fig.add_hline(y=lo, line=dict(color="#2e7d32", dash="dash", width=1.4))
+    if hi is not None:
+        fig.add_hline(y=hi, line=dict(color="#2e7d32", dash="dash", width=1.4))
+
+    fig.add_trace(go.Scatter(
+        x=list(xs), y=list(ys), mode="lines+markers+text",
+        text=[f"{v:g}" for v in ys], textposition="top center",
+        textfont=dict(size=15, color="#222"),
+        line=dict(color="#1565c0", width=3),
+        marker=dict(size=14, color=list(colors), line=dict(color="white", width=2)),
+    ))
+    fig.update_layout(
+        title=dict(text=f"{title}<br><sub>{subtitle}</sub>", x=0.5, xanchor="center",
+                   font=dict(size=22)),
+        yaxis_title=unit, height=520, width=900,
+        margin=dict(l=20, r=20, t=90, b=40),
+        showlegend=False, plot_bgcolor="white", paper_bgcolor="white",
+        font=dict(size=15),
+    )
+    fig.update_xaxes(gridcolor="#eee", tickformat="%m-%d")
+    fig.update_yaxes(gridcolor="#eee")
+    return fig.to_image(format="png", scale=2)
+
+
 def render_chart(t):
     recs  = t["records"]
-    dates = [parse_date(r["date"]) for r in recs]
-    vals  = [parse_result(r["result"]) for r in recs]
-    pairs = [(d, v) for d, v in zip(dates, vals) if v is not None]
-
+    pairs = [(parse_date(r["date"]), parse_result(r["result"])) for r in recs]
+    pairs = [(d, v) for d, v in pairs if v is not None]
     if not pairs:
         st.info("ماكو بيانات رقمية حتى نرسمها.")
         return
 
     xs, ys = zip(*pairs)
     lo, hi = t["lo"], t["hi"]
-
-    fig = go.Figure()
-
-    # Normal-range shading
     if lo is not None and hi is not None:
-        fig.add_hrect(
-            y0=lo, y1=hi,
-            fillcolor="rgba(46,125,50,0.10)", line_width=0,
-            annotation_text="المعدّل الطبيعي",
-            annotation_position="top right",
-            annotation=dict(font_size=11, font_color="#2e7d32"),
-        )
+        rng = f"المعدّل الطبيعي: {lo} - {hi}"
     elif hi is not None:
-        y_floor = min(list(ys)) * 0.85
-        fig.add_hrect(
-            y0=y_floor, y1=hi,
-            fillcolor="rgba(46,125,50,0.10)", line_width=0,
-            annotation_text="المعدّل الطبيعي",
-            annotation_position="top right",
-            annotation=dict(font_size=11, font_color="#2e7d32"),
-        )
+        rng = f"المعدّل الطبيعي: أوطى من {hi}"
+    elif lo is not None:
+        rng = f"المعدّل الطبيعي: أعلى من {lo}"
+    else:
+        rng = "ماكو معدّل مرجعي"
+    subtitle = f"{rng}  ·  الوحدة: {t['unit']}"
+    colors = tuple(STATUS_COLOR[classify(v, lo, hi)] for v in ys)
 
-    if lo is not None:
-        fig.add_hline(y=lo, line=dict(color="#2e7d32", dash="dash", width=1.2))
-    if hi is not None:
-        fig.add_hline(y=hi, line=dict(color="#2e7d32", dash="dash", width=1.2))
-
-    point_colors = [STATUS_COLOR[classify(v, lo, hi)] for v in ys]
-
-    fig.add_trace(go.Scatter(
-        x=list(xs),
-        y=list(ys),
-        mode="lines+markers",
-        line=dict(color="#1565c0", width=2.5),
-        marker=dict(size=11, color=point_colors, line=dict(color="white", width=2)),
-        hovertemplate=f"<b>%{{x|%d %b %H:%M}}</b><br>%{{y:.2f}} {t['unit']}<extra></extra>",
-    ))
-
-    fig.update_layout(
-        title=f"{t['short_name']} عبر الزمن",
-        yaxis_title=t["unit"],
-        height=300,
-        margin=dict(l=6, r=6, t=40, b=6),
-        showlegend=False,
-        plot_bgcolor="white",
-        paper_bgcolor="white",
-    )
-    fig.update_xaxes(gridcolor="#f0f0f0")
-    fig.update_yaxes(gridcolor="#f0f0f0")
-
-    st.plotly_chart(fig, use_container_width=True)
+    try:
+        png = _chart_png(t["full_name"], subtitle, t["unit"], tuple(xs), tuple(ys), colors, lo, hi)
+        st.image(png, use_container_width=True)
+        st.caption("📷 اضغط مطوّلاً على الصورة حتى تحفظها أو تشاركها.")
+    except Exception:
+        # Fallback: static (non-zoomable) interactive chart if image export is unavailable
+        fig = go.Figure()
+        if lo is not None and hi is not None:
+            fig.add_hrect(y0=lo, y1=hi, fillcolor="rgba(46,125,50,0.10)", line_width=0)
+        if lo is not None:
+            fig.add_hline(y=lo, line=dict(color="#2e7d32", dash="dash"))
+        if hi is not None:
+            fig.add_hline(y=hi, line=dict(color="#2e7d32", dash="dash"))
+        fig.add_trace(go.Scatter(x=list(xs), y=list(ys), mode="lines+markers",
+                                 line=dict(color="#1565c0", width=2.5),
+                                 marker=dict(size=11, color=list(colors))))
+        fig.update_layout(title=f"{t['full_name']} — {subtitle}", height=320,
+                          margin=dict(l=6, r=6, t=50, b=6), showlegend=False,
+                          plot_bgcolor="white", paper_bgcolor="white")
+        st.plotly_chart(fig, use_container_width=True, config={"staticPlot": True, "displayModeBar": False})
 
 
 def render_history_table(t):
@@ -599,15 +624,18 @@ def render_history_table(t):
     st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
 
 
-def render_detail(tests, short_name):
+def render_detail(tests, short_name, back_page="__overview__"):
     t = next((x for x in tests if x["short_name"] == short_name), None)
+    back_href = f"?page={quote(back_page)}"
     if t is None:
+        st.markdown(f'<a class="backbtn" href="{back_href}" target="_self">→ رجوع للقائمة</a>',
+                    unsafe_allow_html=True)
         st.error("التحليل مو موجود.")
         return
 
-    if st.button("→ رجوع"):
-        st.session_state["selected_test"] = None
-        st.rerun()
+    # Sticky back link (real navigation → the phone back button works too)
+    st.markdown(f'<a class="backbtn" href="{back_href}" target="_self">→ رجوع للقائمة</a>',
+                unsafe_allow_html=True)
 
     status = t["status"]
     color  = STATUS_COLOR[status]
@@ -700,12 +728,23 @@ def render_detail(tests, short_name):
         # a general field is only shown here if this test overrides the generic text
         return has_field(k) and fg.get(k, "") != generic.get(k, "")
 
+    _shown = []   # word-sets of fields already displayed, to skip near-duplicates
+
+    def _norm(s):
+        s = re.sub(r"المصدر:.*$", "", s)          # ignore the source tag when comparing
+        return set(re.findall(r"[؀-ۿ]+", s))
+
     def show(label, k, box, general=False):
         v = fg.get(k, "")
         if not v or not v.strip():
             return
         if general and v == generic.get(k, ""):   # generic copy → skip (it's on general page)
             return
+        words = _norm(v)
+        for prev in _shown:                       # skip if it mostly repeats an earlier field
+            if words and len(words & prev) / len(words | prev) > 0.7:
+                return
+        _shown.append(words)
         st.markdown(f"**{label}**")
         getattr(st, box)(v)
 
@@ -755,6 +794,12 @@ def render_detail(tests, short_name):
     st.subheader("📅 كل النتائج المسجّلة")
     render_history_table(t)
 
+    st.markdown(
+        f'<a class="seebtn" style="background:#37474f;" href="?page={quote(back_page)}" '
+        f'target="_self">→ رجوع للقائمة</a>',
+        unsafe_allow_html=True,
+    )
+
 
 def render_category_page(tests, cat_key):
     page_name = next((k for k, v in PAGES.items() if v == cat_key), cat_key)
@@ -771,8 +816,8 @@ def render_general(tests):
     st.caption("هذي الإرشادات تنطبق على كل التحاليل — مكتوبة مرة وحدة هنا حتى ما تتكرر بكل تحليل.")
 
     st.error(
-        "🚨 **بحالة طوارئ بدهوك:** اتصلوا بالإسعاف على **١٢٢** — وانقلوه لمستشفى **آزادي التعليمي** "
-        "أو **مستشفى دهوك للأورام**. لا تنقلوه بسيارتكم إذا عنده ضيق نفس شديد أو نزيف أو فقدان وعي."
+        "🚨 **بأي حالة طارئة:** نادوا الممرضة أو الطبيب بالجناح فوراً — لا تنتظرون. "
+        "علامات الطوارئ: ضيق نفس شديد، نزيف، تشويش مفاجئ، تشنّج، أو فقدان وعي."
     )
 
     generic = generic_values(tests)
@@ -792,25 +837,36 @@ def render_general(tests):
 
 # ── Main ───────────────────────────────────────────────────────────────────────
 
+def render_nav(active):
+    chips = []
+    for label, key in PAGES.items():
+        style = ("background:#1565c0;color:#fff;" if key == active
+                 else "background:#e7eefc;color:#1565c0;")
+        chips.append(f'<a class="navchip" style="{style}" href="?page={quote(key)}" '
+                     f'target="_self">{label}</a>')
+    st.markdown('<div style="margin-bottom:10px">' + "".join(chips) + "</div>",
+                unsafe_allow_html=True)
+
+
 def main():
-    if "selected_test" not in st.session_state:
-        st.session_state["selected_test"] = None
-
     tests = load_data()
+    qp = st.query_params
 
-    # ── Detail view takes over the whole screen ──
-    if st.session_state["selected_test"]:
-        render_detail(tests, st.session_state["selected_test"])
+    # ── A test is open: show its detail page (real URL = phone back works) ──
+    test = qp.get("test")
+    if test:
+        render_detail(tests, test, back_page=qp.get("page", "__overview__"))
         return
 
-    # ── Top navigation (phone-friendly: native dropdown, no hidden sidebar) ──
-    labels = list(PAGES.keys())
-    choice = st.selectbox("📋 اختار شتريد تشوف", labels, key="nav_choice")
+    # ── List views: navigation is real URL links (chips) ──
+    page = qp.get("page", "__overview__")
+    if page not in PAGES.values():
+        page = "__overview__"
+    render_nav(page)
     if st.button("🔄 حمّل آخر النتائج"):
         st.cache_data.clear()
         st.rerun()
 
-    page = PAGES[choice]
     if page == "__overview__":
         render_overview(tests)
     elif page == "__general__":
