@@ -1,11 +1,15 @@
 import streamlit as st
 import json
 import pandas as pd
-import plotly.graph_objects as go
 from datetime import datetime, timedelta
 from urllib.parse import quote
+from io import BytesIO
 import math
 import re
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
 
 st.set_page_config(
     page_title="متابعة الصحّة اليومية",
@@ -578,54 +582,58 @@ def _day_labels(days):
 
 
 @st.cache_data(show_spinner=False, ttl=60)
-def _chart_png(title, subtitle, unit, xs, ys, colors, lo, hi):
-    """Render the trend as a static PNG image (non-interactive, downloadable)."""
-    fig = go.Figure()
-    if lo is not None and hi is not None:
-        fig.add_hrect(y0=lo, y1=hi, fillcolor="rgba(46,125,50,0.10)", line_width=0)
-    elif hi is not None:
-        fig.add_hrect(y0=min(ys) * 0.85, y1=hi, fillcolor="rgba(46,125,50,0.10)", line_width=0)
-    if lo is not None:
-        fig.add_hline(y=lo, line=dict(color="#2e7d32", dash="dash", width=1.4))
-    if hi is not None:
-        fig.add_hline(y=hi, line=dict(color="#2e7d32", dash="dash", width=1.4))
+def _chart_png(code, unit, rng_latin, xs, ys, colors, lo, hi):
+    """Render the trend as a static PNG using matplotlib (reliable on Streamlit Cloud)."""
+    fig, ax = plt.subplots(figsize=(9, 4.8), dpi=130)
 
-    fig.add_trace(go.Scatter(
-        x=list(xs), y=list(ys), mode="lines+markers+text",
-        text=[f"{v:g}" for v in ys], textposition="top center",
-        textfont=dict(size=15, color="#222"),
-        line=dict(color="#1565c0", width=3),
-        marker=dict(size=14, color=list(colors), line=dict(color="white", width=2)),
-    ))
-    fig.update_layout(
-        title=dict(text=f"{title}<br><sub>{subtitle}</sub>", x=0.5, xanchor="center",
-                   font=dict(size=22)),
-        yaxis_title=unit, height=540, width=900,
-        margin=dict(l=20, r=20, t=90, b=90),
-        showlegend=False, plot_bgcolor="white", paper_bgcolor="white",
-        font=dict(size=15),
-    )
-    # X: a major gridline + date label for EVERY day in the range (day, not time)
+    # normal-range band + dashed bounds
+    if lo is not None and hi is not None:
+        ax.axhspan(lo, hi, color="#2e7d32", alpha=0.10, zorder=0)
+    if lo is not None:
+        ax.axhline(lo, color="#2e7d32", ls="--", lw=1.3, zorder=1)
+    if hi is not None:
+        ax.axhline(hi, color="#2e7d32", ls="--", lw=1.3, zorder=1)
+
+    xn = [mdates.date2num(x) for x in xs]
+    ax.plot(xn, ys, color="#1565c0", lw=2.6, zorder=2)
+    ax.scatter(xn, ys, c=list(colors), s=120, edgecolors="white", linewidths=1.6, zorder=3)
+    for x, y in zip(xn, ys):
+        ax.annotate(f"{y:g}", (x, y), textcoords="offset points", xytext=(0, 10),
+                    ha="center", fontsize=11, color="#222")
+
+    # X: one tick per calendar day (day, not time)
     day0, dayN = min(xs), max(xs)
     days, d = [], day0
     while d <= dayN:
         days.append(d); d += timedelta(days=1)
-    fig.update_xaxes(
-        tickmode="array", tickvals=days, ticktext=_day_labels(days),
-        range=[day0 - timedelta(hours=12), dayN + timedelta(hours=12)],
-        tickangle=0, ticks="outside", ticklen=6,
-        showgrid=True, gridcolor="#cfcfcf", gridwidth=1,
-    )
-    # Y: clean numbered ticks computed from the actual values (+ normal band)
+    ax.set_xticks([mdates.date2num(x) for x in days])
+    ax.set_xticklabels(_day_labels(days), fontsize=11)
+    ax.set_xlim(mdates.date2num(day0 - timedelta(hours=12)),
+                mdates.date2num(dayN + timedelta(hours=12)))
+
+    # Y: clean numbered ticks that enclose the data + normal band
     yvals = list(ys) + [b for b in (lo, hi) if b is not None]
     ymn, ymx = min(yvals), max(yvals)
     if ymx == ymn:
-        d = abs(ymx) * 0.3 or 1
-        ymn, ymx = ymn - d, ymx + d
+        dd = abs(ymx) * 0.3 or 1
+        ymn, ymx = ymn - dd, ymx + dd
+    ymx += (ymx - ymn) * 0.08      # headroom so the top value label isn't clipped
     tickvals, ticktext = _nice_ticks(ymn, ymx)
-    fig.update_yaxes(tickvals=tickvals, ticktext=ticktext,
-                     range=[tickvals[0], tickvals[-1]], gridcolor="#eee", zeroline=False)
-    return fig.to_image(format="png", scale=2)
+    ax.set_yticks(tickvals)
+    ax.set_yticklabels(ticktext, fontsize=11)
+    ax.set_ylim(tickvals[0], tickvals[-1])
+
+    ax.set_title(f"{code}   ({unit})    normal: {rng_latin}", fontsize=13, pad=12)
+    ax.grid(color="#e6e6e6", lw=0.8)
+    ax.set_axisbelow(True)
+    for s in ("top", "right"):
+        ax.spines[s].set_visible(False)
+    fig.tight_layout()
+
+    buf = BytesIO()
+    fig.savefig(buf, format="png", bbox_inches="tight")
+    plt.close(fig)
+    return buf.getvalue()
 
 
 def render_chart(t):
@@ -641,50 +649,26 @@ def render_chart(t):
     xs, ys = zip(*pairs)
     lo, hi = t["lo"], t["hi"]
     if lo is not None and hi is not None:
-        rng = f"المعدّل الطبيعي: {lo} - {hi}"
+        rng_latin = f"{lo} - {hi} {t['unit']}"
+        rng_ar    = f"المعدّل الطبيعي: {lo} - {hi} {t['unit']}"
     elif hi is not None:
-        rng = f"المعدّل الطبيعي: أوطى من {hi}"
+        rng_latin = f"< {hi} {t['unit']}"
+        rng_ar    = f"المعدّل الطبيعي: أوطى من {hi} {t['unit']}"
     elif lo is not None:
-        rng = f"المعدّل الطبيعي: أعلى من {lo}"
+        rng_latin = f"> {lo} {t['unit']}"
+        rng_ar    = f"المعدّل الطبيعي: أعلى من {lo} {t['unit']}"
     else:
-        rng = "ماكو معدّل مرجعي"
-    subtitle = f"{rng}  ·  الوحدة: {t['unit']}"
+        rng_latin = "-"
+        rng_ar    = "ماكو معدّل مرجعي"
     colors = tuple(STATUS_COLOR[classify(v, lo, hi)] for v in ys)
 
+    st.markdown(f"**📈 {t['full_name']}** — {rng_ar}")
     try:
-        png = _chart_png(t["full_name"], subtitle, t["unit"], tuple(xs), tuple(ys), colors, lo, hi)
+        png = _chart_png(t["short_name"], t["unit"], rng_latin, tuple(xs), tuple(ys), colors, lo, hi)
         st.image(png, use_container_width=True)
         st.caption("📷 اضغط مطوّلاً على الصورة حتى تحفظها أو تشاركها.")
-    except Exception:
-        # Fallback: static (non-zoomable) interactive chart if image export is unavailable
-        fig = go.Figure()
-        if lo is not None and hi is not None:
-            fig.add_hrect(y0=lo, y1=hi, fillcolor="rgba(46,125,50,0.10)", line_width=0)
-        if lo is not None:
-            fig.add_hline(y=lo, line=dict(color="#2e7d32", dash="dash"))
-        if hi is not None:
-            fig.add_hline(y=hi, line=dict(color="#2e7d32", dash="dash"))
-        fig.add_trace(go.Scatter(x=list(xs), y=list(ys), mode="lines+markers",
-                                 line=dict(color="#1565c0", width=2.5),
-                                 marker=dict(size=11, color=list(colors))))
-        fig.update_layout(title=f"{t['full_name']} — {subtitle}", height=340,
-                          margin=dict(l=6, r=6, t=50, b=70), showlegend=False,
-                          plot_bgcolor="white", paper_bgcolor="white")
-        _d0, _dN, _days = min(xs), max(xs), []
-        _d = _d0
-        while _d <= _dN:
-            _days.append(_d); _d += timedelta(days=1)
-        fig.update_xaxes(tickmode="array", tickvals=_days, ticktext=_day_labels(_days),
-                         range=[_d0 - timedelta(hours=12), _dN + timedelta(hours=12)],
-                         tickangle=0, showgrid=True, gridcolor="#cfcfcf")
-        _yv = list(ys) + [b for b in (lo, hi) if b is not None]
-        _ymn, _ymx = min(_yv), max(_yv)
-        if _ymx == _ymn:
-            _dd = abs(_ymx) * 0.3 or 1
-            _ymn, _ymx = _ymn - _dd, _ymx + _dd
-        _tv, _tt = _nice_ticks(_ymn, _ymx)
-        fig.update_yaxes(tickvals=_tv, ticktext=_tt, range=[_tv[0], _tv[-1]], gridcolor="#eee")
-        st.plotly_chart(fig, use_container_width=True, config={"staticPlot": True, "displayModeBar": False})
+    except Exception as e:
+        st.info("تعذّر رسم المخطط حالياً.")
 
 
 def render_history_table(t):
