@@ -110,15 +110,30 @@ def deviation(val, lo, hi):
 
 # ── Data Loading ───────────────────────────────────────────────────────────────
 
+def load_json_safe(path):
+    """Read a JSON file; on a typo, show a clear Arabic message instead of crashing."""
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except json.JSONDecodeError as e:
+        st.error(
+            f"⚠️ أكو غلطة كتابة بالملف **{path}** بالسطر رقم **{e.lineno}**.\n\n"
+            f"غالباً فاصلة (،) أو قوس ناقص أو زايد. صلّح السطر وخزّن الملف ثم اضغط "
+            f"**🔄 حمّل آخر النتائج**.\n\nتفاصيل: {e.msg}"
+        )
+        st.stop()
+    except FileNotFoundError:
+        st.error(f"⚠️ الملف **{path}** مو موجود.")
+        st.stop()
+
+
 @st.cache_data(ttl=30)
 def load_data():
     # Two linked files, joined by `id`:
     #   results.json -> daily readings (edited every day)
     #   info.json    -> test names + Arabic guidance (stable)
-    with open("results.json", encoding="utf-8") as f:
-        results = json.load(f)
-    with open("info.json", encoding="utf-8") as f:
-        info_by_id = {t["id"]: t for t in json.load(f)}
+    results = load_json_safe("results.json")
+    info_by_id = {t["id"]: t for t in load_json_safe("info.json")}
 
     processed = []
     for r in results:
