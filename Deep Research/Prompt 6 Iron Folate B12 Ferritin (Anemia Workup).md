@@ -81,6 +81,31 @@ palliative_care: ...
 
 ---
 
+## Improved research plan (paste this if the tool asks "what changes to the plan?")
+
+1. Per-test meaning & basics for Iron, Ferritin, Vitamin B12, Folate (what HIGH/LOW mean, what it
+   measures, system affected) — framed for an 86-yo bedridden colon-cancer patient.
+2. The inflammation pattern: low serum iron + very high ferritin + high CRP → ferritin as an
+   acute-phase marker, iron "locked" by inflammation, true iron deficiency vs anemia of chronic
+   disease (include soluble transferrin receptor if covered); state if he truly needs iron.
+3. Supplement safety & route: oral iron risks with colon cancer (constipation/obstruction, masking
+   GI bleeding, poor absorption in inflammation), when IV iron is used instead of pills, safety of
+   B12/folate supplements (biotin/B-vitamins can distort lab tests); nothing without the doctor.
+4. Diet — conflict-aware: helpful foods filtered against his limits (kidney→low potassium;
+   colon→low fiber/no nuts-seeds-raw; high sugar→limit sweets); iron-absorption helpers/inhibitors;
+   prefer animal sources for B12.
+5. Hydration given low sodium + impaired kidneys (restrict free plain water; doctor's fluid limit).
+6. Symptoms, tonight's warning signs, emergency thresholds per result (B12 nerve signs included).
+7. Bedridden risks, infection/hygiene, and food/medication refusal handling.
+8. Communication if confused (B12→brain/nerves), emotional support, palliative/comfort-care relevance.
+9. Oncologist questions (2–3 per test) + treatment impact (IV iron, transfusion, treating inflammation,
+   chemo timing).
+10. OUTPUT as the 18 named fields per test, 1–4 plain sentences each, no brand names, each found fact
+    ending with "Source: <domain>", "(not found)" where silent, and explicitly exclude any food/advice
+    that conflicts with his kidney/colon/sugar limits.
+
+---
+
 ## When you get the result
 Paste the whole deep-research output back to the assistant and say:
 > here is the deep research for the 4 anemia tests — update the data
