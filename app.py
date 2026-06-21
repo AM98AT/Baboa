@@ -539,6 +539,18 @@ def render_overview(tests):
         render_units(unknown)
 
 
+def _day_labels(days):
+    """Day number on every tick; month (DD/MM) only on the first, the last, and on month changes."""
+    out, prev, n = [], None, len(days)
+    for i, d in enumerate(days):
+        if i == 0 or i == n - 1 or d.month != prev:
+            out.append(f"{d.day:02d}/{d.month:02d}")
+        else:
+            out.append(f"{d.day:02d}")
+        prev = d.month
+    return out
+
+
 @st.cache_data(show_spinner=False, ttl=60)
 def _chart_png(title, subtitle, unit, xs, ys, colors, lo, hi):
     """Render the trend as a static PNG image (non-interactive, downloadable)."""
@@ -573,10 +585,9 @@ def _chart_png(title, subtitle, unit, xs, ys, colors, lo, hi):
     while d <= dayN:
         days.append(d); d += timedelta(days=1)
     fig.update_xaxes(
-        tickmode="array", tickvals=days,
-        ticktext=[x.strftime("%d/%m") for x in days],
+        tickmode="array", tickvals=days, ticktext=_day_labels(days),
         range=[day0 - timedelta(hours=12), dayN + timedelta(hours=12)],
-        tickangle=-45, ticks="outside", ticklen=6,
+        tickangle=0, ticks="outside", ticklen=6,
         showgrid=True, gridcolor="#cfcfcf", gridwidth=1,
     )
     # Y: spread numbered ticks across the actual values (+ normal band)
@@ -639,10 +650,9 @@ def render_chart(t):
         _d = _d0
         while _d <= _dN:
             _days.append(_d); _d += timedelta(days=1)
-        fig.update_xaxes(tickmode="array", tickvals=_days,
-                         ticktext=[x.strftime("%d/%m") for x in _days],
+        fig.update_xaxes(tickmode="array", tickvals=_days, ticktext=_day_labels(_days),
                          range=[_d0 - timedelta(hours=12), _dN + timedelta(hours=12)],
-                         tickangle=-45, showgrid=True, gridcolor="#cfcfcf")
+                         tickangle=0, showgrid=True, gridcolor="#cfcfcf")
         fig.update_yaxes(nticks=7, gridcolor="#eee")
         st.plotly_chart(fig, use_container_width=True, config={"staticPlot": True, "displayModeBar": False})
 
