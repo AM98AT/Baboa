@@ -5,9 +5,9 @@ from urllib.parse import quote
 import re
 import streamlit as st
 
-from lib.constants import STATUS_COLOR, STATUS_BG, STATUS_LABEL, TREND_LABEL, GENERAL_FIELDS
-from lib.parsing import parse_date
-from lib.scoring import ratio_text, risk_score, risk_color
+from lib.constants import STATUS_COLOR, STATUS_BG, TREND_LABEL, GENERAL_FIELDS
+from lib.parsing import parse_date, parse_result
+from lib.scoring import status_line, risk_score, risk_color
 from lib.units import build_units
 
 
@@ -40,6 +40,30 @@ def days_ago_text(t):
     return f"قبل {n} يوم"
 
 
+def normal_range_text(t):
+    lo, hi = t["lo"], t["hi"]
+    if lo is not None and hi is not None:
+        return f"{lo} - {hi} {t['unit']}"
+    if hi is not None:
+        return f"أقل من {hi} {t['unit']}"
+    if lo is not None:
+        return f"أعلى من {lo} {t['unit']}"
+    return None
+
+
+def trend_with_prev(t):
+    """Trend label + the previous reading, e.g. '📈 يتحسّن (آخر فحص كان 15)'."""
+    tr = TREND_LABEL.get(t["trend"], "")
+    if not tr:
+        return ""
+    recs = t["records"]
+    if len(recs) >= 2:
+        pv = parse_result(recs[-2]["result"])
+        pv_str = f"{pv:g}" if pv is not None else str(recs[-2]["result"])
+        return f"{tr} (آخر فحص كان {pv_str})"
+    return tr
+
+
 def generic_values(tests):
     """The most common (generic) text per general field across all tests."""
     from collections import Counter
@@ -58,15 +82,18 @@ def render_card(t):
     status = t["status"]
     color  = STATUS_COLOR[status]
     bg     = STATUS_BG[status]
-    label  = STATUS_LABEL[status]
-    trend  = TREND_LABEL.get(t["trend"], "")
-    ratio  = ratio_text(t)
     risk   = risk_score(t)
     rcolor = risk_color(risk)
 
-    ratio_html = (
-        f'<div style="font-size:0.82rem;font-weight:600;color:{color};margin-top:3px;">{ratio}</div>'
-        if ratio else ""
+    rng   = normal_range_text(t)
+    rng_html = (
+        f'<div style="font-size:0.8rem;color:#555;margin-top:3px;">المعدّل الطبيعي: {rng}</div>'
+        if rng else ""
+    )
+    trend = trend_with_prev(t)
+    trend_html = (
+        f'<div style="font-size:0.8rem;color:#555;margin-top:3px;">{trend}</div>'
+        if trend else ""
     )
 
     st.markdown(f"""
@@ -79,12 +106,13 @@ def render_card(t):
 ">
     <div style="font-weight:700;font-size:1rem;color:#222;">{t['short_name']}</div>
     <div style="font-size:0.75rem;color:#555;margin-bottom:6px;">{t['full_name']}</div>
-    <div style="font-size:1.6rem;font-weight:700;color:{color};">
+    <div style="font-size:1.7rem;font-weight:700;color:{color};">
         {val_str(t)} <span style="font-size:0.85rem;font-weight:400;color:#555;">{t['unit']}</span>
     </div>
-    <div style="font-size:0.84rem;font-weight:600;color:{color};margin-top:4px;">{label}</div>
-    <div style="font-size:0.8rem;color:#555;margin-top:3px;">🕒 {days_ago_text(t)}{('  ·  ' + trend) if trend else ''}</div>
-    {ratio_html}
+    {rng_html}
+    <div style="font-size:0.86rem;font-weight:700;color:{color};margin-top:4px;">{status_line(t)}</div>
+    {trend_html}
+    <div style="font-size:0.8rem;color:#555;margin-top:3px;">🕒 {days_ago_text(t)}</div>
     <div style="font-size:0.82rem;font-weight:700;color:{rcolor};margin-top:5px;">
         🎯 الأولوية والخطورة: {risk}/10
     </div>
@@ -99,15 +127,19 @@ def render_pair_card(u):
     status = ab["status"] if ab["status"] != "unknown" else rel["status"]
     color  = STATUS_COLOR[status]
     bg     = STATUS_BG[status]
-    label  = STATUS_LABEL[status]
     risk   = max(risk_score(ab), risk_score(rel))
     rcolor = risk_color(risk)
-    trend  = TREND_LABEL.get(ab["trend"], "")
     base_name = ab["full_name"].replace(" (العدد المطلق)", "").strip()
-    ratio  = ratio_text(ab)
-    ratio_html = (
-        f'<div style="font-size:0.82rem;font-weight:600;color:{color};margin-top:3px;">{ratio}</div>'
-        if ratio else ""
+
+    rng = normal_range_text(ab)
+    rng_html = (
+        f'<div style="font-size:0.8rem;color:#555;margin-top:3px;">المعدّل الطبيعي (العدد المطلق): {rng}</div>'
+        if rng else ""
+    )
+    trend = trend_with_prev(ab)
+    trend_html = (
+        f'<div style="font-size:0.8rem;color:#555;margin-top:3px;">{trend}</div>'
+        if trend else ""
     )
 
     st.markdown(f"""
@@ -134,9 +166,10 @@ def render_pair_card(u):
             </div>
         </div>
     </div>
-    <div style="font-size:0.84rem;font-weight:600;color:{color};margin-top:6px;">{label}</div>
-    <div style="font-size:0.8rem;color:#555;margin-top:3px;">🕒 {days_ago_text(ab)}{('  ·  ' + trend) if trend else ''}</div>
-    {ratio_html}
+    {rng_html}
+    <div style="font-size:0.86rem;font-weight:700;color:{color};margin-top:6px;">{status_line(ab)}</div>
+    {trend_html}
+    <div style="font-size:0.8rem;color:#555;margin-top:3px;">🕒 {days_ago_text(ab)}</div>
     <div style="font-size:0.82rem;font-weight:700;color:{rcolor};margin-top:5px;">
         🎯 الأولوية والخطورة: {risk}/10
     </div>

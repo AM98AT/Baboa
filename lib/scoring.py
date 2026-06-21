@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """Ratio text and 1-10 priority/risk scoring for a processed test dict."""
-from lib.constants import CLINICAL_WEIGHT
+from lib.constants import CLINICAL_WEIGHT, STATUS_LABEL
+
+STATUS_ICON = {"normal": "✅", "low": "⬇️", "high": "⬆️", "unknown": "❓"}
 
 
 def _fmt_pct(p):
@@ -20,6 +22,14 @@ def ratio_text(t):
     if status == "normal":
         return "ضمن المعدّل الطبيعي"
     return None
+
+
+def status_line(t):
+    """Status + percentage on ONE line (no repeating 'above/below normal' twice)."""
+    r = ratio_text(t)
+    if r is None:
+        return STATUS_LABEL[t["status"]]      # unknown → "❓ بدون معدّل"
+    return f"{STATUS_ICON[t['status']]} {r}"
 
 
 def risk_score(t):
