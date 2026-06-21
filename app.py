@@ -20,8 +20,15 @@ st.markdown("""
 html, body, .stApp, .block-container, [data-testid="stMarkdownContainer"] {
     direction: rtl; text-align: right;
     font-family: "Segoe UI", Tahoma, "Noto Naskh Arabic", "Arial", sans-serif; }
-/* tighter padding + readable width on phones */
-.block-container { padding-top: 1rem; padding-bottom: 3rem;
+/* hide Streamlit's own top toolbar (it overlaps content on mobile) */
+header[data-testid="stHeader"] { display: none; }
+/* our own fixed header bar */
+.app-header { position: fixed; top: 0; left: 0; right: 0; height: 52px; z-index: 1000;
+    background: #1565c0; color: #fff; display: flex; align-items: center;
+    justify-content: center; font-size: 1.15rem; font-weight: 700;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25); }
+/* tighter padding + readable width on phones; top space clears the fixed header */
+.block-container { padding-top: 4.3rem; padding-bottom: 3rem;
     padding-left: 0.8rem; padding-right: 0.8rem; max-width: 640px; }
 /* bigger base text for older eyes */
 html, body, [class*="css"] { font-size: 17px; }
@@ -43,7 +50,7 @@ a.seebtn { display:block; width:100%; box-sizing:border-box; text-align:center;
     padding:0.6rem 0.8rem; border-radius:12px; font-weight:700; font-size:1.02rem;
     margin:2px 0 12px 0; }
 /* sticky back bar that scrolls with you */
-a.backbtn { position:sticky; top:0; z-index:1000; display:block; width:100%;
+a.backbtn { position:sticky; top:52px; z-index:900; display:block; width:100%;
     box-sizing:border-box; text-align:center; background:#37474f; color:#fff !important;
     text-decoration:none; padding:0.7rem; border-radius:0 0 12px 12px; font-weight:700;
     font-size:1.08rem; margin-bottom:12px; box-shadow:0 2px 6px rgba(0,0,0,0.2); }
@@ -849,6 +856,8 @@ def render_nav(active):
 
 
 def main():
+    st.markdown('<div class="app-header">🏥 متابعة الصحّة اليومية</div>',
+                unsafe_allow_html=True)
     tests = load_data()
     qp = st.query_params
 
