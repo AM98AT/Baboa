@@ -52,16 +52,17 @@ def normal_range_text(t):
 
 
 def trend_with_prev(t):
-    """Trend label + the previous reading, e.g. '📈 يتحسّن (آخر فحص كان 15)'."""
+    """Trend label + the previous reading, e.g. '📈 يتحسّن (آخر فحص كان 15)'.
+    For a brand-new test (only one reading) there's nothing to compare with."""
+    recs = t.get("records", [])
+    if len(recs) < 2:
+        return "🆕 فحص جديد (أول نتيجة)"
     tr = TREND_LABEL.get(t["trend"], "")
     if not tr:
         return ""
-    recs = t["records"]
-    if len(recs) >= 2:
-        pv = parse_result(recs[-2]["result"])
-        pv_str = f"{pv:g}" if pv is not None else str(recs[-2]["result"])
-        return f"{tr} (آخر فحص كان {pv_str})"
-    return tr
+    pv = parse_result(recs[-2]["result"])
+    pv_str = f"{pv:g}" if pv is not None else str(recs[-2]["result"])
+    return f"{tr} (آخر فحص كان {pv_str})"
 
 
 def generic_values(tests):
