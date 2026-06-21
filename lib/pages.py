@@ -242,6 +242,31 @@ def render_detail(tests, short_name, back_page="__overview__"):
     )
 
 
+def render_today(tests):
+    st.title("🆕 تحاليل اليوم")
+    dated = [(parse_date(t["latest"]["date"]).date(), t) for t in tests if t.get("latest")]
+    if not dated:
+        st.info("ماكو فحوصات مسجّلة لحد الحين.")
+        return
+
+    recent = max(d for d, _ in dated)
+    todays = [t for d, t in dated if d == recent]
+    gap = (datetime.now().date() - recent).days
+    ds = recent.strftime("%d/%m/%Y")
+
+    if gap <= 0:
+        st.success(f"✅ فحوصات اليوم ({ds}) — عددها {len(todays)}")
+    else:
+        if gap == 1:    g = "يوم واحد"
+        elif gap == 2:  g = "يومين"
+        elif gap <= 10: g = f"{gap} أيام"
+        else:           g = f"{gap} يوم"
+        st.warning(f"⚠️ ماكو فحوصات جديدة من {g}. هذي آخر فحوصات اللي انعملت (بتاريخ {ds}):")
+
+    units = sorted(build_units(todays), key=lambda u: -unit_risk(u))
+    render_units(units)
+
+
 def render_category_page(tests, cat_key):
     page_name = next((k for k, v in PAGES.items() if v == cat_key), cat_key)
     st.title(page_name)
@@ -391,6 +416,8 @@ def main():
 
     if page == "__overview__":
         render_overview(tests)
+    elif page == "__today__":
+        render_today(tests)
     elif page == "__general__":
         render_general(tests)
     else:
