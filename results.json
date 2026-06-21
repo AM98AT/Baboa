@@ -39,6 +39,12 @@
                 "result": 10.9,
                 "lab_name": "Omed Oncology Teaching Hospital",
                 "normal_range": "13 - 17"
+            },
+            {
+                "date": "21-06-2026 10:54:24",
+                "result": 9.8,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "13 - 17"
             }
         ]
     },
@@ -80,6 +86,12 @@
             {
                 "date": "20-06-2026 10:59:00",
                 "result": 31.7,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "40 - 50"
+            },
+            {
+                "date": "21-06-2026 10:54:24",
+                "result": 27.7,
                 "lab_name": "Omed Oncology Teaching Hospital",
                 "normal_range": "40 - 50"
             }
@@ -125,6 +137,12 @@
                 "result": 3.33,
                 "lab_name": "Omed Oncology Teaching Hospital",
                 "normal_range": "4.5 - 5.5"
+            },
+            {
+                "date": "21-06-2026 10:54:24",
+                "result": 3.03,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "4.5 - 5.5"
             }
         ]
     },
@@ -166,6 +184,12 @@
             {
                 "date": "20-06-2026 10:59:00",
                 "result": 95.0,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "75 - 100"
+            },
+            {
+                "date": "21-06-2026 10:54:24",
+                "result": 91.5,
                 "lab_name": "Omed Oncology Teaching Hospital",
                 "normal_range": "75 - 100"
             }
@@ -211,6 +235,12 @@
                 "result": 32.7,
                 "lab_name": "Omed Oncology Teaching Hospital",
                 "normal_range": "25 - 35"
+            },
+            {
+                "date": "21-06-2026 10:54:24",
+                "result": 32.4,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "25 - 35"
             }
         ]
     },
@@ -252,6 +282,12 @@
             {
                 "date": "20-06-2026 10:59:00",
                 "result": 34.4,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "31 - 38"
+            },
+            {
+                "date": "21-06-2026 10:54:24",
+                "result": 35.4,
                 "lab_name": "Omed Oncology Teaching Hospital",
                 "normal_range": "31 - 38"
             }
@@ -297,6 +333,12 @@
                 "result": 13.0,
                 "lab_name": "Omed Oncology Teaching Hospital",
                 "normal_range": "11 - 16"
+            },
+            {
+                "date": "21-06-2026 10:54:24",
+                "result": 12.7,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "11 - 16"
             }
         ]
     },
@@ -307,7 +349,7 @@
         "records": [
             {
                 "date": "13/06/2026 23:38",
-                "result": 264,
+                "result": 264.0,
                 "lab_name": "VIN MEDICAL LAB",
                 "normal_range": "150 - 400"
             },
@@ -331,13 +373,19 @@
             },
             {
                 "date": "19-06-2026 11:44",
-                "result": 314,
+                "result": 314.0,
                 "lab_name": "AmrLab Medical Laboratories",
                 "normal_range": "150 - 450"
             },
             {
                 "date": "20-06-2026 10:59:00",
                 "result": 348.0,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "150 - 400"
+            },
+            {
+                "date": "21-06-2026 10:54:24",
+                "result": 375.0,
                 "lab_name": "Omed Oncology Teaching Hospital",
                 "normal_range": "150 - 400"
             }
@@ -383,6 +431,12 @@
                 "result": 7.9,
                 "lab_name": "Omed Oncology Teaching Hospital",
                 "normal_range": "3.5 - 11"
+            },
+            {
+                "date": "21-06-2026 10:54:24",
+                "result": 8.3,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "3.5 - 11"
             }
         ]
     },
@@ -424,6 +478,12 @@
             {
                 "date": "20-06-2026 10:59:00",
                 "result": 74.6,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "35 - 80"
+            },
+            {
+                "date": "21-06-2026 10:54:24",
+                "result": 74.4,
                 "lab_name": "Omed Oncology Teaching Hospital",
                 "normal_range": "35 - 80"
             }
@@ -469,6 +529,12 @@
                 "result": 5.9,
                 "lab_name": "Omed Oncology Teaching Hospital",
                 "normal_range": "2 - 7"
+            },
+            {
+                "date": "21-06-2026 10:54:24",
+                "result": 6.3,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "2 - 7"
             }
         ]
     },
@@ -510,6 +576,12 @@
             {
                 "date": "20-06-2026 10:59:00",
                 "result": 19.0,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "20 - 50"
+            },
+            {
+                "date": "21-06-2026 10:54:24",
+                "result": 19.8,
                 "lab_name": "Omed Oncology Teaching Hospital",
                 "normal_range": "20 - 50"
             }
@@ -555,6 +627,12 @@
                 "result": 1.5,
                 "lab_name": "Omed Oncology Teaching Hospital",
                 "normal_range": "1 - 3.5"
+            },
+            {
+                "date": "21-06-2026 10:54:24",
+                "result": 1.6,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "1 - 3.5"
             }
         ]
     },
@@ -592,6 +670,12 @@
                 "result": 6.4,
                 "lab_name": "Omed Oncology Teaching Hospital",
                 "normal_range": "Not Specified"
+            },
+            {
+                "date": "21-06-2026 10:54:24",
+                "result": 5.8,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "Not Specified"
             }
         ]
     },
@@ -627,6 +711,12 @@
             {
                 "date": "20-06-2026 10:59:00",
                 "result": 0.5,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "0.2 - 1.2"
+            },
+            {
+                "date": "21-06-2026 10:54:24",
+                "result": 0.4,
                 "lab_name": "Omed Oncology Teaching Hospital",
                 "normal_range": "0.2 - 1.2"
             }
@@ -1004,6 +1094,12 @@
             {
                 "date": "20-06-2026 10:59:00",
                 "result": 7.6,
+                "lab_name": "Omed Oncology Teaching Hospital",
+                "normal_range": "9 - 13"
+            },
+            {
+                "date": "21-06-2026 10:54:24",
+                "result": 7.5,
                 "lab_name": "Omed Oncology Teaching Hospital",
                 "normal_range": "9 - 13"
             }
