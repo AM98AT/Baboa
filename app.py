@@ -234,33 +234,25 @@ TREND_LABEL = {
     "—":         "",
 }
 
-PAGES = {
-    "📊 نظرة عامة":          "__overview__",
+# Special pages (always first in the nav) + the 10 medical categories.
+# For categories, the value == the Arabic `sub_sub_category` stored on each test.
+SPECIAL_PAGES = {
+    "📊 نظرة عامة":           "__overview__",
     "📘 إرشادات عامة للعائلة": "__general__",
-    "🩸 تحليل الدم":         "cbc",
-    "🫀 وظائف الكلى":        "kidney",
-    "🫁 وظائف الكبد":        "liver",
-    "🔥 الالتهاب":           "inflam",
-    "⚡ الأملاح (الكهارل)":  "electro",
-    "❤️ القلب والتخثّر":     "cardiac",
-    "🧪 تحاليل ثانية":       "other",
 }
-
-def cat_filter(cat_key, t):
-    sub = t["sub_sub_category"]
-    mapping = {
-        "cbc":     sub in ("Complete Blood Count (CBC)", "Differential White Cell Count"),
-        "kidney":  sub == "Kidney Function Test (RFT)",
-        "liver":   sub == "Liver Function Test (LFT)",
-        "inflam":  sub == "Inflammatory Markers",
-        "electro": sub in ("Electrolytes", "Electrolytes and Minerals"),
-        "cardiac": sub in ("Cardiac Biomarkers", "Coagulation / Vascular Markers"),
-        "other":   sub in (
-            "Protein Panel", "Metabolic Panel",
-            "Enzyme / Tissue Damage Marker", "Endocrine / Metabolic Panel",
-        ),
-    }
-    return mapping.get(cat_key, False)
+CATEGORY_PAGES = {
+    "🦠 العدوى والالتهاب":          "العدوى والالتهاب",
+    "🫘 وظائف الكلى":              "وظائف الكلى",
+    "🩸 فقر الدم وكريات الدم الحمر": "فقر الدم وكريات الدم الحمر",
+    "🛡️ خلايا الدم البيض والمناعة":  "خلايا الدم البيض والمناعة",
+    "🩹 الصفيحات الدموية":          "الصفيحات الدموية",
+    "❤️ التخثّر والقلب":            "التخثّر والقلب",
+    "⚡ الأملاح والمعادن":          "الأملاح والمعادن",
+    "🫁 وظائف الكبد":              "وظائف الكبد",
+    "🥩 البروتين والتغذية":         "البروتين والتغذية",
+    "🍬 السكّر":                   "السكّر",
+}
+PAGES = {**SPECIAL_PAGES, **CATEGORY_PAGES}
 
 # ── Helpers ────────────────────────────────────────────────────────────────────
 
@@ -871,11 +863,13 @@ def render_detail(tests, short_name, back_page="__overview__"):
 def render_category_page(tests, cat_key):
     page_name = next((k for k, v in PAGES.items() if v == cat_key), cat_key)
     st.title(page_name)
-    filtered = [t for t in tests if cat_filter(cat_key, t)]
+    filtered = [t for t in tests if t["sub_sub_category"] == cat_key]
     if not filtered:
         st.info("ماكو تحاليل مسجّلة بهذا القسم لحد الحين.")
         return
-    render_card_grid(filtered)
+    # most important (highest risk) test first
+    units = sorted(build_units(filtered), key=lambda u: -unit_risk(u))
+    render_units(units)
 
 
 def render_personal_reco(tests):
@@ -973,13 +967,23 @@ def render_general(tests):
 
 # ── Main ───────────────────────────────────────────────────────────────────────
 
-def render_nav(active):
-    chips = []
-    for label, key in PAGES.items():
+def render_nav(active, tests):
+    def chip(label, key):
         style = ("background:#1565c0;color:#fff;" if key == active
                  else "background:#e7eefc;color:#1565c0;")
-        chips.append(f'<a class="navchip" style="{style}" href="?page={quote(key)}" '
-                     f'target="_self">{label}</a>')
+        return (f'<a class="navchip" style="{style}" href="?page={quote(key)}" '
+                f'target="_self">{label}</a>')
+
+    # special pages first (fixed order)
+    chips = [chip(label, key) for label, key in SPECIAL_PAGES.items()]
+
+    # category pages ordered by current importance (highest test risk first)
+    def cat_importance(key):
+        risks = [risk_score(t) for t in tests if t["sub_sub_category"] == key]
+        return max(risks) if risks else 0
+    cats = sorted(CATEGORY_PAGES.items(), key=lambda kv: -cat_importance(kv[1]))
+    chips += [chip(label, key) for label, key in cats]
+
     st.markdown('<div style="margin-bottom:10px">' + "".join(chips) + "</div>",
                 unsafe_allow_html=True)
 
@@ -1000,7 +1004,7 @@ def main():
     page = qp.get("page", "__overview__")
     if page not in PAGES.values():
         page = "__overview__"
-    render_nav(page)
+    render_nav(page, tests)
     if st.button("🔄 حمّل آخر النتائج"):
         st.cache_data.clear()
         st.rerun()
