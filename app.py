@@ -2,7 +2,7 @@ import streamlit as st
 import json
 import pandas as pd
 import plotly.graph_objects as go
-from datetime import datetime
+from datetime import datetime, timedelta
 from urllib.parse import quote
 import re
 
@@ -567,21 +567,37 @@ def _chart_png(title, subtitle, unit, xs, ys, colors, lo, hi):
         showlegend=False, plot_bgcolor="white", paper_bgcolor="white",
         font=dict(size=15),
     )
-    # One labelled tick per reading; show the DAY (date), not the time.
+    # X: a major gridline + date label for EVERY day in the range (day, not time)
+    day0, dayN = min(xs), max(xs)
+    days, d = [], day0
+    while d <= dayN:
+        days.append(d); d += timedelta(days=1)
     fig.update_xaxes(
-        tickmode="array",
-        tickvals=list(xs),
-        ticktext=[d.strftime("%d/%m/%Y") for d in xs],
+        tickmode="array", tickvals=days,
+        ticktext=[x.strftime("%d/%m") for x in days],
+        range=[day0 - timedelta(hours=12), dayN + timedelta(hours=12)],
         tickangle=-45, ticks="outside", ticklen=6,
-        showgrid=True, gridcolor="#ddd", gridwidth=1,
+        showgrid=True, gridcolor="#cfcfcf", gridwidth=1,
     )
-    fig.update_yaxes(gridcolor="#eee")
+    # Y: spread numbered ticks across the actual values (+ normal band)
+    yvals = list(ys) + [b for b in (lo, hi) if b is not None]
+    ymn, ymx = min(yvals), max(yvals)
+    if ymx == ymn:
+        pad = abs(ymx) * 0.5 or 1
+        y0r, y1r = ymn - pad, ymx + pad
+    else:
+        pad = (ymx - ymn) * 0.12
+        y0r = 0 if (ymn >= 0 and ymn - pad < 0) else ymn - pad
+        y1r = ymx + pad
+    fig.update_yaxes(range=[y0r, y1r], nticks=7, gridcolor="#eee", zeroline=False)
     return fig.to_image(format="png", scale=2)
 
 
 def render_chart(t):
     recs  = t["records"]
-    pairs = [(parse_date(r["date"]), parse_result(r["result"])) for r in recs]
+    # Floor each date to the day (the day matters, not the time) so points sit on the day line.
+    pairs = [(parse_date(r["date"]).replace(hour=0, minute=0, second=0, microsecond=0),
+              parse_result(r["result"])) for r in recs]
     pairs = [(d, v) for d, v in pairs if v is not None]
     if not pairs:
         st.info("ماكو بيانات رقمية حتى نرسمها.")
@@ -619,9 +635,15 @@ def render_chart(t):
         fig.update_layout(title=f"{t['full_name']} — {subtitle}", height=340,
                           margin=dict(l=6, r=6, t=50, b=70), showlegend=False,
                           plot_bgcolor="white", paper_bgcolor="white")
-        fig.update_xaxes(tickmode="array", tickvals=list(xs),
-                         ticktext=[d.strftime("%d/%m/%Y") for d in xs],
-                         tickangle=-45, showgrid=True, gridcolor="#ddd")
+        _d0, _dN, _days = min(xs), max(xs), []
+        _d = _d0
+        while _d <= _dN:
+            _days.append(_d); _d += timedelta(days=1)
+        fig.update_xaxes(tickmode="array", tickvals=_days,
+                         ticktext=[x.strftime("%d/%m") for x in _days],
+                         range=[_d0 - timedelta(hours=12), _dN + timedelta(hours=12)],
+                         tickangle=-45, showgrid=True, gridcolor="#cfcfcf")
+        fig.update_yaxes(nticks=7, gridcolor="#eee")
         st.plotly_chart(fig, use_container_width=True, config={"staticPlot": True, "displayModeBar": False})
 
 
