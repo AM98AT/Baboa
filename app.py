@@ -223,7 +223,7 @@ STATUS_BG = {
 }
 STATUS_LABEL = {
     "normal":  "✅ طبيعي",
-    "low":     "⬇️ أوطى من الطبيعي",
+    "low":     "⬇️ أقل من الطبيعي",
     "high":    "⬆️ أعلى من الطبيعي",
     "unknown": "❓ بدون معدّل",
 }
@@ -298,7 +298,7 @@ def ratio_text(t):
     if status == "high" and hi:
         return f"أعلى من الطبيعي بنسبة {_fmt_pct((val - hi) / hi * 100)}%"
     if status == "low" and lo:
-        return f"أوطى من الطبيعي بنسبة {_fmt_pct((lo - val) / lo * 100)}%"
+        return f"أقل من الطبيعي بنسبة {_fmt_pct((lo - val) / lo * 100)}%"
     if status == "normal":
         return "ضمن المعدّل الطبيعي"
     return None
@@ -657,7 +657,7 @@ def render_chart(t):
         rng_ar    = f"المعدّل الطبيعي: {lo} - {hi} {t['unit']}"
     elif hi is not None:
         rng_latin = f"< {hi} {t['unit']}"
-        rng_ar    = f"المعدّل الطبيعي: أوطى من {hi} {t['unit']}"
+        rng_ar    = f"المعدّل الطبيعي: أقل من {hi} {t['unit']}"
     elif lo is not None:
         rng_latin = f"> {lo} {t['unit']}"
         rng_ar    = f"المعدّل الطبيعي: أعلى من {lo} {t['unit']}"
@@ -734,7 +734,7 @@ def render_detail(tests, short_name, back_page="__overview__"):
         if lo is not None and hi is not None:
             rng = f"{lo} – {hi} {t['unit']}"
         elif hi is not None:
-            rng = f"أوطى من {hi} {t['unit']}"
+            rng = f"أقل من {hi} {t['unit']}"
         else:
             rng = f"أعلى من {lo} {t['unit']}"
         st.info(f"**المعدّل الطبيعي:** {rng}")
