@@ -591,9 +591,21 @@ TR = {
 # ── Build ─────────────────────────────────────────────────────────────────────
 # Source of truth = info_en.json (English info + guidance, never edited by hand).
 # Output = info.json (Arabic info the website shows). results.json is NOT touched here.
+def load_overrides():
+    """Arabic enrichments from the 5 deep-research guides. Highest priority."""
+    import os
+    if not os.path.exists("enrichments.json"):
+        return {}
+    with open("enrichments.json", encoding="utf-8") as f:
+        raw = json.load(f)
+    return {sn: {k: v["ar"] for k, v in fields.items() if v.get("ar")}
+            for sn, fields in raw.items()}
+
+
 def main():
     with open("info_en.json", encoding="utf-8") as f:
         data = json.load(f)
+    overrides = load_overrides()
 
     # which strings are actually shared (appear >1)?
     counts = {}
@@ -618,6 +630,9 @@ def main():
                 ar = shared_ar(v)
             if ar is None:
                 ar = TR.get(sn, {}).get(k)
+            # deep-research enrichment wins over everything
+            if sn in overrides and k in overrides[sn]:
+                ar = overrides[sn][k]
             if ar:
                 fg[k] = ar
                 done += 1

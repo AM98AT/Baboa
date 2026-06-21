@@ -1,0 +1,156 @@
+{
+  "CRP": {
+    "warning_signs_tonight": {
+      "en": "Alert the nurse IMMEDIATELY for any of these: a fever of 38C (100.4F) or higher — OR an abnormally LOW body temperature below 36C (96.8F), which in an elderly patient is just as dangerous as a fever; sudden confusion or extreme sleepiness (delirium is often the FIRST and sometimes only early sign of infection in the elderly); rapid or difficult breathing; cold, clammy, or sweaty skin; or very little urine. Do not give fever medicine before calling the nurse. Source: cancer.gov, mskcc.org",
+      "ar": "خبّر الممرضة فوراً إذا صار أي من هذي: حرارة ٣٨ درجة أو أكثر — أو حرارة واطية بشكل غير طبيعي تحت ٣٦ درجة، اللي عند كبار السن خطيرة مثل الحرارة العالية تماماً؛ تشويش مفاجئ أو نعاس شديد (التشويش/الهذيان غالباً أول وأحياناً الوحيد علامة عدوى عند كبار السن)؛ تنفّس سريع أو صعب؛ جلد بارد أو متعرّق؛ أو بول قليل جداً. لا تنطيه دواء حرارة قبل ما تتصل بالممرضة. المصدر: cancer.gov و mskcc.org"
+    },
+    "critical_threshold": {
+      "en": "A fever of 38C or higher, OR a temperature below 36C, in a cancer patient = call the nurse immediately; fever medicine can hide a worsening infection. If he collapses, cannot breathe, or cannot be woken — in Duhok call ambulance 122 and go to Azadi Teaching Hospital or Duhok Oncology Hospital. Source: cancer.gov, mskcc.org",
+      "ar": "حرارة ٣٨ درجة أو أكثر، أو حرارة تحت ٣٦ درجة، عند مريض سرطان = اتصل بالممرضة فوراً؛ دواء الحرارة يكدر يخفي تدهور العدوى. إذا انهار أو ما يكدر يتنفّس أو ما يصحى — بدهوك اتصل بالإسعاف ١٢٢ وانقلوه لمستشفى آزادي التعليمي أو مستشفى دهوك للأورام. المصدر: cancer.gov و mskcc.org"
+    }
+  },
+  "PCT": {
+    "warning_signs_tonight": {
+      "en": "Alert the nurse IMMEDIATELY for: fever of 38C or higher, OR a low temperature below 36C; sudden confusion or extreme sleepiness; fast or difficult breathing; cold, clammy, sweaty skin; or very little urine. In the elderly, low body temperature and sudden confusion can be the main signs of worsening sepsis — do not wait for a high fever. Source: cancer.gov, mskcc.org",
+      "ar": "خبّر الممرضة فوراً إذا صار: حرارة ٣٨ درجة أو أكثر، أو حرارة واطية تحت ٣٦ درجة؛ تشويش مفاجئ أو نعاس شديد؛ تنفّس سريع أو صعب؛ جلد بارد متعرّق؛ أو بول قليل جداً. عند كبار السن، الحرارة الواطية والتشويش المفاجئ ممكن تكون العلامات الرئيسية لتدهور تسمّم الدم — لا تنتظرون حرارة عالية. المصدر: cancer.gov و mskcc.org"
+    },
+    "critical_threshold": {
+      "en": "Fever of 38C or higher, OR temperature below 36C, in a cancer patient = emergency, call the nurse now. If he is gasping, very confused, cold and clammy, or barely producing urine — in Duhok call ambulance 122 and go to Azadi Teaching Hospital or Duhok Oncology Hospital. Source: cancer.gov, mskcc.org",
+      "ar": "حرارة ٣٨ درجة أو أكثر، أو حرارة تحت ٣٦ درجة، عند مريض سرطان = حالة طارئة، اتصل بالممرضة هسّه. إذا صار يلهث أو مشوّش هواية أو بارد ومتعرّق أو بوله قليل جداً — بدهوك اتصل بالإسعاف ١٢٢ وانقلوه لمستشفى آزادي التعليمي أو مستشفى دهوك للأورام. المصدر: cancer.gov و mskcc.org"
+    }
+  },
+  "WBC": {
+    "warning_signs_tonight": {
+      "en": "A fever of 38C (100.4F) or higher is an emergency in a cancer patient — but so is an abnormally LOW temperature below 36C, and sudden confusion or extreme sleepiness, which are often the first signs of infection in the elderly. Alert the nurse IMMEDIATELY. Do NOT give paracetamol or ibuprofen first without calling — it can hide a dangerous infection. Source: cancer.gov, mskcc.org",
+      "ar": "حرارة ٣٨ درجة أو أكثر حالة طارئة عند مريض السرطان — بس نفس الشي الحرارة الواطية بشكل غير طبيعي تحت ٣٦ درجة، والتشويش المفاجئ أو النعاس الشديد، اللي غالباً أول علامات العدوى عند كبار السن. خبّر الممرضة فوراً. لا تنطيه بنادول أو بروفين الأول بدون ما تتصل — يكدر يخفي عدوى خطيرة. المصدر: cancer.gov و mskcc.org"
+    },
+    "immune_and_hygiene": {
+      "en": "His immune system is weak, so prevent infection aggressively: everyone washes hands with soap for 20 seconds before entering; no sick visitors and no one who recently had a live vaccine; give him his OWN towel, cup, and utensils (do not share); wipe high-touch surfaces (door handles, phone, remote, bed rails) daily; do NOT bring fresh flowers, plants, or soil into the room (they carry fungus that can cause pneumonia); cook all meat, fish, and eggs thoroughly and avoid buffets, salad bars, and raw or unpasteurized food; for mouth care use a soft toothbrush and a rinse of 1 teaspoon baking soda + 1 teaspoon salt in 4 cups warm water — never an alcohol mouthwash. Source: cancer.gov, mskcc.org",
+      "ar": "مناعته ضعيفة، فامنعوا العدوى بقوة: الكل يغسل إيديه بالصابون ٢٠ ثانية قبل الدخول؛ ماكو زوّار مرضى ولا أي شخص أخذ مؤخراً لقاح حي؛ انطوه منشفة وكوب وملاعق خاصة بيه (لا تشاركون)؛ امسحوا الأسطح كثيرة اللمس (مقابض الأبواب، التلفون، الريموت، حواف السرير) كل يوم؛ لا تجيبون ورد أو نباتات أو تراب للغرفة (تحمل فطريات تسبّب ذات الرئة)؛ اطبخوا اللحم والسمك والبيض زين وتجنّبوا البوفيهات وسلطات المطاعم والأكل الني أو غير المبستر؛ للعناية بالفم استعملوا فرشاة ناعمة وغرغرة من معلقة صودا خبز + معلقة ملح بأربع أكواب ماي دافي — ولا تستعملون غسول فم فيه كحول. المصدر: cancer.gov و mskcc.org"
+    }
+  },
+  "Neutrophils (Absolute)": {
+    "warning_signs_tonight": {
+      "en": "Fever of 38C (100.4F) or higher = call the nurse immediately. In the elderly, watch equally for a LOW temperature below 36C and for sudden confusion or extreme sleepiness — these can be the first sign of severe infection. Do not give fever medicine first. Source: cancer.gov, mskcc.org",
+      "ar": "حرارة ٣٨ درجة أو أكثر = اتصل بالممرضة فوراً. عند كبار السن، انتبهوا بنفس القدر للحرارة الواطية تحت ٣٦ درجة وللتشويش المفاجئ أو النعاس الشديد — هذي ممكن تكون أول علامة عدوى شديدة. لا تنطيه دواء حرارة الأول. المصدر: cancer.gov و mskcc.org"
+    }
+  },
+  "Neutrophils (Relative)": {
+    "warning_signs_tonight": {
+      "en": "Fever of 38C or higher = call the nurse immediately. Also watch for a LOW temperature below 36C and for sudden confusion — in the elderly these can be the main early signs of infection. Do not give fever medicine first. Source: cancer.gov, mskcc.org",
+      "ar": "حرارة ٣٨ درجة أو أكثر = اتصل بالممرضة فوراً. وانتبهوا بعد للحرارة الواطية تحت ٣٦ درجة وللتشويش المفاجئ — عند كبار السن هذي ممكن تكون أهم علامات العدوى المبكّرة. لا تنطيه دواء حرارة الأول. المصدر: cancer.gov و mskcc.org"
+    }
+  },
+  "S. Creatinine": {
+    "foods_to_avoid": {
+      "en": "Do NOT give NSAID painkillers — ibuprofen (Advil), naproxen (Aleve), celecoxib, or high-dose aspirin. These are the number one preventable cause of sudden kidney failure and also raise the risk of stomach and colon bleeding. Avoid cold/sinus pills with pseudoephedrine. For mild pain, paracetamol (acetaminophen) is usually safer, but only at the dose the doctor allows. Before any CT scan, remind the team about his kidneys — the contrast dye can harm them. Avoid high-potassium foods (banana, orange, potato) unless the doctor approves. Source: mskcc.org, cancer.gov",
+      "ar": "لا تنطيه مسكّنات من نوع NSAID — بروفين (Advil)، نابروكسين (Aleve)، سيليكوكسيب، أو أسبرين بجرعة عالية. هذي السبب الأول للفشل الكلوي المفاجئ اللي ممكن نتجنّبه، وبعد تزيد خطر نزيف المعدة والقولون. تجنّبوا أدوية الزكام اللي بيها سودوإفدرين. للوجع الخفيف، البنادول (باراسيتامول) عادةً أأمن، بس بالجرعة اللي يسمحها الطبيب بس. قبل أي أشعة مقطعية (CT)، ذكّروا الفريق بكليته — صبغة الأشعة تكدر تضرّها. تجنّبوا الأكلات العالية بالبوتاسيوم (موز، برتقال، بطاطة) إلا إذا وافق الطبيب. المصدر: mskcc.org و cancer.gov"
+    },
+    "warning_signs_tonight": {
+      "en": "Alert the nurse immediately if: he passes very little or no urine for 8 hours; he gains 1 to 1.5 kg (2-3 lb) in a single day or develops new swelling in the legs or ankles (press the shin 5 seconds — if a dent stays, that is fluid); he cannot breathe lying flat, his chest sounds wet/rattly, or he coughs pink frothy spit (fluid in the lungs — emergency); or he becomes confused. Source: cancer.gov, mskcc.org",
+      "ar": "خبّر الممرضة فوراً إذا: طلّع بول قليل جداً أو ماكو بول لمدة ٨ ساعات؛ زاد وزنه ١ لـ١٫٥ كيلو بيوم واحد أو صار تورّم جديد بالساقين أو الكواحل (اضغط على عظم الساق ٥ ثواني — إذا ضل أثر غمازة، هذا سوائل)؛ ما يكدر يتنفّس وهو نايم على ظهره، أو صدره يطكطك، أو يسعل بلغم وردي رغوي (سوائل بالرئة — حالة طارئة)؛ أو صار مشوّش. المصدر: cancer.gov و mskcc.org"
+    }
+  },
+  "S. Urea": {
+    "meaning_high_simple": {
+      "en": "High urea means the kidneys are not clearing protein waste well. Urea comes from the breakdown of protein. A sudden big spike can mean dehydration OR hidden bleeding inside the gut from the colon tumor (digested blood is absorbed as protein and turned into urea). His level has been slowly improving, which is a good sign. Source: testing.com, mskcc.org",
+      "ar": "اليوريا العالية تعني الكلى ما تشيل فضلات البروتين زين. اليوريا تجي من تكسّر البروتين. القفزة المفاجئة الكبيرة ممكن تعني جفاف أو نزيف مخفي داخل الأمعاء من ورم القولون (الدم المهضوم ينمتصّ كبروتين ويتحوّل ليوريا). مستواه يتحسّن بالتدريج، وهاي علامة زينة. المصدر: testing.com و mskcc.org"
+    },
+    "foods_to_avoid": {
+      "en": "Do NOT give NSAID painkillers (ibuprofen, naproxen, high-dose aspirin) — they damage the kidneys and can cause gut bleeding. Avoid pseudoephedrine cold/sinus pills. Very heavy red-meat meals raise urea further, so keep protein high-quality but measured (eggs, poultry, fish) as the dietitian advises. Avoid high-potassium foods unless the doctor approves. Source: mskcc.org, cancer.gov",
+      "ar": "لا تنطيه مسكّنات NSAID (بروفين، نابروكسين، أسبرين بجرعة عالية) — يضرّون الكلى ويسبّبون نزيف الأمعاء. تجنّبوا أدوية الزكام اللي بيها سودوإفدرين. وجبات اللحم الأحمر الثقيلة هواية ترفع اليوريا أكثر، فخلّوا البروتين عالي الجودة بس بكمية محسوبة (بيض، دجاج، سمك) حسب نصيحة أخصائي التغذية. تجنّبوا الأكلات العالية بالبوتاسيوم إلا إذا وافق الطبيب. المصدر: mskcc.org و cancer.gov"
+    }
+  },
+  "Na": {
+    "hydration_guidance": {
+      "en": "This is the most important and most counter-intuitive point: with low sodium, do NOT give him plain water freely. Plain water dilutes the blood further and can cause dangerous brain swelling (confusion, seizures). Do not leave a water pitcher at the bedside. Follow the doctor's fluid limit exactly — it includes soup, tea, juice, ice cream, and ice chips. For thirst or dry mouth, use ice chips, sugar-free sour candy, dry-mouth swabs, and lip balm. NEVER use a salt substitute (it is potassium and can be deadly with kidney problems). Source: mskcc.org, cancer.gov",
+      "ar": "هاي أهم نقطة وأكثر وحدة عكس المتوقّع: وية الصوديوم الواطي، لا تنطيه ماي صافي بكثرة. الماي الصافي يخفّف الدم أكثر ويكدر يسبّب انتفاخ خطير بالدماغ (تشويش، تشنّجات). لا تخلّون إبريق ماي يمّ السرير. اتبعوا حدّ السوائل اللي حدّده الطبيب بالضبط — يشمل الشوربة والچاي والعصير والآيس كريم وثلج المصّ. للعطش وجفاف الفم استعملوا ثلج مصّ، حلوى حامضة بدون سكّر، مسحات للفم الناشف، ومرطّب شفايف. لا تستعملون 'بديل الملح' أبداً (هو بوتاسيوم ويكدر يكون قاتل وية مشاكل الكلى). المصدر: mskcc.org و cancer.gov"
+    },
+    "warning_signs_tonight": {
+      "en": "Alert the nurse IMMEDIATELY if he suddenly becomes more confused, does not recognize family, has a seizure (shaking/convulsions or blank staring), has uncontrollable hiccups, muscle twitching, or cannot be woken normally. Very low sodium can cause seizures and coma. In Duhok, for a seizure or unresponsiveness call ambulance 122 and go to Azadi Teaching Hospital. Source: mskcc.org, cancer.gov",
+      "ar": "خبّر الممرضة فوراً إذا صار مشوّش أكثر فجأة، ما يعرف أهله، صار عنده تشنّج (رجفة/اختلاجات أو تحديق فارغ)، حازوقة (فُواق) ما توكّف، رفّة عضلات، أو ما يصحى بشكل طبيعي. الصوديوم الواطي جداً يكدر يسبّب تشنّجات وغيبوبة. بدهوك، إذا صار تشنّج أو ما يستجيب اتصل بالإسعاف ١٢٢ وانقلوه لمستشفى آزادي التعليمي. المصدر: mskcc.org و cancer.gov"
+    }
+  },
+  "Hb": {
+    "supplements_safety": {
+      "en": "Do NOT give over-the-counter iron pills. In cancer with inflammation the body blocks iron absorption (a hormone called hepcidin), so the pills do not raise his blood — but they cause severe constipation, which is dangerous with a colon tumor (risk of bowel blockage), AND they turn the stool black, hiding the signs of internal bleeding. Iron should only be given by IV if the doctor prescribes it after tests. No herbal supplements or vitamins without the doctor. Source: cancer.org, mskcc.org",
+      "ar": "لا تنطيه حبوب حديد من الصيدلية بدون وصفة. وية السرطان والالتهاب، الجسم يمنع امتصاص الحديد (هرمون اسمه هيبسيدين)، فالحبوب ما ترفع دمّه — بس تسبّب إمساك شديد، وهذا خطير وية ورم القولون (خطر انسداد الأمعاء)، وبعد تخلّي البراز أسود وتخفي علامات النزيف الداخلي. الحديد لازم ينطى بس بالوريد إذا وصفه الطبيب بعد التحاليل. ماكو أعشاب أو فيتامينات بدون الطبيب. المصدر: cancer.org و mskcc.org"
+    },
+    "symptoms_to_watch": {
+      "en": "Extreme tiredness, shortness of breath even lying still, pale or yellowish skin, dizziness, fast heartbeat, headaches, fainting. Also watch his stool closely: bright red blood, or black sticky tar-like stool, means the tumor may be bleeding — report it. Source: cancer.gov, cancer.org",
+      "ar": "تعب شديد، ضيق نفس حتى وهو نايم، جلد شاحب أو مصفرّ، دوخة، خفقان سريع، صداع، إغماء. وبعد راقبوا برازه: دم أحمر فاتح، أو براز أسود لزج مثل القطران، يعني يمكن الورم ينزف — خبّروا الطبيب. المصدر: cancer.gov و cancer.org"
+    },
+    "treatment_impact": {
+      "en": "Very low hemoglobin is a common reason chemo is delayed. Doctors usually transfuse blood when hemoglobin drops below about 8, or sooner if he has chest pain, breathlessness at rest, or fainting. The blood is carefully matched first (this takes 2-4 hours) and given slowly over 2-4 hours with close monitoring, especially in an older patient. Source: cancer.org, mskcc.org",
+      "ar": "الهيموغلوبين الواطي جداً سبب شائع لتأجيل الكيمياوي. عادةً الأطباء ينقلون دم لمن ينزل الهيموغلوبين تحت ٨ تقريباً، أو أبكر إذا صار عنده وجع صدر أو ضيق نفس وهو ساكت أو إغماء. الدم يتطابق بعناية الأول (ياخذ ٢-٤ ساعات) وينطى ببطء على مدى ٢-٤ ساعات وية مراقبة دقيقة، خاصة عند المريض الكبير. المصدر: cancer.org و mskcc.org"
+    }
+  },
+  "RBC": {
+    "supplements_safety": {
+      "en": "Do NOT give over-the-counter iron pills — with inflammation the iron is not absorbed, it causes dangerous constipation with the colon tumor, and it blackens the stool, hiding internal bleeding. Iron only by IV if the doctor prescribes. No supplements without the doctor. Source: cancer.org, mskcc.org",
+      "ar": "لا تنطيه حبوب حديد من الصيدلية بدون وصفة — وية الالتهاب ما ينمتصّ الحديد، ويسبّب إمساك خطير وية ورم القولون ويخفي النزيف الداخلي بتسويد البراز. الحديد بس بالوريد إذا وصفه الطبيب. ماكو مكمّلات بدون الطبيب. المصدر: cancer.org و mskcc.org"
+    }
+  },
+  "PCV": {
+    "supplements_safety": {
+      "en": "Do NOT give over-the-counter iron pills — with inflammation the iron is not absorbed, it causes dangerous constipation with the colon tumor, and it blackens the stool, hiding internal bleeding. Iron only by IV if the doctor prescribes. No supplements without the doctor. Source: cancer.org, mskcc.org",
+      "ar": "لا تنطيه حبوب حديد من الصيدلية بدون وصفة — وية الالتهاب ما ينمتصّ الحديد، ويسبّب إمساك خطير وية ورم القولون ويخفي النزيف الداخلي بتسويد البراز. الحديد بس بالوريد إذا وصفه الطبيب. ماكو مكمّلات بدون الطبيب. المصدر: cancer.org و mskcc.org"
+    }
+  },
+  "Albumin": {
+    "foods_to_give": {
+      "en": "He urgently needs high protein and calories, but because of the colon tumor the food must be LOW-FIBER (low-residue) to avoid a bowel blockage. GIVE: eggs, soft well-cooked chicken or flaky fish, tofu, smooth (not crunchy) peanut butter, smooth yogurt or cottage cheese, white bread, white rice, peeled mashed potato. Add fortified milk (stir 1 cup powdered milk into 4 cups whole milk) and high-protein shakes (Ensure/Boost) between meals. Offer 5-6 small meals; give drinks between meals, not during. AVOID raw fruit/vegetables, whole grains, nuts, seeds, and beans (they can block a narrowed colon). Source: mskcc.org, cancer.gov",
+      "ar": "يحتاج بروتين وسعرات عالية بسرعة، بس بسبب ورم القولون لازم الأكل يكون قليل الألياف حتى ما يصير انسداد أمعاء. انطوه: بيض، دجاج مسلوق طري أو سمك طري، توفو، زبدة فستق ناعمة (مو مجروشة)، لبن (روب) ناعم أو جبن قريش، خبز أبيض، رز أبيض، بطاطة مهروسة مقشّرة. ضيفوا حليب مدعّم (حلّوا كوب حليب بودرة بأربع أكواب حليب كامل الدسم) ومشروبات بروتين عالية (Ensure/Boost) بين الوجبات. انطوه ٥-٦ وجبات صغيرة؛ والمشروبات بين الوجبات مو وياها. تجنّبوا الفواكه والخضار النيّة والحبوب الكاملة والمكسّرات والبذور والفاصوليا (تكدر تسدّ القولون الضيّق). المصدر: mskcc.org و cancer.gov"
+    },
+    "symptoms_to_watch": {
+      "en": "Low albumin lets fluid leak out of the blood vessels: watch for swelling in the legs/ankles (press 5 seconds — a lasting dent means fluid) and a swelling belly. Weigh him every morning; a gain of about 1 kg (2-3 lb) in a day is fluid, not fat — report it. IMPORTANT: a belly that swells slowly and feels soft is usually fluid; but a swelling belly WITH sudden severe cramping pain, vomiting, and no gas or stool is a bowel obstruction — an emergency. Source: cancer.gov, cancer.org",
+      "ar": "الألبومين الواطي يخلّي السوائل تطلع برّه الأوعية: راقبوا تورّم الساقين والكواحل (اضغط ٥ ثواني — أثر غمازة يبقى يعني سوائل) وانتفاخ البطن. وزنوه كل صباح؛ زيادة كيلو تقريباً بيوم واحد سوائل مو دهن — خبّروا الطبيب. مهم: البطن اللي ينتفخ بالتدريج وطري عادةً سوائل؛ بس انتفاخ البطن وية وجع تشنّجي شديد مفاجئ وتقيّؤ وانقطاع الغازات والبراز هو انسداد أمعاء — حالة طارئة. المصدر: cancer.gov و cancer.org"
+    }
+  },
+  "D-dimer": {
+    "bedridden_risks": {
+      "en": "Being bedridden is a major clot risk. Do NOT massage his legs (it can dislodge a clot). Every 1-2 hours while he is awake, help him do gentle in-bed exercises: ankle pumps (point toes up then down like pressing a pedal), ankle circles, thigh squeezes, buttock squeezes, and heel slides — about 10 of each. Raise his lower legs on a pillow 10-15 cm (above heart level), keep his legs uncrossed, and have him take 3 slow deep belly breaths every hour. Ask the nurse about compression stockings. Check both legs daily — one leg suddenly swollen, red, warm, or painful may be a clot; tell the nurse. Source: mskcc.org, cancer.org",
+      "ar": "كونه طريح الفراش خطر كبير للجلطات. لا تدلّكوا ساقيه (يكدر يحرّك الجلطة). كل ١-٢ ساعة وهو صاحي، ساعدوه يسوّي تمارين خفيفة بالفراش: ضخّ الكاحل (وجّه أصابع القدم فوق وبعدين تحت مثل ضغط الدعسة)، تدوير الكاحل، عصر عضلات الفخذ، عصر عضلات المؤخرة، وتزحيف الكعب — تقريباً ١٠ مرّات لكل وحدة. ارفعوا ساقيه على مخدّة ١٠-١٥ سم (فوق مستوى القلب)، خلّوا الساقين مو متصالبة، وخلّوه ياخذ ٣ أنفاس بطن عميقة بطيئة كل ساعة. اسألوا الممرضة عن جوارب الضغط. افحصوا الساقين كل يوم — ساق وحدة فجأة متورّمة أو حمرا أو سخنة أو موجوعة يمكن جلطة؛ خبّروا الممرضة. المصدر: mskcc.org و cancer.org"
+    },
+    "critical_threshold": {
+      "en": "Any of these = emergency: sudden shortness of breath, chest pain that worsens with breathing, coughing up blood, a racing heart, fainting, or sudden one-sided leg swelling and pain. Do not wait. In Duhok call ambulance 122 (do not drive him yourself) and go to Azadi Teaching Hospital; bring his medication list, especially any blood thinner. Source: cancer.net, mskcc.org",
+      "ar": "أي من هذي = حالة طارئة: ضيق نفس مفاجئ، وجع صدر يزيد وية التنفّس، سعلة وية دم، خفقان سريع، إغماء، أو تورّم ووجع مفاجئ بساق وحدة. لا تنتظرون. بدهوك اتصلوا بالإسعاف ١٢٢ (لا تنقلوه بسيارتكم) وانقلوه لمستشفى آزادي التعليمي؛ وجيبوا قائمة أدويته، خاصة أي مميّع دم. المصدر: cancer.net و mskcc.org"
+    }
+  },
+  "AST (GOT)": {
+    "meaning_high_simple": {
+      "en": "AST is slightly above normal. AST is found in muscle as well as in the liver. Because his liver-specific tests (ALT, ALP, bilirubin) are all normal, this mild rise is most likely coming from muscle wasting (the body breaking down muscle), NOT from liver damage or cancer spread. It is generally not a cause for panic; doctors worry mainly when AST is 2-3 times above normal. Source: cancer.org, cancer.gov",
+      "ar": "الـAST شوية فوق الطبيعي. الـAST موجود بالعضلات مثل ما هو بالكبد. وبما إن تحاليل الكبد الخاصة (ALT، ALP، البيليروبين) كلها طبيعية، هذا الارتفاع البسيط غالباً جاي من تكسّر العضلات (الجسم يفكّك العضل)، مو من ضرر الكبد أو انتشار السرطان. عادةً مو داعي للخوف؛ الأطباء يقلقون أساساً لمن الـAST يصير ٢-٣ مرّات فوق الطبيعي. المصدر: cancer.org و cancer.gov"
+    }
+  },
+  "HbA1c": {
+    "treatment_impact": {
+      "en": "Important: do NOT put him on a strict diabetic diet or cut his food to lower this number. He has muscle wasting; starving him to fix a mildly high sugar would speed up weight and muscle loss, which is more dangerous than a slightly high sugar. A relaxed sugar target is safer for him. Do NOT increase his diabetes medicine on your own — in a frail elderly patient, low blood sugar (which he may not even feel) can cause fainting and a deadly fall. Steroids given with chemo also push sugar up. Let the oncology team manage it. Source: mskcc.org, cancer.gov",
+      "ar": "مهم: لا تحطّونه على حمية سكري صارمة ولا تقلّلون أكله حتى تنزّلون هذا الرقم. عنده تكسّر عضلات؛ تجويعه حتى تصلّحون سكّر مرتفع شوية راح يسرّع خسارة الوزن والعضل، وهذا أخطر من السكّر المرتفع شوية. هدف سكّر مرتاح أأمن إله. لا تزيدون دواء السكّر من راسكم — عند مريض كبير وضعيف، السكّر الواطي (اللي يمكن ما يحسّه) يكدر يسبّب إغماء وسقطة قاتلة. الستيرويدات اللي تنطى وية الكيمياوي بعد ترفع السكّر. خلّوا فريق الأورام يديره. المصدر: mskcc.org و cancer.gov"
+    },
+    "warning_signs_tonight": {
+      "en": "Alert the team if blood sugar drops below 70 (shaky, sweaty, confused) or rises above 400 (very thirsty, confused, urinating a lot). A sweet, fruity smell on his breath together with sudden confusion is a serious emergency (DKA) — get help immediately. Source: mskcc.org",
+      "ar": "خبّروا الفريق إذا نزل السكّر تحت ٧٠ (رجفة، تعرّق، تشويش) أو صعد فوق ٤٠٠ (عطش شديد، تشويش، تبوّل كثير). ريحة حلوة مثل الفواكه بنفَسه وية تشويش مفاجئ حالة طارئة خطيرة (حماض سكّري) — دوّروا مساعدة فوراً. المصدر: mskcc.org"
+    }
+  },
+  "Ionized Ca": {
+    "meaning_low_simple": {
+      "en": "Calcium travels in the blood two ways: bound to protein (albumin), and free (ionized). Because his albumin is very low, his TOTAL calcium reads falsely low — that part is just the missing carrier protein. But ionized calcium measures the active, free calcium directly, and his is truly low. So this is a real calcium deficiency, not just a lab illusion, and it needs the doctor's treatment. Source: cancer.org, mskcc.org",
+      "ar": "الكالسيوم يسافر بالدم بطريقتين: مرتبط بالبروتين (الألبومين)، وحرّ (متأيّن). بما إن ألبومينه واطي جداً، الكالسيوم الكلّي يطلع واطي بشكل كاذب — هذا الجزء بس بسبب نقص البروتين الناقل. بس الكالسيوم المتأيّن يقيس الكالسيوم الحرّ النشط مباشرة، وهذا عنده واطي حقيقي. يعني هذا نقص كالسيوم حقيقي مو بس خداع تحليل، ويحتاج علاج الطبيب. المصدر: cancer.org و mskcc.org"
+    },
+    "supplements_safety": {
+      "en": "Even though his active calcium is low, do NOT buy over-the-counter calcium pills. Too much calcium can cause kidney stones (hard on his fragile kidneys) or swing him to dangerously HIGH calcium (constipation, confusion, heart rhythm problems). Calcium pills also bind his other medicines in the gut and stop them working. He likely also needs vitamin D to absorb calcium — only the doctor should set the dose and timing. Source: cancer.org, mskcc.org",
+      "ar": "حتى لو الكالسيوم النشط عنده واطي، لا تشترون حبوب كالسيوم من الصيدلية. الكالسيوم الزياد يكدر يسبّب حصى كلى (صعب على كليته الضعيفة) أو يقلبه لكالسيوم عالي خطير (إمساك، تشويش، مشاكل نظم القلب). وحبوب الكالسيوم بعد ترتبط بأدويته الثانية بالمعدة وتوكّف مفعولها. غالباً يحتاج فيتامين D حتى يمتصّ الكالسيوم — بس الطبيب يحدّد الجرعة والوقت. المصدر: cancer.org و mskcc.org"
+    }
+  },
+  "S. Calcium": {
+    "supplements_safety": {
+      "en": "Do NOT buy over-the-counter calcium pills. His total calcium can read low partly because his blood protein (albumin) is low, not always because true calcium is low. Too much calcium can cause kidney stones or a dangerous swing to HIGH calcium (constipation, confusion, heart rhythm problems), and it blocks his other medicines from being absorbed. Any calcium or vitamin D must be set by the doctor. Source: cancer.org, mskcc.org",
+      "ar": "لا تشترون حبوب كالسيوم من الصيدلية. الكالسيوم الكلّي عنده يطلع واطي جزئياً بسبب إن بروتين الدم (الألبومين) واطي، مو دائماً بسبب نقص كالسيوم حقيقي. الكالسيوم الزياد يكدر يسبّب حصى كلى أو قفزة خطيرة لكالسيوم عالي (إمساك، تشويش، مشاكل نظم القلب)، ويمنع امتصاص أدويته الثانية. أي كالسيوم أو فيتامين D لازم يحدّده الطبيب. المصدر: cancer.org و mskcc.org"
+    },
+    "symptoms_to_watch": {
+      "en": "Watch for tingling or numbness around the lips, fingers, and toes (often the first sign), muscle cramps or twitching, and a fluttering or irregular heartbeat. Report these to the nurse. Source: cancer.org, mskcc.org",
+      "ar": "راقبوا تنميل أو خدر حول الشفايف والأصابع وأصابع القدم (غالباً أول علامة)، شدّ أو رفّة عضلات، وخفقان أو نبض غير منتظم. خبّروا الممرضة. المصدر: cancer.org و mskcc.org"
+    }
+  }
+}
