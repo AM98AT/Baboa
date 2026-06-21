@@ -30,7 +30,9 @@ def val_str(t):
 
 
 def days_ago_text(t):
-    n = (datetime.now() - parse_date(t["latest"]["date"])).days
+    # Calendar-day difference (ignore the time of day): once the date flips to the
+    # next day it counts as 1, regardless of the hour.
+    n = (datetime.now().date() - parse_date(t["latest"]["date"]).date()).days
     if n <= 0:  return "انفحص اليوم"
     if n == 1:  return "قبل يوم واحد"
     if n == 2:  return "قبل يومين"
