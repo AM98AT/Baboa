@@ -148,4 +148,4 @@ if files:
         if created:
             st.warning("🆕 هذي تحاليل جديدة انضافت — انسخها وابعثها للمساعد حتى يسوي بحث ويضيف معلوماتها:")
             st.code("\n".join(f"#{c['id']} {c['test']} ({c.get('unit','')})" for c in created))
-        st.info("بعدها شغّل **publish.bat** حتى ترفع التحديث للموقع.")
+        st.info("بعدها ادفع (Push) التغييرات للـ GitHub حتى يتحدث الموقع تلقائياً.")

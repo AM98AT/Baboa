@@ -14,8 +14,7 @@ def load_json_safe(path):
     except json.JSONDecodeError as e:
         st.error(
             f"⚠️ أكو غلطة كتابة بالملف **{path}** بالسطر رقم **{e.lineno}**.\n\n"
-            f"غالباً فاصلة (،) أو قوس ناقص أو زايد. صلّح السطر وخزّن الملف ثم اضغط "
-            f"**🔄 حمّل آخر النتائج**.\n\nتفاصيل: {e.msg}"
+            f"غالباً فاصلة (،) أو قوس ناقص أو زايد. صلّح السطر وخزّن الملف.\n\nتفاصيل: {e.msg}"
         )
         st.stop()
     except FileNotFoundError:

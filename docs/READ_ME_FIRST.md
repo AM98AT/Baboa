@@ -30,6 +30,6 @@ The website looks up the `id` from `results.json` in `info.json` and shows them 
    { "date": "21-06-2026 10:00:00", "result": 11.2, "lab_name": "Omed Oncology Teaching Hospital", "normal_range": "13 - 17" }
    ```
 3. Save the file.
-4. Double-click **`publish.bat`** → the website updates in about a minute.
+4. **Push** the change to GitHub (GitHub Desktop → Commit → Push) → the website updates in about a minute, on its own.
 
-> ⚠️ Keep the `id` numbers the same in both files. To add a brand-new test, give it a new `id` in **both** `results.json` and `info_en.json`, then run `publish.bat`.
+> ⚠️ Keep the `id` numbers the same in both files. To add a brand-new test, give it a new `id` in **both** `results.json` and `info_en.json`, then push.

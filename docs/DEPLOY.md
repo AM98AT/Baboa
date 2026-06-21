@@ -59,17 +59,14 @@ Your project is now safely on GitHub (private).
 ## PART 3 — Your daily update (the only thing you do from now on)
 
 1. Edit `results.json` with the new test results (see `READ_ME_FIRST.md`).
-2. Double-click **`publish.bat`** in this folder.
+2. **Push** with GitHub Desktop: Commit to main → **Push origin**.
 3. Wait about 1 minute — the website updates by itself. Family just refreshes their phone.
 
 That's it. No commands, no re-deploying.
 
-> First time you run `publish.bat` it may ask you to sign in to GitHub — say yes once,
-> and it remembers you afterward.
-
 ---
 
 ## If something breaks
-- **publish.bat says "nothing to commit":** you didn't change results.json, or you already published it.
+- **Nothing changed on the website:** make sure you actually committed *and* pushed in GitHub Desktop.
 - **Website didn't update:** open the app's **Manage app → Reboot**.
 - **Family can't open it:** check their email is added under **Settings → Sharing**.

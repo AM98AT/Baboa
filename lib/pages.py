@@ -410,10 +410,6 @@ def main():
     if page not in PAGES.values():
         page = "__overview__"
     render_nav(page, tests)
-    if st.button("🔄 حمّل آخر النتائج"):
-        st.cache_data.clear()
-        st.rerun()
-
     if page == "__overview__":
         render_overview(tests)
     elif page == "__today__":
