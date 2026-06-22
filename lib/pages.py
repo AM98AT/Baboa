@@ -84,7 +84,7 @@ def render_detail(tests, short_name, back_page="__overview__"):
     fg     = t.get("family_guidance", {})
 
     st.title(t["full_name"])
-    st.caption(f"الرمز: **{t['short_name']}**  ·  {t['sub_sub_category']}")
+    st.caption(f"الرمز: **{t['display_name']}**  ·  {t['sub_sub_category']}")
 
     # Big result card (full width, stacks on phone)
     st.markdown(f"""

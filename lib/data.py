@@ -59,6 +59,7 @@ def load_data():
 
         processed.append({
             "short_name":       info.get("short_name", r.get("test", "")),
+            "display_name":     info.get("display_name") or info.get("short_name", r.get("test", "")),
             "full_name":        info.get("full_name", r.get("test", "")),
             "family_guidance":  info.get("family_guidance", {}),
             "category":         info.get("category", ""),

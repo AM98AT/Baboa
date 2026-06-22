@@ -26,7 +26,8 @@
             "oncologist_questions": "Ask: 'Is his hemoglobin low enough to need a blood transfusion now?' and 'What hemoglobin level would make you decide to transfuse?' and 'Is this anemia caused by the cancer, the treatment, or blood loss?' Source: cancer.gov (Anemia — NCI)",
             "treatment_impact": "Very low hemoglobin is a common reason chemo is delayed. Doctors usually transfuse blood when hemoglobin drops below about 8, or sooner if he has chest pain, breathlessness at rest, or fainting. The blood is carefully matched first (this takes 2-4 hours) and given slowly over 2-4 hours with close monitoring, especially in an older patient. Source: cancer.org, mskcc.org",
             "palliative_care": "If his hemoglobin continues to fall despite transfusions and his overall condition is declining, this may be a time to discuss comfort-focused care goals with the medical team. Ask the doctor: 'At what point would transfusions no longer help him feel better?' Source: cancer.gov (End-of-Life Care for People Who Have Cancer — NCI)"
-        }
+        },
+        "display_name": "Hb/HGB"
     },
     {
         "id": 2,
@@ -55,7 +56,8 @@
             "oncologist_questions": "Ask about transfusion threshold. Same questions as for hemoglobin. Source: cancer.gov (Anemia — NCI)",
             "treatment_impact": "Low PCV (anemia) is a common reason chemotherapy is delayed. Source: cancer.gov (Anemia — NCI)",
             "palliative_care": ""
-        }
+        },
+        "display_name": "PCV/HCT"
     },
     {
         "id": 3,
@@ -200,7 +202,8 @@
             "oncologist_questions": "Ask: 'What does the RDW trend tell you about the type of anemia he has?'",
             "treatment_impact": "Red-cell results are often monitored during chemotherapy, which can affect blood cell counts. Source: testing.com",
             "palliative_care": ""
-        }
+        },
+        "display_name": "RDW(-CV)"
     },
     {
         "id": 8,
@@ -229,7 +232,8 @@
             "oncologist_questions": "Ask: 'Is his platelet count stable or dropping?' and 'What level would trigger a platelet transfusion for him?' and 'Are any of his current medications reducing his platelet count?' Source: cancer.org (Low Platelet Count)",
             "treatment_impact": "Platelet counts below a safe threshold (often 75,000–100,000) will delay chemotherapy. Source: cancer.org / cancer.net (Managing Side Effects)",
             "palliative_care": ""
-        }
+        },
+        "display_name": "Platelets (PLT)"
     },
     {
         "id": 9,
@@ -461,7 +465,8 @@
             "oncologist_questions": "Ask: 'Is his kidney function stable or still getting worse?' and 'Do any of his current medications need dose adjustments because of his kidney function?' and 'Is there any specific diet restriction for his kidneys?' Source: cancer.gov / kidney research",
             "treatment_impact": "High urea and creatinine affect how chemotherapy drugs are dosed. Many chemotherapy agents are cleared by the kidneys — doses may be reduced or drugs changed. Kidney function must be monitored closely before every treatment. Source: search results (prevalence of renal insufficiency in elderly cancer patients)",
             "palliative_care": ""
-        }
+        },
+        "display_name": "(S.) Urea, Serum"
     },
     {
         "id": 17,
@@ -490,7 +495,8 @@
             "oncologist_questions": "Ask: 'Is his creatinine stable or still rising?' and 'Which of his current medications need dose adjustment for his kidney function?' and 'Should we start any medication to protect his kidneys?' Source: cancer.gov / research on kidney function in elderly cancer patients",
             "treatment_impact": "High creatinine is one of the most important factors in chemotherapy dosing for elderly patients. Many drugs are cleared by the kidneys, and high creatinine means doses must be reduced to prevent toxicity. The oncology team will use his kidney function to calculate safe doses. Source: research showing 66% of elderly cancer patients have impaired renal function",
             "palliative_care": ""
-        }
+        },
+        "display_name": "(S.) Creatinine, Serum"
     },
     {
         "id": 18,
@@ -519,7 +525,8 @@
             "oncologist_questions": "Ask: 'Is the low calcium related to his cancer or medications?' and 'Should he have calcium or vitamin D supplementation?' Source: cancer.gov",
             "treatment_impact": "Electrolyte abnormalities including calcium must be corrected before chemotherapy. Source: cancer.gov",
             "palliative_care": ""
-        }
+        },
+        "display_name": "(S.) Total Calcium"
     },
     {
         "id": 19,
@@ -548,7 +555,8 @@
             "oncologist_questions": "Ask: 'What is the exact source of the infection causing this high CRP?' and 'What is the treatment plan and how long will antibiotics be needed?' and 'At what CRP level will it be safe to consider other treatments?' Source: cancer.gov (Infection — NCI)",
             "treatment_impact": "A CRP this high indicating active serious infection will postpone any chemotherapy or elective procedures until the infection is controlled and CRP returns toward a safer range. Source: cancer.gov / cancer.net",
             "palliative_care": "If CRP remains very high despite treatment and his overall condition continues to decline, this may be a time to discuss comfort-focused care goals with the medical team. Source: cancer.gov (Planning the Transition to End-of-Life Care — NCI)"
-        }
+        },
+        "display_name": "C-Reactive Protein (CRP)"
     },
     {
         "id": 20,
@@ -577,7 +585,8 @@
             "oncologist_questions": "Ask: 'What is causing his sodium to be low — is it related to the cancer, medications, or fluids?' and 'How will you correct it, and how quickly?' and 'What sodium level needs to be reached before it is safe to continue other treatments?' ",
             "treatment_impact": "Low sodium must be corrected to a safe level before chemotherapy or other procedures can proceed safely. Source: general medical context from cancer.gov / research",
             "palliative_care": ""
-        }
+        },
+        "display_name": "Sodium (Na)"
     },
     {
         "id": 21,
@@ -606,7 +615,8 @@
             "oncologist_questions": "Ask: 'Is his potassium level affecting his heart rhythm monitoring?' and 'Does he need potassium supplementation?' Source: cancer.gov",
             "treatment_impact": "Electrolyte imbalances including potassium must be corrected before chemotherapy. Source: cancer.gov",
             "palliative_care": ""
-        }
+        },
+        "display_name": "Potassium (K)"
     },
     {
         "id": 22,
@@ -635,7 +645,8 @@
             "oncologist_questions": "Ask: 'Is the elevated AST related to his cancer, treatment, or another cause?' and 'At what level would it affect his treatment plan?' Source: cancer.gov",
             "treatment_impact": "Significantly elevated liver enzymes (2–3× above normal) can delay or require dose reductions in chemotherapy. His current level is only slightly above normal and may not affect treatment decisions. Source: cancer.org Cancer Survivors Network",
             "palliative_care": ""
-        }
+        },
+        "display_name": "Aspartate Aminotransferase (AST/GOT)"
     },
     {
         "id": 23,
@@ -664,7 +675,8 @@
             "oncologist_questions": "Ask: 'Should liver enzymes be monitored more frequently given his treatment?' Source: cancer.gov",
             "treatment_impact": "Significantly elevated ALT (>2–3× normal) would delay chemotherapy. Currently normal. Source: cancer.org",
             "palliative_care": ""
-        }
+        },
+        "display_name": "Alanine Aminotransferase (ALT/GPT)"
     },
     {
         "id": 24,
@@ -693,7 +705,8 @@
             "oncologist_questions": "Ask: 'Could rising ALP indicate cancer spread to the liver or bones?' Source: cancer.gov",
             "treatment_impact": "Very high ALP may indicate liver involvement requiring treatment reassessment. Currently normal. Source: cancer.gov",
             "palliative_care": ""
-        }
+        },
+        "display_name": "Alkaline Phosphatase (ALP)"
     },
     {
         "id": 25,
@@ -809,7 +822,8 @@
             "oncologist_questions": "Ask: 'Is his albumin low enough to affect how his medications work or his ability to tolerate treatment?' and 'Should we arrange nutritional support — a dietitian consult, oral supplements, or IV nutrition (TPN)?' Source: cancer.gov (Nutrition During Cancer — NCI)",
             "treatment_impact": "Very low albumin affects chemotherapy safety — many drugs bind to albumin to travel in the blood, so low albumin changes how drugs are distributed and can increase toxicity or reduce effectiveness. The oncology team may adjust doses or postpone treatment until nutritional status improves. Source: albumin research in cancer patients",
             "palliative_care": "Persistently declining albumin despite nutritional support in an advanced cancer patient may indicate the cancer is consuming protein faster than it can be replaced. This is a time to ask the oncologist honestly: 'What are our goals at this stage?' and 'Would nutritional support still make a meaningful difference for him?' Source: cancer.gov (Planning the Transition to End-of-Life Care — NCI)"
-        }
+        },
+        "display_name": "(Serum) Albumin"
     },
     {
         "id": 29,
@@ -838,7 +852,8 @@
             "oncologist_questions": "Ask if chloride level is affecting his IV fluid management. Source: cancer.gov",
             "treatment_impact": "Changes in electrolyte levels can show whether a treatment is working and can reveal medication side effects, so this test may track how his body responds to treatment. Source: testing.com",
             "palliative_care": ""
-        }
+        },
+        "display_name": "(S.) Chloride"
     },
     {
         "id": 30,
@@ -867,7 +882,8 @@
             "oncologist_questions": "Ask: 'Does his low ionized calcium require supplementation?' Source: cancer.gov",
             "treatment_impact": "When treating abnormal calcium, repeat tests check whether the treatment (such as calcium or vitamin D) is working. Source: testing.com",
             "palliative_care": ""
-        }
+        },
+        "display_name": "Ionized Calcium"
     },
     {
         "id": 31,
@@ -896,7 +912,8 @@
             "oncologist_questions": "Ask: 'What specific bacteria is causing the infection?' and 'How long will antibiotics be needed?' and 'At what PCT level is it safe to consider starting or resuming other treatments?' Source: cancer.gov (Infection — NCI)",
             "treatment_impact": "Active infection with elevated PCT will delay any chemotherapy, procedures, or surgery until the infection is fully resolved and PCT returns to a safe range. Source: cancer.gov / cancer.net",
             "palliative_care": ""
-        }
+        },
+        "display_name": "Procalcitonin (PCT)"
     },
     {
         "id": 32,
@@ -925,7 +942,8 @@
             "oncologist_questions": "Ask: 'Is the D-Dimer high enough to start blood thinners (anticoagulants)?' and 'Should we do an ultrasound of his legs to check for an existing blood clot?' and 'What are the specific warning signs we must watch for at the bedside?' Source: cancer.net / cancer.org",
             "treatment_impact": "A very high D-Dimer may lead the team to delay certain procedures until clotting risk is assessed. Blood-thinning medications (anticoagulants) may be started, which will require dose monitoring especially given his kidney function. Source: cancer.net / cancer.org",
             "palliative_care": "Recurrent blood clots in a cancer patient who is declining despite treatment may prompt a discussion about comfort-focused care. Ask the team: 'What are we hoping to achieve with clot treatment at this stage?' Source: cancer.gov (Planning the Transition to End-of-Life Care — NCI)"
-        }
+        },
+        "display_name": "D-Dimer"
     },
     {
         "id": 33,
@@ -983,7 +1001,8 @@
             "oncologist_questions": "Ask: 'Is bilirubin trending upward and could it affect his liver or treatment?' Source: cancer.gov",
             "treatment_impact": "Rising bilirubin can delay chemotherapy and may indicate liver involvement by cancer. Source: cancer.gov",
             "palliative_care": ""
-        }
+        },
+        "display_name": "Total Bilirubin, Serum"
     },
     {
         "id": 35,

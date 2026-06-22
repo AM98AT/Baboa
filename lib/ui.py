@@ -105,7 +105,7 @@ def render_card(t):
     padding:14px 16px;
     margin-bottom:4px;
 ">
-    <div style="font-weight:700;font-size:1rem;color:#222;">{t['short_name']}</div>
+    <div style="font-weight:700;font-size:1rem;color:#222;">{t['display_name']}</div>
     <div style="font-size:0.75rem;color:#555;margin-bottom:6px;">{t['full_name']}</div>
     <div style="font-size:1.7rem;font-weight:700;color:{color};">
         {val_str(t)} <span style="font-size:0.85rem;font-weight:400;color:#555;">{t['unit']}</span>
