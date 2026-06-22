@@ -9,8 +9,12 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
 
 ROWS_PER_PAGE = 28
-# A4 portrait with 1-inch (Word-default) margins, as figure fractions.
-MARGIN = [0.1209, 0.0855, 0.7582, 0.8289]   # left, bottom, width, height
+PAGE_W, PAGE_H = 8.27, 11.69                 # A4 portrait, inches
+MARGIN_X, MARGIN_TOP, MARGIN_BOT = 0.4, 0.5, 0.6   # tight sides, room for footer
+FONT_PT = 9
+CHAR_W = FONT_PT / 72 * 0.62                 # ~avg glyph width (in) for sizing columns
+CELL_PAD = 0.20                              # total horizontal padding per column (in)
+ROW_H = 0.33                                 # fixed row height (in)
 
 from lib.parsing import parse_date, parse_result, fmt_num
 from lib.scoring import risk_score
@@ -94,40 +98,55 @@ def category_pdf(tests, title, ordered=False):
 
 
 def _draw_page(data, abnormal, headers, title, page_no, n_pages):
-    fig, ax = plt.subplots(figsize=(8.27, 11.69))   # A4 portrait
-    ax.set_position(MARGIN)
+    fig, ax = plt.subplots(figsize=(PAGE_W, PAGE_H))   # A4 portrait
+    content_w = PAGE_W - 2 * MARGIN_X
+    content_h = PAGE_H - MARGIN_TOP - MARGIN_BOT
+    ax.set_position([MARGIN_X / PAGE_W, MARGIN_BOT / PAGE_H,
+                     content_w / PAGE_W, content_h / PAGE_H])
     ax.axis("off")
 
-    page_tag = f"   (page {page_no}/{n_pages})" if n_pages > 1 else ""
     ax.text(0, 1.0, PATIENT["name"], fontsize=15, fontweight="bold",
             transform=ax.transAxes, va="top")
     ax.text(0, 0.965, f"{PATIENT['sex']}  |  DOB {PATIENT['dob']}  ({_age(PATIENT['dob'])}y)",
             fontsize=10, transform=ax.transAxes, va="top")
-    ax.text(1, 1.0, title + page_tag, fontsize=13, fontweight="bold",
+    ax.text(1, 1.0, title, fontsize=13, fontweight="bold",
             transform=ax.transAxes, va="top", ha="right")
-    ax.text(1, 0.965, datetime.now().strftime("Printed %Y-%m-%d %H:%M"),
-            fontsize=9, color="#444", transform=ax.transAxes, va="top", ha="right")
 
-    # Fixed row height regardless of how many rows are on this page (so a short
-    # last page doesn't stretch its rows tall). Table top is just under the header.
+    # Column widths from the longest cell in each column (+ padding); shrink to fit
+    # if the total would exceed the printable width.
     ncol = len(headers)
-    top, row_h = 0.92, 0.92 / (ROWS_PER_PAGE + 1)
-    height = row_h * (len(data) + 1)
-    tbl = ax.table(cellText=data or [[""] * ncol], colLabels=headers, cellLoc="left",
-                   colWidths=[0.27, 0.15, 0.10, 0.06, 0.14, 0.15, 0.13],
-                   bbox=[0, top - height, 1, height])
-    tbl.auto_set_font_size(False)
-    tbl.set_fontsize(8.5)
+    cols = list(zip(*([headers] + data))) if data else [[h] for h in headers]
+    widths = [CELL_PAD + max(len(str(x)) for x in col) * CHAR_W for col in cols]
+    total = sum(widths)
+    if total > content_w:
+        widths = [w * content_w / total for w in widths]
+        total = content_w
+    total_frac = total / content_w
+    x0 = (1 - total_frac) / 2                    # center the table horizontally
 
-    for c in range(ncol):                       # header row
-        cell = tbl[(0, c)]
-        cell.set_text_props(fontweight="bold", color="white")
-        cell.set_facecolor("#37474f")
-    for i, ab in enumerate(abnormal, start=1):  # abnormal rows: shaded + bold (prints in B&W)
+    top = 0.93
+    row_frac = ROW_H / content_h
+    height = row_frac * (len(data) + 1)
+    tbl = ax.table(cellText=data or [[""] * ncol], colLabels=headers, cellLoc="center",
+                   colWidths=widths, bbox=[x0, top - height, total_frac, height])
+    tbl.auto_set_font_size(False)
+    tbl.set_fontsize(FONT_PT)
+    for cell in tbl.get_celld().values():        # center text vertically too
+        cell.set_text_props(va="center")
+        cell.PAD = 0.04
+
+    for c in range(ncol):                        # header row
+        tbl[(0, c)].set_text_props(fontweight="bold", color="white", va="center")
+        tbl[(0, c)].set_facecolor("#37474f")
+    for i, ab in enumerate(abnormal, start=1):   # abnormal rows: shaded + bold (B&W-safe)
         if ab:
             for c in range(ncol):
                 tbl[(i, c)].set_facecolor("#e6e6e6")
-                tbl[(i, c)].set_text_props(fontweight="bold")
+                tbl[(i, c)].set_text_props(fontweight="bold", va="center")
+
+    if n_pages > 1:                              # page number at the bottom
+        fig.text(0.5, MARGIN_BOT / PAGE_H / 2, f"{page_no} / {n_pages}",
+                 ha="center", va="center", fontsize=9, color="#444")
     return fig
 
 
