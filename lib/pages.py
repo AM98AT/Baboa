@@ -8,7 +8,7 @@ import pandas as pd
 
 from lib.constants import (STATUS_COLOR, STATUS_BG, STATUS_LABEL, TREND_LABEL,
                            SPECIAL_PAGES, CATEGORY_PAGES, PAGES)
-from lib.parsing import parse_date, parse_result, parse_range, classify
+from lib.parsing import parse_date, parse_result, parse_range, classify, fmt_num
 from lib.scoring import risk_score
 from lib.units import build_units, unit_status, unit_risk, unit_dev, partner_of
 from lib.charts import render_chart
@@ -57,7 +57,7 @@ def render_history_table(t):
         s = classify(v, lo, hi)
         rows.append({
             "التاريخ":        parse_date(r["date"]).strftime("%Y-%m-%d %H:%M"),
-            "النتيجة":        f"{v:.2f} {t['unit']}" if v is not None else str(r["result"]),
+            "النتيجة":        f"{fmt_num(v)} {t['unit']}" if v is not None else str(r["result"]),
             "المعدّل الطبيعي": r["normal_range"],
             "الحالة":         STATUS_LABEL[s],
             "المختبر":        r["lab_name"],
@@ -106,11 +106,11 @@ def render_detail(tests, short_name, back_page="__overview__"):
     lo, hi = t["lo"], t["hi"]
     if lo is not None or hi is not None:
         if lo is not None and hi is not None:
-            rng = f"{lo} – {hi} {t['unit']}"
+            rng = f"{fmt_num(lo)} – {fmt_num(hi)}"
         elif hi is not None:
-            rng = f"أقل من {hi} {t['unit']}"
+            rng = f"أقل من {fmt_num(hi)}"
         else:
-            rng = f"أعلى من {lo} {t['unit']}"
+            rng = f"أعلى من {fmt_num(lo)}"
         st.info(f"**المعدّل الطبيعي:** {rng}")
 
     if t["trend"] != "—":

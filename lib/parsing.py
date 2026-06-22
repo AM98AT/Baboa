@@ -65,6 +65,12 @@ def classify(val, lo, hi):
     return "normal"
 
 
+def fmt_num(v):
+    """Number without trailing zeros so families don't misread 10.00 as 1000.
+    10.00->'10', 10.50->'10.5', 0.046 stays '0.046'. '' for None."""
+    return f"{float(v):g}" if v is not None else ""
+
+
 def deviation(val, lo, hi):
     """Fractional distance outside normal range (0 if inside)."""
     if val is None or (lo is None and hi is None):

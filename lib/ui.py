@@ -21,7 +21,7 @@ def category_tag(t):
         'background:#eceff1;color:#455a64;font-size:0.72rem;font-weight:700;'
         f'padding:3px 10px;border-radius:12px;">{label}</span></div>'
     )
-from lib.parsing import parse_date, parse_result, deviation
+from lib.parsing import parse_date, parse_result, deviation, fmt_num
 from lib.scoring import status_line, risk_score, risk_color
 from lib.units import build_units
 
@@ -41,7 +41,7 @@ def detail_link(short_name):
 
 
 def val_str(t):
-    return f"{t['val']:.2f}" if t["val"] is not None else str(t["latest"]["result"])
+    return fmt_num(t["val"]) if t["val"] is not None else str(t["latest"]["result"])
 
 
 def days_ago_text(t):
@@ -58,16 +58,12 @@ def days_ago_text(t):
 def normal_range_text(t):
     lo, hi = t["lo"], t["hi"]
     if lo is not None and hi is not None:
-        return f"{lo} - {hi} {t['unit']}"
+        return f"{fmt_num(lo)} - {fmt_num(hi)}"
     if hi is not None:
-        return f"أقل من {hi} {t['unit']}"
+        return f"أقل من {fmt_num(hi)}"
     if lo is not None:
-        return f"أعلى من {lo} {t['unit']}"
+        return f"أعلى من {fmt_num(lo)}"
     return None
-
-
-def _fmt_num(v):
-    return f"{v:g}"
 
 
 def trend_with_prev(t):
@@ -94,7 +90,7 @@ def trend_with_prev(t):
 
     last = step(devs[-2], devs[-1])
     if last in (None, "stable"):
-        return f"➡️ مستقر (آخر فحص كان {_fmt_num(vals[-2])})"
+        return f"➡️ مستقر (آخر فحص كان {fmt_num(vals[-2])})"
 
     # walk back while the direction stays the same → length of the current run
     i = len(vals) - 1
@@ -102,7 +98,7 @@ def trend_with_prev(t):
         i -= 1
     run = vals[i - 1:]                     # oldest-of-run -> newest
     steps = len(run) - 1
-    chain = '<span dir="ltr">' + "→".join(_fmt_num(v) for v in run) + "</span>"
+    chain = '<span dir="ltr">' + "→".join(fmt_num(v) for v in run) + "</span>"
     turned = len(vals) >= 3 and step(devs[-3], devs[-2]) and step(devs[-3], devs[-2]) != last
 
     if last == "improving":
