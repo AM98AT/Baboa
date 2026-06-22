@@ -109,12 +109,12 @@ def trend_with_prev(t):
         if steps >= 2:
             return f"📈 يتحسّن باستمرار ({chain})"
         if turned:
-            return f"📈 بدأ يتحسّن (كان {_fmt_num(vals[-2])})"
+            return f"📈 بدأ يتحسّن ({chain})"
         return f"📈 يتحسّن ({chain})"
     if steps >= 2:
         return f"📉 يسوء باستمرار ({chain})"
     if turned:
-        return f"📉 بدأ يسوء (كان {_fmt_num(vals[-2])})"
+        return f"📉 بدأ يسوء ({chain})"
     return f"📉 يسوء ({chain})"
 
 
