@@ -14,6 +14,7 @@ from lib.units import build_units, unit_status, unit_risk, unit_dev, partner_of
 from lib.charts import render_chart
 from lib.data import load_data
 from lib.ui import val_str, generic_values, render_units
+from lib.report import category_pdf, file_slug
 
 
 def render_overview(tests):
@@ -295,6 +296,13 @@ def render_category_page(tests, cat_key):
     if not filtered:
         st.info("ماكو تحاليل مسجّلة بهذا القسم لحد الحين.")
         return
+    st.download_button(
+        "⬇️ نزّل تقرير هذا القسم للطبيب (PDF — للطباعة)",
+        data=category_pdf(filtered, cat_key),
+        file_name=f"{file_slug(cat_key)}.pdf",
+        mime="application/pdf",
+        use_container_width=True,
+    )
     # most important (highest risk) test first
     units = sorted(build_units(filtered), key=lambda u: -unit_risk(u))
     render_units(units)
