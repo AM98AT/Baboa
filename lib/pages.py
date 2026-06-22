@@ -267,6 +267,27 @@ def render_today(tests):
     render_units(units)
 
 
+def render_redo(tests):
+    st.title("⏰ شنو نعيد فحصه")
+    st.caption(
+        "التحاليل اللي نتيجتها مو طبيعية (عالية أو قليلة) أول — حتى لو انفحصت اليوم — "
+        "وداخل كل مجموعة الأقدم فحصاً أول. هيچ تعرفون شنو الأهم تعيدون فحصه."
+    )
+    today = datetime.now().date()
+
+    def days_since(u):
+        rep = u["test"] if u["kind"] == "single" else u["abs"]
+        return (today - parse_date(rep["latest"]["date"]).date()).days
+
+    def is_normal(u):
+        # abnormal (high/low) → 0 = on top; normal/unknown → 1 = below
+        return 0 if unit_status(u) in ("high", "low") else 1
+
+    # abnormal first, then longest-since-tested first within each group
+    units = sorted(build_units(tests), key=lambda u: (is_normal(u), -days_since(u)))
+    render_units(units)
+
+
 def render_category_page(tests, cat_key):
     page_name = next((k for k, v in PAGES.items() if v == cat_key), cat_key)
     st.title(page_name)
@@ -414,6 +435,8 @@ def main():
         render_overview(tests)
     elif page == "__today__":
         render_today(tests)
+    elif page == "__redo__":
+        render_redo(tests)
     elif page == "__general__":
         render_general(tests)
     else:

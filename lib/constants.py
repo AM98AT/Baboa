@@ -31,6 +31,7 @@ TREND_LABEL = {
 SPECIAL_PAGES = {
     "📊 نظرة عامة":           "__overview__",
     "🆕 تحاليل اليوم":         "__today__",
+    "⏰ شنو نعيد فحصه":        "__redo__",
     "📘 إرشادات عامة للعائلة": "__general__",
 }
 CATEGORY_PAGES = {
