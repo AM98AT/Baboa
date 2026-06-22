@@ -5,7 +5,22 @@ from urllib.parse import quote
 import re
 import streamlit as st
 
-from lib.constants import STATUS_COLOR, STATUS_BG, TREND_LABEL, GENERAL_FIELDS
+from lib.constants import STATUS_COLOR, STATUS_BG, TREND_LABEL, GENERAL_FIELDS, CATEGORY_PAGES
+
+# sub_sub_category value -> its nav label (with the body-part emoji)
+CAT_LABEL = {v: k for k, v in CATEGORY_PAGES.items()}
+
+
+def category_tag(t):
+    """Small pill at the bottom of a card: which body-part category this test belongs to."""
+    label = CAT_LABEL.get(t["sub_sub_category"])
+    if not label:
+        return ""
+    return (
+        '<div style="margin-top:8px;"><span style="display:inline-block;'
+        'background:#eceff1;color:#455a64;font-size:0.72rem;font-weight:700;'
+        f'padding:3px 10px;border-radius:12px;">{label}</span></div>'
+    )
 from lib.parsing import parse_date, parse_result
 from lib.scoring import status_line, risk_score, risk_color
 from lib.units import build_units
@@ -117,6 +132,7 @@ def render_card(t):
     <div style="font-size:0.82rem;font-weight:700;color:{rcolor};margin-top:5px;">
         🎯 الأولوية والخطورة: {risk}/10
     </div>
+    {category_tag(t)}
 </div>
 """, unsafe_allow_html=True)
 
@@ -174,6 +190,7 @@ def render_pair_card(u):
     <div style="font-size:0.82rem;font-weight:700;color:{rcolor};margin-top:5px;">
         🎯 الأولوية والخطورة: {risk}/10
     </div>
+    {category_tag(ab)}
 </div>
 """, unsafe_allow_html=True)
 
