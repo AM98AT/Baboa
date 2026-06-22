@@ -5,7 +5,7 @@ from urllib.parse import quote
 import re
 import streamlit as st
 
-from lib.constants import STATUS_COLOR, STATUS_BG, TREND_LABEL, GENERAL_FIELDS, CATEGORY_PAGES
+from lib.constants import STATUS_COLOR, STATUS_BG, GENERAL_FIELDS, CATEGORY_PAGES
 
 # sub_sub_category value -> its nav label (with the body-part emoji)
 CAT_LABEL = {v: k for k, v in CATEGORY_PAGES.items()}
@@ -21,7 +21,7 @@ def category_tag(t):
         'background:#eceff1;color:#455a64;font-size:0.72rem;font-weight:700;'
         f'padding:3px 10px;border-radius:12px;">{label}</span></div>'
     )
-from lib.parsing import parse_date, parse_result
+from lib.parsing import parse_date, parse_result, deviation
 from lib.scoring import status_line, risk_score, risk_color
 from lib.units import build_units
 
@@ -66,18 +66,56 @@ def normal_range_text(t):
     return None
 
 
+def _fmt_num(v):
+    return f"{v:g}"
+
+
 def trend_with_prev(t):
-    """Trend label + the previous reading, e.g. '📈 يتحسّن (آخر فحص كان 15)'.
-    For a brand-new test (only one reading) there's nothing to compare with."""
+    """Smart trend line: shows the chain of readings and whether it's been steadily
+    improving (📈 يتحسّن باستمرار 20→18→15), steadily worsening (📉 يسوء باستمرار),
+    or just changed direction (📈 بدأ يتحسّن / 📉 بدأ يسوء). 'Better' = closer to the
+    normal range, measured against the latest range so a range change can't flip it."""
     recs = t.get("records", [])
     if len(recs) < 2:
         return "🆕 فحص جديد (أول نتيجة)"
-    tr = TREND_LABEL.get(t["trend"], "")
-    if not tr:
+
+    lo, hi = t["lo"], t["hi"]
+    vals = [parse_result(r["result"]) for r in recs]          # oldest -> newest
+    if vals[-1] is None or vals[-2] is None:
         return ""
-    pv = parse_result(recs[-2]["result"])
-    pv_str = f"{pv:g}" if pv is not None else str(recs[-2]["result"])
-    return f"{tr} (آخر فحص كان {pv_str})"
+    devs = [deviation(v, lo, hi) if v is not None else None for v in vals]
+
+    def step(a, b):                       # older a -> newer b, by distance from normal
+        if a is None or b is None:
+            return None
+        if b < a - 1e-9: return "improving"
+        if b > a + 1e-9: return "worsening"
+        return "stable"
+
+    last = step(devs[-2], devs[-1])
+    if last in (None, "stable"):
+        return f"➡️ مستقر (آخر فحص كان {_fmt_num(vals[-2])})"
+
+    # walk back while the direction stays the same → length of the current run
+    i = len(vals) - 1
+    while i - 1 >= 1 and step(devs[i - 2], devs[i - 1]) == last:
+        i -= 1
+    run = vals[i - 1:]                     # oldest-of-run -> newest
+    steps = len(run) - 1
+    chain = '<span dir="ltr">' + "→".join(_fmt_num(v) for v in run) + "</span>"
+    turned = len(vals) >= 3 and step(devs[-3], devs[-2]) and step(devs[-3], devs[-2]) != last
+
+    if last == "improving":
+        if steps >= 2:
+            return f"📈 يتحسّن باستمرار ({chain})"
+        if turned:
+            return f"📈 بدأ يتحسّن (كان {_fmt_num(vals[-2])})"
+        return f"📈 يتحسّن ({chain})"
+    if steps >= 2:
+        return f"📉 يسوء باستمرار ({chain})"
+    if turned:
+        return f"📉 بدأ يسوء (كان {_fmt_num(vals[-2])})"
+    return f"📉 يسوء ({chain})"
 
 
 def generic_values(tests):
