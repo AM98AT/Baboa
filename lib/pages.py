@@ -18,21 +18,29 @@ from lib.report import category_pdf, file_slug, CAT_EN
 
 
 def pdf_button(tests, title, slug, label, ordered=False):
-    """Doctor-PDF download button (B&W, most-dangerous-first unless `ordered`)."""
+    """Doctor-PDF download (B&W, most-dangerous-first unless `ordered`). Two buttons:
+    one with dates relative to today, one relative to tomorrow (print now, show the
+    doctor tomorrow → today's labs read 'Yesterday')."""
     if not tests:
         return
-    st.download_button(
-        label, data=category_pdf(tests, title, ordered=ordered),
+    st.divider()
+    st.markdown(f"**{label}**")
+    c1, c2 = st.columns(2)
+    c1.download_button(
+        "⬇️ للعرض اليوم", data=category_pdf(tests, title, ordered=ordered),
         file_name=f"{slug}.pdf", mime="application/pdf",
-        use_container_width=True, key=f"pdf_{slug}",
+        use_container_width=True, key=f"pdf_{slug}_today",
+    )
+    c2.download_button(
+        "⬇️ للعرض باجر", data=category_pdf(tests, title, ordered=ordered, ref_offset=1),
+        file_name=f"{slug}_tomorrow.pdf", mime="application/pdf",
+        use_container_width=True, key=f"pdf_{slug}_tomorrow",
     )
 
 
 def render_overview(tests):
     st.title("🏥 لوحة متابعة الصحّة")
     st.caption(f"آخر تحديث للبيانات: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
-    pdf_button(tests, "All Tests - Overview", "all_tests",
-               "⬇️ نزّل تقرير كل التحاليل للطبيب (PDF — للطباعة)")
 
     units    = build_units(tests)
     normal   = [u for u in units if unit_status(u) == "normal"]
@@ -61,6 +69,9 @@ def render_overview(tests):
         st.divider()
         st.subheader("❓ تحاليل بدون معدّل مرجعي")
         render_units(unknown)
+
+    pdf_button(tests, "All Tests - Overview", "all_tests",
+               "⬇️ نزّل تقرير كل التحاليل للطبيب (PDF — للطباعة)")
 
 
 def render_history_table(t):
@@ -277,10 +288,10 @@ def render_today(tests):
         else:           g = f"{gap} يوم"
         st.warning(f"⚠️ ماكو فحوصات جديدة من {g}. هذي آخر فحوصات اللي انعملت (بتاريخ {ds}):")
 
-    pdf_button(todays, f"Latest Labs {ds}", "latest_labs",
-               "⬇️ نزّل تقرير فحوصات اليوم للطبيب (PDF — للطباعة)")
     units = sorted(build_units(todays), key=lambda u: -unit_risk(u))
     render_units(units)
+    pdf_button(todays, f"Latest Labs {ds}", "latest_labs",
+               "⬇️ نزّل تقرير فحوصات اليوم للطبيب (PDF — للطباعة)")
 
 
 def render_redo(tests):
@@ -305,12 +316,11 @@ def render_redo(tests):
         key=lambda t: (0 if t["status"] in ("high", "low") else 1,
                        -(today - parse_date(t["latest"]["date"]).date()).days),
     )
-    pdf_button(ordered, "Re-test Priority", "retest_priority",
-               "⬇️ نزّل تقرير الإعادة للطبيب (PDF — للطباعة)", ordered=True)
-
     # abnormal first, then longest-since-tested first within each group
     units = sorted(build_units(tests), key=lambda u: (is_normal(u), -days_since(u)))
     render_units(units)
+    pdf_button(ordered, "Re-test Priority", "retest_priority",
+               "⬇️ نزّل تقرير الإعادة للطبيب (PDF — للطباعة)", ordered=True)
 
 
 def render_category_page(tests, cat_key):
@@ -320,11 +330,11 @@ def render_category_page(tests, cat_key):
     if not filtered:
         st.info("ماكو تحاليل مسجّلة بهذا القسم لحد الحين.")
         return
-    pdf_button(filtered, CAT_EN.get(cat_key, page_name), file_slug(cat_key),
-               "⬇️ نزّل تقرير هذا القسم للطبيب (PDF — للطباعة)")
     # most important (highest risk) test first
     units = sorted(build_units(filtered), key=lambda u: -unit_risk(u))
     render_units(units)
+    pdf_button(filtered, CAT_EN.get(cat_key, page_name), file_slug(cat_key),
+               "⬇️ نزّل تقرير هذا القسم للطبيب (PDF — للطباعة)")
 
 
 def render_personal_reco(tests):

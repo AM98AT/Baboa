@@ -2,7 +2,7 @@
 """Doctor-facing one-page PDF for a category: concise clinical table, B&W printable.
 English + numbers only — matplotlib can't shape Arabic, and doctors don't need it."""
 from io import BytesIO
-from datetime import datetime
+from datetime import datetime, timedelta
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -91,29 +91,32 @@ def _range_str(t):
     return t["latest"].get("normal_range", "-") or "-"
 
 
-def _rel_date(s):
-    n = (datetime.now().date() - parse_date(s).date()).days
+def _rel_date(s, offset=0):
+    """Days ago relative to today + `offset` (offset=1 → print now to show tomorrow,
+    so today's labs read 'Yesterday')."""
+    n = (datetime.now().date() + timedelta(days=offset) - parse_date(s).date()).days
     if n <= 0:
         return "today"
     if n == 1:
-        return "1 day ago"
+        return "Yesterday"
     return f"{n} days ago"
 
 
-def category_pdf(tests, title, ordered=False):
+def category_pdf(tests, title, ordered=False, ref_offset=0):
     """Bytes of a single-page A4-landscape clinical table. Most-dangerous test first,
-    unless `ordered` (then the caller's order is kept — e.g. the re-test page)."""
+    unless `ordered` (then the caller's order is kept — e.g. the re-test page).
+    `ref_offset` shifts the 'when' reference (1 = dates relative to tomorrow)."""
     rows = tests if ordered else sorted(tests, key=lambda t: -risk_score(t))
     headers = ["Test", "Result (When)", "Unit", "Flag", "Ref. Range",
                "Previous (When)", "Trend"]
     data, abnormal, trends = [], [], []
     for t in rows:
         recs = t["records"]
-        cur = (f"{fmt_num(t['val'])} ({_rel_date(t['latest']['date'])})"
+        cur = (f"{fmt_num(t['val'])} ({_rel_date(t['latest']['date'], ref_offset)})"
                if t["val"] is not None else str(t["latest"]["result"]))
         if len(recs) >= 2:
             pv = parse_result(recs[-2]["result"])
-            prev = (f"{fmt_num(pv)} ({_rel_date(recs[-2]['date'])})"
+            prev = (f"{fmt_num(pv)} ({_rel_date(recs[-2]['date'], ref_offset)})"
                     if pv is not None else str(recs[-2]["result"]))
         else:
             prev = "-"
