@@ -8,7 +8,9 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
 
-ROWS_PER_PAGE = 20
+ROWS_PER_PAGE = 28
+# A4 portrait with 1-inch (Word-default) margins, as figure fractions.
+MARGIN = [0.1209, 0.0855, 0.7582, 0.8289]   # left, bottom, width, height
 
 from lib.parsing import parse_date, parse_result, fmt_num
 from lib.scoring import risk_score
@@ -86,13 +88,14 @@ def category_pdf(tests, title, ordered=False):
     with PdfPages(buf) as pdf:
         for idx, (pdata, pabn) in enumerate(pages, start=1):
             fig = _draw_page(pdata, pabn, headers, title, idx, len(pages))
-            pdf.savefig(fig, bbox_inches="tight")
+            pdf.savefig(fig)          # full A4 sheet (no tight crop → real margins)
             plt.close(fig)
     return buf.getvalue()
 
 
 def _draw_page(data, abnormal, headers, title, page_no, n_pages):
-    fig, ax = plt.subplots(figsize=(11.69, 8.27))   # A4 landscape
+    fig, ax = plt.subplots(figsize=(8.27, 11.69))   # A4 portrait
+    ax.set_position(MARGIN)
     ax.axis("off")
 
     page_tag = f"   (page {page_no}/{n_pages})" if n_pages > 1 else ""
@@ -111,10 +114,10 @@ def _draw_page(data, abnormal, headers, title, page_no, n_pages):
     top, row_h = 0.92, 0.92 / (ROWS_PER_PAGE + 1)
     height = row_h * (len(data) + 1)
     tbl = ax.table(cellText=data or [[""] * ncol], colLabels=headers, cellLoc="left",
-                   colWidths=[0.22, 0.16, 0.10, 0.06, 0.15, 0.16, 0.11],
+                   colWidths=[0.27, 0.15, 0.10, 0.06, 0.14, 0.15, 0.13],
                    bbox=[0, top - height, 1, height])
     tbl.auto_set_font_size(False)
-    tbl.set_fontsize(9.5)
+    tbl.set_fontsize(8.5)
 
     for c in range(ncol):                       # header row
         cell = tbl[(0, c)]
