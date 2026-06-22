@@ -14,12 +14,25 @@ from lib.units import build_units, unit_status, unit_risk, unit_dev, partner_of
 from lib.charts import render_chart
 from lib.data import load_data
 from lib.ui import val_str, generic_values, render_units
-from lib.report import category_pdf, file_slug
+from lib.report import category_pdf, file_slug, CAT_EN
+
+
+def pdf_button(tests, title, slug, label, ordered=False):
+    """Doctor-PDF download button (B&W, most-dangerous-first unless `ordered`)."""
+    if not tests:
+        return
+    st.download_button(
+        label, data=category_pdf(tests, title, ordered=ordered),
+        file_name=f"{slug}.pdf", mime="application/pdf",
+        use_container_width=True, key=f"pdf_{slug}",
+    )
 
 
 def render_overview(tests):
     st.title("🏥 لوحة متابعة الصحّة")
     st.caption(f"آخر تحديث للبيانات: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+    pdf_button(tests, "All Tests - Overview", "all_tests",
+               "⬇️ نزّل تقرير كل التحاليل للطبيب (PDF — للطباعة)")
 
     units    = build_units(tests)
     normal   = [u for u in units if unit_status(u) == "normal"]
@@ -264,6 +277,8 @@ def render_today(tests):
         else:           g = f"{gap} يوم"
         st.warning(f"⚠️ ماكو فحوصات جديدة من {g}. هذي آخر فحوصات اللي انعملت (بتاريخ {ds}):")
 
+    pdf_button(todays, f"Latest Labs {ds}", "latest_labs",
+               "⬇️ نزّل تقرير فحوصات اليوم للطبيب (PDF — للطباعة)")
     units = sorted(build_units(todays), key=lambda u: -unit_risk(u))
     render_units(units)
 
@@ -284,6 +299,15 @@ def render_redo(tests):
         # abnormal (high/low) → 0 = on top; normal/unknown → 1 = below
         return 0 if unit_status(u) in ("high", "low") else 1
 
+    # same key on individual tests, for the PDF (which lists each test as its own row)
+    ordered = sorted(
+        tests,
+        key=lambda t: (0 if t["status"] in ("high", "low") else 1,
+                       -(today - parse_date(t["latest"]["date"]).date()).days),
+    )
+    pdf_button(ordered, "Re-test Priority", "retest_priority",
+               "⬇️ نزّل تقرير الإعادة للطبيب (PDF — للطباعة)", ordered=True)
+
     # abnormal first, then longest-since-tested first within each group
     units = sorted(build_units(tests), key=lambda u: (is_normal(u), -days_since(u)))
     render_units(units)
@@ -296,13 +320,8 @@ def render_category_page(tests, cat_key):
     if not filtered:
         st.info("ماكو تحاليل مسجّلة بهذا القسم لحد الحين.")
         return
-    st.download_button(
-        "⬇️ نزّل تقرير هذا القسم للطبيب (PDF — للطباعة)",
-        data=category_pdf(filtered, cat_key),
-        file_name=f"{file_slug(cat_key)}.pdf",
-        mime="application/pdf",
-        use_container_width=True,
-    )
+    pdf_button(filtered, CAT_EN.get(cat_key, page_name), file_slug(cat_key),
+               "⬇️ نزّل تقرير هذا القسم للطبيب (PDF — للطباعة)")
     # most important (highest risk) test first
     units = sorted(build_units(filtered), key=lambda u: -unit_risk(u))
     render_units(units)
