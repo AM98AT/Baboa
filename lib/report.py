@@ -60,44 +60,51 @@ def _range_str(t):
     return t["latest"].get("normal_range", "-") or "-"
 
 
-def _short_date(s):
-    return parse_date(s).strftime("%d/%m")
+def _rel_date(s):
+    n = (datetime.now().date() - parse_date(s).date()).days
+    if n <= 0:
+        return "today"
+    if n == 1:
+        return "1 day ago"
+    return f"{n} days ago"
 
 
 def category_pdf(tests, title, ordered=False):
     """Bytes of a single-page A4-landscape clinical table. Most-dangerous test first,
     unless `ordered` (then the caller's order is kept — e.g. the re-test page)."""
     rows = tests if ordered else sorted(tests, key=lambda t: -risk_score(t))
-    headers = ["Test", "Result (Date)", "Unit", "Flag", "Ref. Range",
-               "Previous (Date)", "Trend"]
-    data, abnormal = [], []
+    headers = ["Test", "Result (When)", "Unit", "Flag", "Ref. Range",
+               "Previous (When)", "Trend"]
+    data, abnormal, trends = [], [], []
     for t in rows:
         recs = t["records"]
-        cur = (f"{fmt_num(t['val'])} ({_short_date(t['latest']['date'])})"
+        cur = (f"{fmt_num(t['val'])} ({_rel_date(t['latest']['date'])})"
                if t["val"] is not None else str(t["latest"]["result"]))
         if len(recs) >= 2:
             pv = parse_result(recs[-2]["result"])
-            prev = (f"{fmt_num(pv)} ({_short_date(recs[-2]['date'])})"
+            prev = (f"{fmt_num(pv)} ({_rel_date(recs[-2]['date'])})"
                     if pv is not None else str(recs[-2]["result"]))
         else:
             prev = "-"
         data.append([t["short_name"], cur, t["unit"], FLAG.get(t["status"], ""),
                      _range_str(t), prev, TREND_EN.get(t["trend"], "")])
         abnormal.append(t["status"] in ("high", "low"))
+        trends.append(t["trend"])
 
     # Paginate so any test count stays readable (overview has ~43 tests).
-    pages = [(data[i:i + ROWS_PER_PAGE], abnormal[i:i + ROWS_PER_PAGE])
-             for i in range(0, len(data), ROWS_PER_PAGE)] or [([], [])]
+    pages = [(data[i:i + ROWS_PER_PAGE], abnormal[i:i + ROWS_PER_PAGE],
+              trends[i:i + ROWS_PER_PAGE])
+             for i in range(0, len(data), ROWS_PER_PAGE)] or [([], [], [])]
     buf = BytesIO()
     with PdfPages(buf) as pdf:
-        for idx, (pdata, pabn) in enumerate(pages, start=1):
-            fig = _draw_page(pdata, pabn, headers, title, idx, len(pages))
+        for idx, (pdata, pabn, ptr) in enumerate(pages, start=1):
+            fig = _draw_page(pdata, pabn, ptr, headers, title, idx, len(pages))
             pdf.savefig(fig)          # full A4 sheet (no tight crop → real margins)
             plt.close(fig)
     return buf.getvalue()
 
 
-def _draw_page(data, abnormal, headers, title, page_no, n_pages):
+def _draw_page(data, abnormal, trends, headers, title, page_no, n_pages):
     fig, ax = plt.subplots(figsize=(PAGE_W, PAGE_H))   # A4 portrait
     content_w = PAGE_W - 2 * MARGIN_X
     content_h = PAGE_H - MARGIN_TOP - MARGIN_BOT
@@ -138,11 +145,15 @@ def _draw_page(data, abnormal, headers, title, page_no, n_pages):
     for c in range(ncol):                        # header row
         tbl[(0, c)].set_text_props(fontweight="bold", color="white", va="center")
         tbl[(0, c)].set_facecolor("#37474f")
-    for i, ab in enumerate(abnormal, start=1):   # abnormal rows: shaded + bold (B&W-safe)
+    for i, ab in enumerate(abnormal, start=1):   # out-of-range rows: grey shading (B&W-safe)
         if ab:
             for c in range(ncol):
                 tbl[(i, c)].set_facecolor("#e6e6e6")
-                tbl[(i, c)].set_text_props(fontweight="bold", va="center")
+    for i, tr in enumerate(trends, start=1):     # trend distinction: type style, no color
+        if tr == "worsening":
+            tbl[(i, ncol - 1)].set_text_props(fontweight="bold", va="center")
+        elif tr == "improving":
+            tbl[(i, ncol - 1)].set_text_props(fontstyle="italic", va="center")
 
     if n_pages > 1:                              # page number at the bottom
         fig.text(0.5, MARGIN_BOT / PAGE_H / 2, f"{page_no} / {n_pages}",
