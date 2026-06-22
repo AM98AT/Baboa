@@ -96,7 +96,7 @@ def _rel_date(s, offset=0):
     so today's labs read 'Yesterday')."""
     n = (datetime.now().date() + timedelta(days=offset) - parse_date(s).date()).days
     if n <= 0:
-        return "today"
+        return "Today"
     if n == 1:
         return "Yesterday"
     return f"{n} days ago"
