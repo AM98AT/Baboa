@@ -16,7 +16,7 @@ CHAR_W = FONT_PT / 72 * 0.62                 # ~avg glyph width (in) for sizing 
 CELL_PAD = 0.20                              # total horizontal padding per column (in)
 ROW_H = 0.33                                 # fixed row height (in)
 
-from lib.parsing import parse_date, parse_result, fmt_num
+from lib.parsing import parse_date, parse_result, deviation, fmt_num
 from lib.scoring import risk_score
 
 # One patient app → fixed header (English; the app's Arabic name doesn't render in PDF).
@@ -34,9 +34,40 @@ CAT_EN = {
     "البروتين والتغذية":           "Protein & Nutrition",
     "السكّر":                     "Glucose",
 }
-TREND_EN = {"improving": "Improving", "worsening": "Worsening",
-            "stable": "Stable", "—": "New"}
 FLAG = {"high": "H", "low": "L", "normal": "", "unknown": "?"}
+
+
+def _trend_run(t):
+    """(direction, run) where run = how many consecutive readings moved that way.
+    'Better' = closer to the normal range, measured against the latest range."""
+    vals = [parse_result(r["result"]) for r in t["records"]]   # oldest -> newest
+    if len(vals) < 2 or vals[-1] is None or vals[-2] is None:
+        return "new", 0
+    devs = [deviation(v, t["lo"], t["hi"]) if v is not None else None for v in vals]
+
+    def step(a, b):
+        if a is None or b is None:
+            return None
+        if b < a - 1e-9: return "improving"
+        if b > a + 1e-9: return "worsening"
+        return "stable"
+
+    last = step(devs[-2], devs[-1])
+    if last in (None, "stable"):
+        return "stable", 0
+    run, i = 1, len(vals) - 1
+    while i - 1 >= 1 and step(devs[i - 2], devs[i - 1]) == last:
+        run += 1
+        i -= 1
+    return last, run
+
+
+def _trend_text(t):
+    d, n = _trend_run(t)
+    if d == "worsening": return f"Worsening ({n})", "worsening"
+    if d == "improving": return f"Improving ({n})", "improving"
+    if d == "stable":    return "Stable", "stable"
+    return "New", "new"
 
 
 def file_slug(cat_key):
@@ -86,10 +117,11 @@ def category_pdf(tests, title, ordered=False):
                     if pv is not None else str(recs[-2]["result"]))
         else:
             prev = "-"
+        trend_txt, trend_dir = _trend_text(t)
         data.append([t["short_name"], cur, t["unit"], FLAG.get(t["status"], ""),
-                     _range_str(t), prev, TREND_EN.get(t["trend"], "")])
+                     _range_str(t), prev, trend_txt])
         abnormal.append(t["status"] in ("high", "low"))
-        trends.append(t["trend"])
+        trends.append(trend_dir)
 
     # Paginate so any test count stays readable (overview has ~43 tests).
     pages = [(data[i:i + ROWS_PER_PAGE], abnormal[i:i + ROWS_PER_PAGE],
@@ -170,4 +202,8 @@ if __name__ == "__main__":   # ponytail: one runnable check — valid PDF, dange
     pdf = category_pdf(sample, "Glucose")
     assert pdf[:4] == b"%PDF", pdf[:8]
     assert sorted(sample, key=lambda t: -risk_score(t))[0]["short_name"] == "Danger"
+    # run count: 3 steps worse in a row (lo=1,hi=5: 4->6->9->14 all rising past hi)
+    worse = {"lo": 1, "hi": 5, "records": [{"result": v, "date": "2%d-06-2026 10:00" % i}
+             for i, v in enumerate([4, 6, 9, 14], start=1)]}
+    assert _trend_run(worse) == ("worsening", 3), _trend_run(worse)
     print("ok", len(pdf), "bytes")
