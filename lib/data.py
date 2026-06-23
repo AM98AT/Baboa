@@ -6,8 +6,9 @@ import streamlit as st
 from lib.parsing import parse_date, parse_result, parse_range, classify, deviation
 
 
-def load_json_safe(path):
-    """Read a JSON file; on a typo, show a clear Arabic message instead of crashing."""
+def load_json_safe(path, optional=False):
+    """Read a JSON file; on a typo, show a clear Arabic message instead of crashing.
+    `optional`: a missing file is normal (e.g. a new user with no readings yet) → []."""
     try:
         with open(path, encoding="utf-8") as f:
             return json.load(f)
@@ -18,16 +19,31 @@ def load_json_safe(path):
         )
         st.stop()
     except FileNotFoundError:
+        if optional:
+            return []
         st.error(f"⚠️ الملف **{path}** مو موجود.")
         st.stop()
 
 
+@st.cache_data(ttl=300)
+def load_users():
+    """The people this app tracks (each has their own results file; info is shared)."""
+    return load_json_safe("users.json")
+
+
+@st.cache_data(ttl=300)
+def load_catalog():
+    """Every known test (id/name/unit) from the shared info.json — used by the add page
+    so even a user with no readings yet can pick any test."""
+    return load_json_safe("info.json")
+
+
 @st.cache_data(ttl=30)
-def load_data():
+def load_data(results_path="results.json"):
     # Two linked files, joined by `id`:
-    #   results.json -> daily readings (edited every day)
-    #   info.json    -> test names + Arabic guidance (stable)
-    results = load_json_safe("results.json")
+    #   <results_path> -> one person's daily readings (per-user; default = grandfather)
+    #   info.json      -> test names + Arabic guidance (shared across everyone, stable)
+    results = load_json_safe(results_path, optional=results_path != "results.json")
     info_by_id = {t["id"]: t for t in load_json_safe("info.json")}
 
     processed = []

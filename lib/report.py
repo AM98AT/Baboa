@@ -102,10 +102,12 @@ def _rel_date(s, offset=0):
     return f"{n} days ago"
 
 
-def category_pdf(tests, title, ordered=False, ref_offset=0):
+def category_pdf(tests, title, ordered=False, ref_offset=0, patient=None):
     """Bytes of a single-page A4-landscape clinical table. Most-dangerous test first,
     unless `ordered` (then the caller's order is kept — e.g. the re-test page).
-    `ref_offset` shifts the 'when' reference (1 = dates relative to tomorrow)."""
+    `ref_offset` shifts the 'when' reference (1 = dates relative to tomorrow).
+    `patient` = {name/pdf_name, sex, dob}; defaults to the primary patient header."""
+    patient = patient or PATIENT
     rows = tests if ordered else sorted(tests, key=lambda t: -risk_score(t))
     headers = ["Test", "Result (When)", "Unit", "Flag", "Ref. Range",
                "Previous (When)", "Trend"]
@@ -133,13 +135,15 @@ def category_pdf(tests, title, ordered=False, ref_offset=0):
     buf = BytesIO()
     with PdfPages(buf) as pdf:
         for idx, (pdata, pabn, ptr) in enumerate(pages, start=1):
-            fig = _draw_page(pdata, pabn, ptr, headers, title, idx, len(pages))
+            fig = _draw_page(pdata, pabn, ptr, headers, title, idx, len(pages), patient)
             pdf.savefig(fig)          # full A4 sheet (no tight crop → real margins)
             plt.close(fig)
     return buf.getvalue()
 
 
-def _draw_page(data, abnormal, trends, headers, title, page_no, n_pages):
+def _draw_page(data, abnormal, trends, headers, title, page_no, n_pages, patient=None):
+    patient = patient or PATIENT
+    name = patient.get("pdf_name") or patient.get("name", "")
     fig, ax = plt.subplots(figsize=(PAGE_W, PAGE_H))   # A4 portrait
     content_w = PAGE_W - 2 * MARGIN_X
     content_h = PAGE_H - MARGIN_TOP - MARGIN_BOT
@@ -147,9 +151,9 @@ def _draw_page(data, abnormal, trends, headers, title, page_no, n_pages):
                      content_w / PAGE_W, content_h / PAGE_H])
     ax.axis("off")
 
-    ax.text(0, 1.0, PATIENT["name"], fontsize=15, fontweight="bold",
+    ax.text(0, 1.0, name, fontsize=15, fontweight="bold",
             transform=ax.transAxes, va="top")
-    ax.text(0, 0.965, f"{PATIENT['sex']}  |  DOB {PATIENT['dob']}  ({_age(PATIENT['dob'])}y)",
+    ax.text(0, 0.965, f"{patient['sex']}  |  DOB {patient['dob']}  ({_age(patient['dob'])}y)",
             fontsize=10, transform=ax.transAxes, va="top")
     ax.text(1, 1.0, title, fontsize=13, fontweight="bold",
             transform=ax.transAxes, va="top", ha="right")

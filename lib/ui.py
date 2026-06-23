@@ -34,9 +34,17 @@ def cur_page():
     return st.query_params.get("page", "__overview__")
 
 
+def cur_user():
+    return st.query_params.get("user", "")
+
+
 def detail_link(short_name):
-    """Real URL link to a test's detail page (so the phone back button works)."""
+    """Real URL link to a test's detail page (so the phone back button works).
+    Keeps the active user so links don't reset to the default person."""
     href = f"?page={quote(cur_page())}&test={quote(short_name)}"
+    u = cur_user()
+    if u:
+        href += f"&user={quote(u)}"
     return f'<a class="seebtn" href="{href}" target="_self">📋 شوف التفاصيل</a>'
 
 

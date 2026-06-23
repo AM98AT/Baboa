@@ -46,7 +46,9 @@ CATEGORY_PAGES = {
     "🥩 البروتين والتغذية":         "البروتين والتغذية",
     "🍬 السكّر":                   "السكّر",
 }
-PAGES = {**SPECIAL_PAGES, **CATEGORY_PAGES}
+# Shown as the LAST nav chip — entry page to add a new reading (writes to GitHub).
+ADD_PAGES = {"➕ إضافة نتيجة": "__add__"}
+PAGES = {**SPECIAL_PAGES, **CATEGORY_PAGES, **ADD_PAGES}
 
 # How serious an abnormality in each test is (1=minor, 10=life-threatening).
 CLINICAL_WEIGHT = {

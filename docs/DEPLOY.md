@@ -66,7 +66,39 @@ That's it. No commands, no re-deploying.
 
 ---
 
+## PART 4 — Add results from the website itself (optional, one-time setup)
+
+The site has a **➕ إضافة نتيجة** page (last chip). Submitting there commits the new
+reading straight to GitHub, so you don't have to edit `results.json` by hand. To enable it
+you give the app a GitHub token + a passcode, stored as **Streamlit Secrets** (never in the repo).
+
+1. **Make a GitHub token** (fine-grained, least privilege):
+   - GitHub → Settings → **Developer settings** → **Personal access tokens → Fine-grained tokens** → **Generate new token**.
+   - **Repository access:** Only select repositories → pick your repo (`AM98AT/Baboa`).
+   - **Permissions:** Repository permissions → **Contents: Read and write**. Nothing else.
+   - Generate and **copy** the token (starts with `github_pat_`).
+2. **Add the secrets** in Streamlit: open the app → **Manage app → Settings → Secrets**, paste:
+   ```toml
+   github_token = "github_pat_...your token..."
+   add_passcode = "choose-a-family-passcode"
+   # optional overrides (defaults shown):
+   # github_repo  = "AM98AT/Baboa"
+   # github_branch = "main"
+   ```
+   Save. (Locally, put the same lines in `.streamlit/secrets.toml` — it's git-ignored.)
+3. On the ➕ page, enter the passcode, pick the test, fill the reading, and **Save**. It commits
+   to GitHub and the site redeploys in ~1 minute. New tests that need researched guidance still
+   use the local tool (`add_results.bat`).
+
+> Each person (grandfather / grandmother / mom / dad) is a chip at the top — switch with it.
+> Their readings live in separate files (`results.json`, `data/<name>.json`); edit `users.json`
+> to set each person's name / sex / date-of-birth (used on the doctor PDF).
+
+---
+
 ## If something breaks
 - **Nothing changed on the website:** make sure you actually committed *and* pushed in GitHub Desktop.
 - **Website didn't update:** open the app's **Manage app → Reboot**.
 - **Family can't open it:** check their email is added under **Settings → Sharing**.
+- **➕ page says token/passcode not set:** add the Secrets from Part 4.
+- **➕ save fails:** the token needs **Contents: Read and write** on the right repo, and must not be expired.

@@ -7,14 +7,19 @@ import streamlit as st
 import pandas as pd
 
 from lib.constants import (STATUS_COLOR, STATUS_BG, STATUS_LABEL, TREND_LABEL,
-                           SPECIAL_PAGES, CATEGORY_PAGES, PAGES)
+                           SPECIAL_PAGES, CATEGORY_PAGES, ADD_PAGES, PAGES)
 from lib.parsing import parse_date, parse_result, parse_range, classify, fmt_num
 from lib.scoring import risk_score
 from lib.units import build_units, unit_status, unit_risk, unit_dev, partner_of
 from lib.charts import render_chart
-from lib.data import load_data
+from lib.data import load_data, load_users, load_catalog
 from lib.ui import val_str, generic_values, render_units
 from lib.report import category_pdf, file_slug, CAT_EN
+from lib import github_store
+
+# Identity for the active user's PDF header — set by main() each run so the four
+# pdf_button() call sites don't all need a `patient` argument. ponytail: a 1-run global.
+_PATIENT = None
 
 
 def pdf_button(tests, title, slug, label, ordered=False):
@@ -27,12 +32,14 @@ def pdf_button(tests, title, slug, label, ordered=False):
     st.markdown(f"**{label}**")
     c1, c2 = st.columns(2)
     c1.download_button(
-        "⬇️ للعرض اليوم", data=category_pdf(tests, title, ordered=ordered),
+        "⬇️ للعرض اليوم",
+        data=category_pdf(tests, title, ordered=ordered, patient=_PATIENT),
         file_name=f"{slug}.pdf", mime="application/pdf",
         use_container_width=True, key=f"pdf_{slug}_today",
     )
     c2.download_button(
-        "⬇️ للعرض باجر", data=category_pdf(tests, title, ordered=ordered, ref_offset=1),
+        "⬇️ للعرض باجر",
+        data=category_pdf(tests, title, ordered=ordered, ref_offset=1, patient=_PATIENT),
         file_name=f"{slug}_tomorrow.pdf", mime="application/pdf",
         use_container_width=True, key=f"pdf_{slug}_tomorrow",
     )
@@ -92,7 +99,8 @@ def render_history_table(t):
 
 def render_detail(tests, short_name, back_page="__overview__"):
     t = next((x for x in tests if x["short_name"] == short_name), None)
-    back_href = f"?page={quote(back_page)}"
+    u = st.query_params.get("user", "")
+    back_href = f"?page={quote(back_page)}" + (f"&user={quote(u)}" if u else "")
     if t is None:
         st.markdown(f'<a class="backbtn" href="{back_href}" target="_self">→ رجوع للقائمة</a>',
                     unsafe_allow_html=True)
@@ -261,7 +269,7 @@ def render_detail(tests, short_name, back_page="__overview__"):
     render_history_table(t)
 
     st.markdown(
-        f'<a class="seebtn" style="background:#37474f;" href="?page={quote(back_page)}" '
+        f'<a class="seebtn" style="background:#37474f;" href="{back_href}" '
         f'target="_self">→ رجوع للقائمة</a>',
         unsafe_allow_html=True,
     )
@@ -403,7 +411,7 @@ def render_personal_reco(tests):
     st.divider()
 
 
-def render_general(tests):
+def render_general(tests, user=None):
     st.title("📘 إرشادات عامة للعائلة")
     st.caption("هذي الإرشادات تنطبق على كل التحاليل — مكتوبة مرة وحدة هنا حتى ما تتكرر بكل تحليل.")
 
@@ -412,7 +420,10 @@ def render_general(tests):
         "علامات الطوارئ: ضيق نفس شديد، نزيف، تشويش مفاجئ، تشنّج، أو فقدان وعي."
     )
 
-    render_personal_reco(tests)
+    # The consolidated recommendations are written specifically for the grandfather.
+    # Other users see only the generic per-test guidance until their own is written.
+    if user is None or user.get("primary"):
+        render_personal_reco(tests)
 
     st.subheader("📋 إرشادات عامة تنطبق على كل التحاليل")
     generic = generic_values(tests)
@@ -430,11 +441,93 @@ def render_general(tests):
             getattr(st, box)(v)
 
 
+def render_add(tests, user):
+    st.title("➕ إضافة نتيجة جديدة")
+    st.caption(f"المستخدم الحالي: {user.get('label','')} — النتيجة تنحفظ مباشرة على GitHub ويتحدث الموقع خلال دقيقة.")
+
+    # ── passcode gate (trust boundary: the live site is public) ──
+    need = github_store.get_secret("add_passcode")
+    if not need:
+        st.error("ما تم ضبط **add_passcode** بإعدادات الموقع (Secrets). راجع `docs/DEPLOY.md`.")
+        return
+    pw = st.text_input("🔒 كلمة السر للإضافة", type="password")
+    if pw != need:
+        st.info("اكتب كلمة السر حتى تكدر تضيف نتيجة.") if not pw else st.error("كلمة السر غلط.")
+        return
+
+    if not github_store.configured():
+        st.error("ما تم ضبط **github_token** بإعدادات الموقع، فما نكدر نحفظ على GitHub. راجع `docs/DEPLOY.md`.")
+        return
+
+    catalog = load_catalog()
+    if not catalog:
+        st.error("ماكو كتالوج فحوصات (info.json).")
+        return
+
+    def disp(c):
+        return f"{c.get('full_name') or c.get('short_name','')} ({c.get('short_name','')})"
+    options = sorted(catalog, key=lambda c: c.get("short_name", ""))
+    by_label = {disp(c): c for c in options}
+    # load_data's processed tests key on short_name (not id) — use it for prefill
+    prev_by_name = {t["short_name"]: t for t in tests}
+
+    with st.form("add_reading"):
+        choice = st.selectbox("الفحص", list(by_label.keys()))
+        meta = by_label[choice]
+        prev = prev_by_name.get(meta.get("short_name", ""))
+        default_unit  = (prev["unit"] if prev else meta.get("unit", "")) or ""
+        default_range = prev["latest"].get("normal_range", "") if prev else ""
+        default_lab   = prev["latest"].get("lab_name", "") if prev else ""
+
+        c1, c2 = st.columns(2)
+        d  = c1.date_input("تاريخ الفحص", value=datetime.now().date())
+        tm = c2.time_input("الوقت", value=datetime.now().time())
+        result = st.text_input("النتيجة", placeholder="مثال: 11.4 أو Positive")
+        unit   = st.text_input("الوحدة", value=default_unit)
+        rng    = st.text_input("المعدّل الطبيعي", value=default_range, placeholder="مثال: 13.0 - 17.0")
+        lab    = st.text_input("اسم المختبر", value=default_lab)
+        submitted = st.form_submit_button("✅ احفظ وارفع لـ GitHub", type="primary")
+
+    if not submitted:
+        return
+    if not result.strip():
+        st.error("لازم تكتب النتيجة.")
+        return
+
+    date_str = datetime.combine(d, tm).strftime("%d-%m-%Y %H:%M:%S")
+    rv = parse_result(result)        # numeric if possible, otherwise keep the text
+    record = {"date": date_str, "result": rv if rv is not None else result.strip(),
+              "lab_name": lab.strip(), "normal_range": rng.strip()}
+    meta_use = {**meta, "unit": unit.strip() or meta.get("unit", "")}
+    try:
+        commit_url, body = github_store.add_reading(
+            user["results_file"], meta["id"], record, meta_use, label=user.get("label", ""))
+    except ValueError as e:        # duplicate (same-date reading already there)
+        st.warning(str(e))
+        return
+    except Exception as e:
+        st.error(f"تعذّر الحفظ على GitHub: {e}")
+        return
+
+    # reflect it in this session immediately (Cloud redeploy makes it permanent)
+    try:
+        with open(user["results_file"], "w", encoding="utf-8") as f:
+            f.write(body)
+    except OSError:
+        pass
+    load_data.clear()
+    st.success("✅ انحفظت وارتفعت لـ GitHub. الموقع راح يتحدث خلال دقيقة تقريباً.")
+    st.markdown(f"[شوف التغيير على GitHub]({commit_url})")
+
+
 def render_nav(active, tests):
+    u = st.query_params.get("user", "")
+    user_q = f"&user={quote(u)}" if u else ""
+
     def chip(label, key):
         style = ("background:#1565c0;color:#fff;" if key == active
                  else "background:#e7eefc;color:#1565c0;")
-        return (f'<a class="navchip" style="{style}" href="?page={quote(key)}" '
+        return (f'<a class="navchip" style="{style}" href="?page={quote(key)}{user_q}" '
                 f'target="_self">{label}</a>')
 
     # special pages first (fixed order)
@@ -447,15 +540,42 @@ def render_nav(active, tests):
     cats = sorted(CATEGORY_PAGES.items(), key=lambda kv: -cat_importance(kv[1]))
     chips += [chip(label, key) for label, key in cats]
 
+    # add-data page always last
+    chips += [chip(label, key) for label, key in ADD_PAGES.items()]
+
     st.markdown('<div style="margin-bottom:10px">' + "".join(chips) + "</div>",
                 unsafe_allow_html=True)
 
 
+def render_user_picker(users, active_key):
+    """User chips (own ?user= links so the phone back-button works), under the header."""
+    def chip(u):
+        on = u["key"] == active_key
+        style = ("background:#2e7d32;color:#fff;" if on
+                 else "background:#e8f5e9;color:#2e7d32;")
+        href = f"?user={quote(u['key'])}"
+        return (f'<a class="navchip" style="{style}" href="{href}" '
+                f'target="_self">{u.get("label", u["key"])}</a>')
+    st.markdown('<div style="margin-bottom:8px">' + "".join(chip(u) for u in users) + "</div>",
+                unsafe_allow_html=True)
+
+
 def main():
+    global _PATIENT
     st.markdown('<div class="app-header">🏥 متابعة الصحّة اليومية</div>',
                 unsafe_allow_html=True)
-    tests = load_data()
     qp = st.query_params
+
+    # ── pick the active user (each has their own results file; info is shared) ──
+    users = load_users()
+    by_key = {u["key"]: u for u in users}
+    user = by_key.get(qp.get("user", ""), users[0] if users else None)
+    if user is None:
+        st.error("ماكو مستخدمين بـ users.json.")
+        return
+    _PATIENT = user                                 # used by pdf_button for the PDF header
+    render_user_picker(users, user["key"])
+    tests = load_data(user["results_file"])
 
     # ── A test is open: show its detail page (real URL = phone back works) ──
     test = qp.get("test")
@@ -475,6 +595,8 @@ def main():
     elif page == "__redo__":
         render_redo(tests)
     elif page == "__general__":
-        render_general(tests)
+        render_general(tests, user)
+    elif page == "__add__":
+        render_add(tests, user)
     else:
         render_category_page(tests, page)
