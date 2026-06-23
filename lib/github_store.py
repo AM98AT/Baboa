@@ -17,14 +17,22 @@ API = "https://api.github.com"
 
 
 def get_secret(key, default=""):
-    """Safe secret read. st.secrets.get raises *and shows a UI error* when no secrets
-    file exists; load_if_toml_exists() checks quietly first."""
+    """Safe secret read. Accessing a missing st.secrets key raises *and* shows a UI
+    error; we read directly (works however Cloud provides secrets) with that print
+    suppressed, and fall back to `default` on any miss."""
     try:
-        if not st.secrets.load_if_toml_exists():
-            return default
-        return st.secrets.get(key, default)
+        st.secrets.set_suppress_print_error_on_exception(True)
+    except Exception:
+        pass
+    try:
+        return st.secrets[key]
     except Exception:
         return default
+    finally:
+        try:
+            st.secrets.set_suppress_print_error_on_exception(False)
+        except Exception:
+            pass
 
 
 def _cfg():
