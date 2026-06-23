@@ -1048,6 +1048,12 @@
                 "result": 136.5,
                 "lab_name": "AmrLab Medical Laboratories",
                 "normal_range": "136 - 146"
+            },
+            {
+                "date": "23-06-2026 10:10",
+                "result": 138.3,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "136 - 146"
             }
         ]
     },
@@ -1077,6 +1083,12 @@
             {
                 "date": "22-06-2026 10:31",
                 "result": 3.51,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "3.5 - 5"
+            },
+            {
+                "date": "23-06-2026 10:10",
+                "result": 3.46,
                 "lab_name": "AmrLab Medical Laboratories",
                 "normal_range": "3.5 - 5"
             }
@@ -1385,6 +1397,12 @@
             {
                 "date": "22-06-2026 10:31",
                 "result": 102.7,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "96 - 106"
+            },
+            {
+                "date": "23-06-2026 10:10",
+                "result": 103.1,
                 "lab_name": "AmrLab Medical Laboratories",
                 "normal_range": "96 - 106"
             }
