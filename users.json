@@ -7,29 +7,5 @@
         "dob": "16-06-1940",
         "results_file": "results.json",
         "primary": true
-    },
-    {
-        "key": "grandmother",
-        "label": "👵 جدّتي",
-        "pdf_name": "Grandmother",
-        "sex": "Female",
-        "dob": "01-01-1940",
-        "results_file": "data/grandmother.json"
-    },
-    {
-        "key": "mom",
-        "label": "👩 أمي",
-        "pdf_name": "Mother",
-        "sex": "Female",
-        "dob": "01-01-1970",
-        "results_file": "data/mom.json"
-    },
-    {
-        "key": "dad",
-        "label": "👨 أبي",
-        "pdf_name": "Father",
-        "sex": "Male",
-        "dob": "01-01-1965",
-        "results_file": "data/dad.json"
     }
 ]

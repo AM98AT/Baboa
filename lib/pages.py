@@ -574,7 +574,8 @@ def main():
         st.error("ماكو مستخدمين بـ users.json.")
         return
     _PATIENT = user                                 # used by pdf_button for the PDF header
-    render_user_picker(users, user["key"])
+    if len(users) > 1:                              # only show the picker once there's a choice
+        render_user_picker(users, user["key"])
     tests = load_data(user["results_file"])
 
     # ── A test is open: show its detail page (real URL = phone back works) ──
