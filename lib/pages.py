@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Page renderers, navigation, and the main() router."""
 import re
+import json
 from urllib.parse import quote
 from datetime import datetime
 import streamlit as st
@@ -464,6 +465,25 @@ def render_add(tests, user):
         st.error("ماكو كتالوج فحوصات (info.json).")
         return
 
+    tab_form, tab_json = st.tabs(["➕ نتيجة وحدة (نموذج)", "📋 لصق JSON (دفعة وحدة)"])
+    with tab_form:
+        _add_form(tests, user, catalog)
+    with tab_json:
+        _add_json(user)
+
+
+def _reflect_local(results_file, body):
+    """Write the merged file locally + clear cache so this session shows it now.
+    (On the Cloud the file is ephemeral, but the commit drives the redeploy.)"""
+    try:
+        with open(results_file, "w", encoding="utf-8") as f:
+            f.write(body)
+    except OSError:
+        pass
+    load_data.clear()
+
+
+def _add_form(tests, user, catalog):
     def disp(c):
         return f"{c.get('full_name') or c.get('short_name','')} ({c.get('short_name','')})"
     options = sorted(catalog, key=lambda c: c.get("short_name", ""))
@@ -509,15 +529,58 @@ def render_add(tests, user):
         st.error(f"تعذّر الحفظ على GitHub: {e}")
         return
 
-    # reflect it in this session immediately (Cloud redeploy makes it permanent)
-    try:
-        with open(user["results_file"], "w", encoding="utf-8") as f:
-            f.write(body)
-    except OSError:
-        pass
-    load_data.clear()
+    _reflect_local(user["results_file"], body)
     st.success("✅ انحفظت وارتفعت لـ GitHub. الموقع راح يتحدث خلال دقيقة تقريباً.")
     st.markdown(f"[شوف التغيير على GitHub]({commit_url})")
+
+
+def _add_json(user):
+    st.caption(
+        "الصق نص JSON بنفس صيغة `results.json`: قائمة فحوصات، كل فحص بداخله `id` و`records`. "
+        "نقدر نلصق عدة فحوصات سوا — راح ندمجها كلها بضغطة وحدة (النتائج المكررة بنفس التاريخ تنتجاهل)."
+    )
+    st.code(
+        '[\n'
+        '  { "id": 1, "test": "Hb", "unit": "g/dl", "records": [\n'
+        '      { "date": "20-06-2026 10:00:00", "result": 11.4,\n'
+        '        "lab_name": "...", "normal_range": "13.0 - 17.0" }\n'
+        '  ] }\n'
+        ']', language="json")
+    raw = st.text_area("JSON", height=260, key="merge_json_text",
+                       placeholder='[ { "id": 1, "test": "Hb", "records": [ ... ] } ]')
+    if not st.button("📥 ادمج وارفع لـ GitHub", type="primary", key="merge_json_btn"):
+        return
+
+    if not raw.strip():
+        st.error("الصق JSON أول.")
+        return
+    try:
+        data = json.loads(raw)
+    except Exception as e:
+        st.error(f"JSON غلط (غالباً فاصلة أو قوس): {e}")
+        return
+    if isinstance(data, dict):
+        data = [data]
+    if not isinstance(data, list) or not data or any(
+            not isinstance(e, dict) or "id" not in e or "records" not in e for e in data):
+        st.error("لازم يكون قائمة فحوصات، وكل فحص بيه `id` و`records`.")
+        return
+
+    try:
+        url, body, added, new_tests = github_store.merge_json(
+            user["results_file"], data, label=user.get("label", ""))
+    except ValueError as e:
+        st.warning(str(e))
+        return
+    except Exception as e:
+        st.error(f"تعذّر الحفظ على GitHub: {e}")
+        return
+
+    _reflect_local(user["results_file"], body)
+    st.success(f"✅ ادمجنا {added} نتيجة من {len(data)} فحص وارتفعت لـ GitHub.")
+    if new_tests:
+        st.warning("🆕 فحوصات جديدة انضافت (تحتاج معلومات لاحقاً): " + "، ".join(new_tests))
+    st.markdown(f"[شوف التغيير على GitHub]({url})")
 
 
 def render_nav(active, tests):
