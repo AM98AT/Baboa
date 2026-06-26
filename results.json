@@ -960,6 +960,12 @@
                 "result": 44.1,
                 "lab_name": "Omed Oncology Teaching Hospital",
                 "normal_range": "16.5 - 48.5"
+            },
+            {
+                "date": "26-06-2026 18:02",
+                "result": 29.0,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "16.6 - 48.2"
             }
         ]
     },
@@ -1021,6 +1027,12 @@
                 "result": 1.88,
                 "lab_name": "Omed Oncology Teaching Hospital",
                 "normal_range": "0.5 - 1.1"
+            },
+            {
+                "date": "26-06-2026 18:02",
+                "result": 1.8,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "0.7 - 1.2"
             }
         ]
     },
@@ -1125,6 +1137,12 @@
                 "result": 92.19,
                 "lab_name": "Omed Oncology Teaching Hospital",
                 "normal_range": "0.01-6"
+            },
+            {
+                "date": "26-06-2026 18:02",
+                "result": 50.5,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "< 6"
             }
         ]
     },
@@ -1512,6 +1530,12 @@
                 "result": 2.84,
                 "lab_name": "Omed Oncology Teaching Hospital",
                 "normal_range": "3.5 - 5.2"
+            },
+            {
+                "date": "26-06-2026 18:02",
+                "result": 3.12,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "3.5 - 5.2"
             }
         ]
     },
@@ -1618,6 +1642,12 @@
                 "result": 4435.0,
                 "lab_name": "Omed Oncology Teaching Hospital",
                 "normal_range": "1-500"
+            },
+            {
+                "date": "26-06-2026 18:02",
+                "result": 3051.0,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "< 500"
             }
         ]
     },
