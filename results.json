@@ -966,6 +966,12 @@
                 "result": 29.0,
                 "lab_name": "AmrLab Medical Laboratories",
                 "normal_range": "16.6 - 48.2"
+            },
+            {
+                "date": "04-07-2026 10:34",
+                "result": 55.1,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "16.6 - 48.2"
             }
         ]
     },
@@ -1033,6 +1039,12 @@
                 "result": 1.8,
                 "lab_name": "AmrLab Medical Laboratories",
                 "normal_range": "0.7 - 1.2"
+            },
+            {
+                "date": "04-07-2026 10:34",
+                "result": 2.26,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "Male: 0.7 - 1.2, Female: 0.5 - 0.9"
             }
         ]
     },
@@ -1141,6 +1153,12 @@
             {
                 "date": "26-06-2026 18:02",
                 "result": 50.5,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "< 6"
+            },
+            {
+                "date": "04-07-2026 10:34",
+                "result": 39.7,
                 "lab_name": "AmrLab Medical Laboratories",
                 "normal_range": "< 6"
             }
@@ -1536,6 +1554,12 @@
                 "result": 3.12,
                 "lab_name": "AmrLab Medical Laboratories",
                 "normal_range": "3.5 - 5.2"
+            },
+            {
+                "date": "04-07-2026 10:34",
+                "result": 3.74,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "3.5 - 5.2"
             }
         ]
     },
@@ -1648,6 +1672,12 @@
                 "result": 3051.0,
                 "lab_name": "AmrLab Medical Laboratories",
                 "normal_range": "< 500"
+            },
+            {
+                "date": "04-07-2026 10:34",
+                "result": 1186.0,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "< 500"
             }
         ]
     },
@@ -1667,6 +1697,12 @@
                 "result": 6.4,
                 "lab_name": "Omed Oncology Teaching Hospital",
                 "normal_range": "Non diabetic < 5.8, 5.8-6.4 Prediabetes, Diabetes >= 6.5, Good control < 6.5"
+            },
+            {
+                "date": "04-07-2026 10:34",
+                "result": 6.47,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "Non Diabetic: 4.8 - 5.6, Prediabetic: 5.7 - 6.4, DM diagnosis: >= 6.5, Good Control: < 7.0, Action suggested: > 8.0"
             }
         ]
     },
@@ -1790,6 +1826,12 @@
                 "result": 291.3,
                 "lab_name": "Omed Oncology Teaching Hospital",
                 "normal_range": "200-771"
+            },
+            {
+                "date": "04-07-2026 10:34",
+                "result": 405.0,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "197 - 771"
             }
         ]
     },
@@ -1803,6 +1845,19 @@
                 "result": 1125.0,
                 "lab_name": "Omed Oncology Teaching Hospital",
                 "normal_range": "15-150"
+            }
+        ]
+    },
+    {
+        "id": 44,
+        "test": "PSA (total)",
+        "unit": "ng/mL",
+        "records": [
+            {
+                "date": "04-07-2026 10:34",
+                "result": 0.704,
+                "lab_name": "AmrLab Medical Laboratories",
+                "normal_range": "< 4.4"
             }
         ]
     }
